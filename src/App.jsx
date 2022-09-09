@@ -1,24 +1,30 @@
 import {
   ThreekitProvider,
   Player,
-  PortalToElement,
-  Share,
   // FlatForm,
 } from '@threekit-tools/treble';
 import FlatForm from './components/Delonghi/Flatform/Flatform';
-
+import {
+  AppWrapper,
+  PlayerWrapper,
+  FormWrapper,
+  FooterWrapper,
+} from './App.styled';
+import Footer from './components/Delonghi/Footer/Footer';
 const App = () => (
   <ThreekitProvider>
-    <div className="tk-treble-player">
-      <Player>
-        <Player.TopRightWidgets>
-          <Share />
-        </Player.TopRightWidgets>
-      </Player>
-    </div>
-    <PortalToElement to="tk-treble-form" strict={true}>
-      <FlatForm />
-    </PortalToElement>
+    <AppWrapper>
+      <PlayerWrapper>
+        <Player />
+      </PlayerWrapper>
+      <FormWrapper>
+        <FlatForm />
+        <FlatForm />
+      </FormWrapper>
+      <FooterWrapper>
+        <Footer />
+      </FooterWrapper>
+    </AppWrapper>
   </ThreekitProvider>
 );
 
