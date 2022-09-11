@@ -1,7 +1,6 @@
 import { useAttribute } from '@threekit-tools/treble';
 
-export function Tiles(props) {
-  const { title, attribute } = props;
+export function Tiles({ title, attribute, titleList }) {
   if (!attribute) return <></>;
   return (
     <div className="mb-5">
@@ -19,7 +18,7 @@ export function Tiles(props) {
                   : 'text-gray-500 bg-white border-gray-300'
               }`}
             >
-              {item.label}
+              {titleList[item.label] || item.label}
             </button>
           );
         })}
@@ -31,5 +30,11 @@ export function Tiles(props) {
 export default function TilesAttribute(props) {
   const [attribute] = useAttribute(props.attribute);
   if (!attribute) return <></>;
-  return <Tiles title={props.title} attribute={attribute} />;
+  return (
+    <Tiles
+      title={props.title}
+      attribute={attribute}
+      titleList={props.titleList}
+    />
+  );
 }

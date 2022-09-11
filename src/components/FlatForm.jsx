@@ -4,7 +4,6 @@ import FormComponent from './FormComponent';
 
 export const FlatForm = (props) => {
   const [attributes] = useConfigurator();
-  console.log('qqq attributes ===', attributes);
   if (!attributes) return null;
 
   return Object.values(attributes).map((attr) => (
