@@ -15,7 +15,8 @@ export function TextInput(props) {
           const sentence = e.target.value;
           setWarning(false);
           sentence.split(' ').forEach((word) => {
-            if (props.obsceneList.includes(word)) setWarning(true);
+            if (props.obsceneList.includes(word.toLowerCase()))
+              setWarning(true);
           });
           return setAttribute(sentence);
         }}
