@@ -3,6 +3,7 @@ import { useAttribute } from '@threekit-tools/treble';
 
 export function TextInput(props) {
   const [attribute, setAttribute] = useAttribute('text');
+  const [, setInputFocus] = useAttribute('Write Text');
   if (!attribute) return <></>;
   const [hasWarning, setWarning] = useState(false);
 
@@ -11,6 +12,10 @@ export function TextInput(props) {
       <h2>{attribute.label}</h2>
       {hasWarning && <h4>WARNING!!!</h4>}
       <input
+        onFocus={() => setInputFocus('On')}
+        onBlur={() => setInputFocus('Off')}
+        type="text"
+        id="message"
         onChange={(e) => {
           const sentence = e.target.value;
           setWarning(false);

@@ -3,6 +3,8 @@ import { useConfigurator } from '@threekit-tools/treble/dist';
 import FormComponent from '../FormComponent/FormComponent';
 import { obsceneDataApi, titleDataApi } from '../../../constants';
 import { ColorSwatch } from '../ColorSwatch/ColorSwatch';
+import { TextInput } from '../TextInput/TextInput';
+import { Switch } from '../Switch/Switch';
 
 const Flatform = (props) => {
   const [attributes] = useConfigurator();
@@ -32,29 +34,20 @@ const Flatform = (props) => {
     fetchData();
   }, []);
 
-  return Object.values(attributes).map((attr) => {
-    switch (attr.name) {
-      case 'Body metal wrappings  colors Specialista':
-      case 'Chrome plated Specialista':
-      case 'Wood kit':
-        return (
-          <ColorSwatch
-            title={attr.name}
-            attribute={attr}
-            titleList={titleList}
-          />
-        );
-      default:
-        return (
-          <FormComponent
-            obsceneList={obsceneList}
-            titleList={titleList}
-            attribute={attr.name}
-            includeNestedConfigurator={props.includeNestedConfigurator}
-          />
-        );
-    }
+  if (!Object.keys(attributes).length) return <></>;
+
+  const swatches = Object.values(attributes).filter((item) => {
+    return item.type === 'String' && !item.label.toLowerCase().includes('text');
   });
+  return (
+    <>
+      {swatches.map((item) => (
+        <ColorSwatch attribute={item} titleList={titleList} />
+      ))}
+      <Switch attribute={attributes['Caraffa Latte']} />
+      <TextInput attribute={attributes['text']} obsceneList={obsceneList} />
+    </>
+  );
 };
 
 export default Flatform;
