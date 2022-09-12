@@ -35,29 +35,15 @@ function RootFormComponent(props) {
 
   if (!Component) return <></>;
 
-  return (
-    <Component
-      attribute={attribute}
-      titleList={props.titleList}
-      obsceneList={props.obsceneList}
-    />
-  );
+  return <Component attribute={attribute} />;
 }
 
-export default function FormComponent({
-  attribute,
-  address,
-  obsceneList,
-  titleList,
-  includeNestedConfigurator,
-}) {
-  if (!attribute?.length && !address?.length) return <></>;
+export default function FormComponent(props) {
+  if (!props.attribute?.length && !props.address?.length) return <></>;
   return (
     <RootFormComponent
-      obsceneList={obsceneList}
-      titleList={titleList}
-      attribute={attribute}
-      includeNestedConfigurator={includeNestedConfigurator}
+      attribute={props.attribute}
+      includeNestedConfigurator={props.includeNestedConfigurator}
     />
   );
 }

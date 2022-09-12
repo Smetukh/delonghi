@@ -18,7 +18,7 @@ export function Tiles({ title, attribute, titleList }) {
                   : 'text-gray-500 bg-white border-gray-300'
               }`}
             >
-              {titleList[item.label] || item.label}
+              {titleList?.[item.label] || item.label}
             </button>
           );
         })}

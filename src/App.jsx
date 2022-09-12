@@ -19,7 +19,6 @@ const App = () => (
       </PlayerWrapper>
       <FormWrapper>
         <FlatForm />
-        <FlatForm />
       </FormWrapper>
       <FooterWrapper>
         <Footer />

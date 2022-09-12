@@ -1,7 +1,7 @@
 const {
   TRBL_THREEKIT_ENV = 'preview',
   THREEKIT_PREVIEW_ORG_ID = '41317b8e-32f8-4d07-95cf-3786368a003d',
-  THREEKIT_PREVIEW_PUBLIC_TOKEN = 'b146a11a-e717-412d-9659-38155ad5ac85',
+  THREEKIT_PREVIEW_PUBLIC_TOKEN = '3bc3c2f6-5c7c-4439-892a-4a1feeedb7d0',
 } = process.env;
 
 const titleDataTableId = '10cf41dd-6cee-41ea-a6a1-5f8c4ca59fdd';

@@ -1,7 +1,6 @@
 import { useAttribute } from '@threekit-tools/treble';
 
-export function ColorSwatch(props) {
-  const { title, attribute } = props;
+export function ColorSwatch({ titleList, title, attribute }) {
   if (!attribute) return <></>;
   return (
     <div>
@@ -18,14 +17,18 @@ export function ColorSwatch(props) {
             >
               <div
                 className="rounded-full h-full w-full cursor-pointer"
-                style={{ backgroundColor: item.metadata?._thumbnail }}
+                style={{
+                  backgroundColor: item.value.split(' ')[0].toLowerCase(),
+                }}
                 onClick={item.handleSelect}
               >
                 <span />
               </div>
               <div className="trbl-tooltip hidden group-hover:block">
                 <div className="max-w-5xl rounded-sm py-2 px-3 bg-black bg-opacity-60 overflow-hidden">
-                  <div className="text-white">{item.label}</div>
+                  <div className="text-white">
+                    {titleList[item.label] || item.label}
+                  </div>
                 </div>
                 <div className="trbl-tooltip-triangle">
                   <div />
@@ -42,5 +45,11 @@ export function ColorSwatch(props) {
 export default function ColorSwatchAttribute(props) {
   const [attribute] = useAttribute(props.attribute);
   if (!attribute) return <></>;
-  return <ColorSwatch title={props.title} attribute={attribute} />;
+  return (
+    <ColorSwatch
+      title={props.title}
+      attribute={attribute}
+      titleList={props.titleList}
+    />
+  );
 }

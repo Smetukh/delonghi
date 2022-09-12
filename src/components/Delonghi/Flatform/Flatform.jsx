@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useConfigurator } from '@threekit-tools/treble/dist';
 import FormComponent from '../FormComponent/FormComponent';
 import { obsceneDataApi, titleDataApi } from '../../../constants';
+import { ColorSwatch } from '../ColorSwatch/ColorSwatch';
 
 const Flatform = (props) => {
   const [attributes] = useConfigurator();
@@ -23,22 +24,36 @@ const Flatform = (props) => {
       });
       setTitleList(titleRes);
 
-      // map oscene language
+      // map obscene language
       const obscene = dataTables[1].rows.map(({ value: { phrase } }) => phrase);
       setObsceneList(obscene);
     };
 
     fetchData();
   }, []);
+
   return Object.values(attributes).map((attr) => {
-    return (
-      <FormComponent
-        obsceneList={obsceneList}
-        titleList={titleList}
-        attribute={attr.name}
-        includeNestedConfigurator={props.includeNestedConfigurator}
-      />
-    );
+    switch (attr.name) {
+      case 'Body metal wrappings  colors Specialista':
+      case 'Chrome plated Specialista':
+      case 'Wood kit':
+        return (
+          <ColorSwatch
+            title={attr.name}
+            attribute={attr}
+            titleList={titleList}
+          />
+        );
+      default:
+        return (
+          <FormComponent
+            obsceneList={obsceneList}
+            titleList={titleList}
+            attribute={attr.name}
+            includeNestedConfigurator={props.includeNestedConfigurator}
+          />
+        );
+    }
   });
 };
 
