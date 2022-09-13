@@ -1,8 +1,4 @@
-import {
-  ThreekitProvider,
-  Player,
-  // FlatForm,
-} from '@threekit-tools/treble';
+import { ThreekitProvider, Player, Share } from '@threekit-tools/treble';
 import FlatForm from './components/Delonghi/Flatform/Flatform';
 import {
   AppWrapper,
@@ -15,7 +11,11 @@ const App = () => (
   <ThreekitProvider>
     <AppWrapper>
       <PlayerWrapper>
-        <Player />
+        <Player>
+          <Player.TopRightWidgets>
+            <Share />
+          </Player.TopRightWidgets>
+        </Player>
       </PlayerWrapper>
       <FormWrapper>
         <FlatForm />
