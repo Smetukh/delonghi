@@ -1,3 +1,7 @@
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const assetId = urlParams.get('assetId');
+
 export default {
   credentials: {
     preview: {
@@ -16,7 +20,7 @@ export default {
 
   products: {
     preview: {
-      assetId: '17192fd3-7f01-4473-a670-10d608b85f12',
+      assetId: assetId || '17192fd3-7f01-4473-a670-10d608b85f12', // TODO: remove mocked data
       configurationId: undefined,
       stageId: undefined,
     },
