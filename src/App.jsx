@@ -7,24 +7,32 @@ import {
   FooterWrapper,
 } from './App.styled';
 import Footer from './components/Delonghi/Footer/Footer';
-const App = () => (
-  <ThreekitProvider>
-    <AppWrapper>
-      <PlayerWrapper>
-        <Player>
-          <Player.TopRightWidgets>
-            <Share />
-          </Player.TopRightWidgets>
-        </Player>
-      </PlayerWrapper>
-      <FormWrapper>
-        <FlatForm />
-      </FormWrapper>
-      <FooterWrapper>
-        <Footer />
-      </FooterWrapper>
-    </AppWrapper>
-  </ThreekitProvider>
-);
+import delonghi from './store/delonghi';
+
+const App = () => {
+  const reducer = {
+    delonghi,
+  };
+
+  return (
+    <ThreekitProvider>
+      <AppWrapper>
+        <PlayerWrapper>
+          <Player>
+            <Player.TopRightWidgets>
+              <Share />
+            </Player.TopRightWidgets>
+          </Player>
+        </PlayerWrapper>
+        <FormWrapper>
+          <FlatForm />
+        </FormWrapper>
+        <FooterWrapper>
+          <Footer />
+        </FooterWrapper>
+      </AppWrapper>
+    </ThreekitProvider>
+  );
+};
 
 export default App;
