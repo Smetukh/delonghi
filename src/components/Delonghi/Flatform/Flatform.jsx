@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useConfigurator } from '@threekit-tools/treble/dist';
-import { obsceneDataApi, titleDataApi } from '../../../constants';
+import { OBSCENE_DATA_API, TITLE_DATA_API } from '../../../constants';
 import { ColorSwatch } from '../ColorSwatch/ColorSwatch';
 import { TextInput } from '../TextInput/TextInput';
 import { Switch } from '../Switch/Switch';
@@ -14,7 +14,7 @@ const Flatform = () => {
   useEffect(() => {
     const fetchData = async () => {
       const dataTables = await Promise.all(
-        [titleDataApi, obsceneDataApi].map(async (url) => {
+        [TITLE_DATA_API, OBSCENE_DATA_API].map(async (url) => {
           const resp = await fetch(url);
           return resp.json();
         })

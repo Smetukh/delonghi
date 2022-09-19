@@ -12,7 +12,7 @@ import {
 } from './Footer.styled';
 import { useWindowDimensions } from '../../../utils/hooks';
 import { useThreekitSelector } from '@threekit-tools/treble/dist/store';
-import { addToCartCustomisation } from '../../../constants';
+import { ADD_TO_CART_CUSTOMISATION } from '../../../constants';
 
 const Footer = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +41,7 @@ const Footer = () => {
 
       // mapping model attributes into customisation array
       Object.keys(attributes).forEach((key) => {
-        const apiKey = addToCartCustomisation[key];
+        const apiKey = ADD_TO_CART_CUSTOMISATION[key];
         if (apiKey) {
           let value = attributes[key].value;
           if (value === 'Off') value = `NO ${apiKey}`; // Example: 'NO PATTERN', 'NO WOOD KIT'

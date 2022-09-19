@@ -1,4 +1,4 @@
-import { ThreekitProvider, Player, Share } from '@threekit-tools/treble';
+import { ThreekitProvider, Player } from '@threekit-tools/treble';
 import FlatForm from './components/Delonghi/Flatform/Flatform';
 import {
   AppWrapper,
@@ -7,6 +7,7 @@ import {
   FooterWrapper,
 } from './App.styled';
 import Footer from './components/Delonghi/Footer/Footer';
+import Share from './components/Delonghi/Share';
 import delonghi from './store/delonghi';
 
 const App = () => {

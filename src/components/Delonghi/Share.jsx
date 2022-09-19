@@ -1,12 +1,5 @@
-import {
-  useShare,
-  ShareIcon,
-  // ArrowLeft,
-  useThreekitInitStatus,
-} from '@threekit-tools/treble';
-import CaretLeft from '@threekit-tools/treble/dist/icons/ArrowLeft';
-
-const COPIED_MESSAGE = 'Current configuration URL is Copied!';
+import { useShare, useThreekitInitStatus } from '@threekit-tools/treble';
+import { ShareIcon } from './icons';
 
 export default function Share(props) {
   const handleShare = useShare();
@@ -20,7 +13,7 @@ export default function Share(props) {
 
   return (
     <button type="button" onClick={handleClick} className="trbl-wgt-btn">
-      <CaretLeft />
+      <ShareIcon />
     </button>
   );
 }
