@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import QRCode from 'qrcode';
 import {
   FooterWrapper,
   Summary,
@@ -6,6 +7,8 @@ import {
   ArrowIcon,
   FooterButton,
   Input,
+  InputContainer,
+  CheckboxAndButtonContainer,
 } from './Footer.styled';
 import { useWindowDimensions } from '../../../utils/hooks';
 import { useThreekitSelector } from '@threekit-tools/treble/dist/store';
@@ -31,6 +34,8 @@ const Footer = () => {
         await window.threekit.treble.saveConfiguration();
       const snapshot = await window.threekit.player.snapshotAsync();
       const token = window.DLG.config.CSRFToken;
+      const enableARUrl = `${window.location.href}?tkcsid=${savedConfiguration.shortId}&enableAR=true`;
+      const enableARQRcode = await QRCode.toDataURL(enableARUrl);
 
       let customisation = [];
 
@@ -44,6 +49,8 @@ const Footer = () => {
         }
       });
       const requestBody = {
+        enableARUrl,
+        enableARQRcode,
         skuCode: window.DLG.config.skuCode,
         qty: 555,
         snapshot,
@@ -71,6 +78,7 @@ const Footer = () => {
       );
     }
   };
+
   return (
     <FooterWrapper isOpen={isOpen}>
       <div onClick={onOpenChange}>
@@ -84,19 +92,21 @@ const Footer = () => {
         <Price>999 USD</Price>
       </div>
       {(isOpen || width > 744) && (
-        <div>
-          <Input
-            value={isAgree}
-            defaultChecked={isAgree}
-            onChange={onCheckboxChange}
-            id="terms"
-            type="checkbox"
-          />
-          <label htmlFor="terms">
-            I have read and agree to the terms and conditions
-          </label>
+        <CheckboxAndButtonContainer>
+          <InputContainer>
+            <Input
+              value={isAgree}
+              defaultChecked={isAgree}
+              onChange={onCheckboxChange}
+              id="terms"
+              type="checkbox"
+            />
+            <label htmlFor="terms">
+              I have read and agree to the terms and conditions
+            </label>
+          </InputContainer>
           <FooterButton onClick={addToCart}>Add to basket</FooterButton>
-        </div>
+        </CheckboxAndButtonContainer>
       )}
     </FooterWrapper>
   );

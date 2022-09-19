@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import { useAttribute } from '@threekit-tools/treble';
+import {
+  Input,
+  SubmitButton,
+  InputTitle,
+  InputWrapper,
+} from '../TextInput/TextInput.styled';
 
-export function TextInput(props) {
+export const TextInput = (props) => {
   const [attribute, setAttribute] = useAttribute('text');
   const [, setInputFocus] = useAttribute('Write Text');
   if (!attribute) return <></>;
   const [hasWarning, setWarning] = useState(false);
 
+  console.log('qqq attribute ===', attribute);
   return (
-    <div>
-      <h2>{attribute.label}</h2>
+    <InputWrapper>
+      <InputTitle>{props.title}</InputTitle>
       {hasWarning && <h4>WARNING!!!</h4>}
-      <input
+      <Input
         onFocus={() => setInputFocus('On')}
         onBlur={() => setInputFocus('Off')}
         type="text"
@@ -26,6 +33,7 @@ export function TextInput(props) {
           return setAttribute(sentence);
         }}
       />
-    </div>
+      <SubmitButton>Submit</SubmitButton>
+    </InputWrapper>
   );
-}
+};

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useConfigurator } from '@threekit-tools/treble/dist';
-import FormComponent from '../FormComponent/FormComponent';
 import { obsceneDataApi, titleDataApi } from '../../../constants';
 import { ColorSwatch } from '../ColorSwatch/ColorSwatch';
 import { TextInput } from '../TextInput/TextInput';
 import { Switch } from '../Switch/Switch';
+import { FlatFormTitle } from './FlatForm.styled';
 
-const Flatform = (props) => {
+const Flatform = () => {
   const [attributes] = useConfigurator();
   if (!attributes) return null;
   const [titleList, setTitleList] = useState({});
@@ -41,11 +41,16 @@ const Flatform = (props) => {
   });
   return (
     <>
+      <FlatFormTitle>La Specialista Maestro Conﬁgure Your Own</FlatFormTitle>
       {swatches.map((item) => (
-        <ColorSwatch attribute={item} titleList={titleList} />
+        <ColorSwatch attribute={item} key={item.name} titleList={titleList} />
       ))}
       <Switch attribute={attributes['Caraffa Latte']} />
-      <TextInput attribute={attributes['text']} obsceneList={obsceneList} />
+      <TextInput
+        attribute={attributes['text']}
+        obsceneList={obsceneList}
+        title="Metal Tag"
+      />
     </>
   );
 };

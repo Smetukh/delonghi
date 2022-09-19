@@ -17,12 +17,14 @@ export const FooterWrapper = styled.div`
 `;
 
 export const Summary = styled.div`
+  font-family: sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: 500;
+  font-weight: bold;
   font-size: 18px;
   line-height: 132.4%;
+  letter-spacing: 0.01em;
 `;
 
 export const Price = styled.div`
@@ -53,12 +55,34 @@ export const FooterButton = styled.button`
   margin: 11px auto 0;
   @media (min-width: 744px) {
     margin: 0;
+    margin-top: 13px;
+    width: 158px;
+    height: 48px;
   }
 `;
 
 export const Input = styled.input`
   margin-top: 29px;
+  width: 20px;
+  height: 20px;
   @media (min-width: 744px) {
     margin: 0;
   }
+`;
+
+export const InputContainer = styled.div`
+  display: flex;
+  align-items: center;
+  & label {
+    margin-left: 9px;
+    font-size: 14.4px;
+    line-height: 132.4%;
+    letter-spacing: 0.01em;
+  }
+`;
+
+export const CheckboxAndButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 `;
