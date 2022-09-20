@@ -15,7 +15,6 @@ export const TextInput = (props) => {
   if (!attribute) return <></>;
   const [hasWarning, setWarning] = useState(false);
 
-  console.log('qqq attribute ===', attribute);
   return (
     <InputWrapper>
       <InputTitle>{props.title}</InputTitle>

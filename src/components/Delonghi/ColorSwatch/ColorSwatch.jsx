@@ -1,4 +1,7 @@
-import { swatchColors } from '../../../constants/colors';
+import {
+  SWATCH_COLOR_CODES,
+  SWATCH_COLOR_NAMES,
+} from '../../../constants/colors';
 import {
   ColorButton,
   ColorButtonsTitle,
@@ -9,20 +12,24 @@ import {
 
 export const ColorSwatch = ({ title, attribute }) => {
   if (!attribute) return <></>;
+
   return (
     <Container>
       <ColorButtonsTitle>
         {title || attribute?.label}:
-        <SelectedColor> {attribute?.value}</SelectedColor>
+        <SelectedColor>
+          {' '}
+          {SWATCH_COLOR_NAMES[attribute?.value] || attribute?.value}
+        </SelectedColor>
       </ColorButtonsTitle>
       <ColorsWrapper>
         {attribute?.values.map((item, i) => (
-          <ColorButton key={i} type="button" selected={item.selected}>
+          <ColorButton key={i} selected={item.selected}>
             <div
               className="rounded-full h-full w-full cursor-pointer"
               style={{
-                backgroundColor:
-                  swatchColors[item.value] ||
+                background:
+                  SWATCH_COLOR_CODES[item.value] ||
                   item.value.split(' ')[0].toLowerCase(), // TODO: remove this split case
               }}
               onClick={item.handleSelect}

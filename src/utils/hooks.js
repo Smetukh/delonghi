@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const getWindowDimensions = () => {
   const { innerWidth: width, innerHeight: height } = window;
@@ -8,7 +8,7 @@ const getWindowDimensions = () => {
   };
 };
 
-export const useWindowDimensions = () => {
+const useWindowDimensions = () => {
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
   );
@@ -24,3 +24,22 @@ export const useWindowDimensions = () => {
 
   return windowDimensions;
 };
+
+const useUnload = (fn) => {
+  const cb = useRef(fn); // init with fn, so that type checkers won't assume that current might be undefined
+
+  useEffect(() => {
+    cb.current = fn;
+  }, [fn]);
+
+  useEffect(() => {
+    const onUnload = (...args) => cb.current?.(...args);
+
+    window.addEventListener('beforeunload', onUnload, { capture: true });
+
+    return () =>
+      window.removeEventListener('beforeunload', onUnload, { capture: true });
+  }, []);
+};
+
+export { useWindowDimensions, useUnload };

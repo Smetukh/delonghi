@@ -11,7 +11,7 @@ export const OBSCENE_DATA_API = `https://${TRBL_THREEKIT_ENV}.threekit.com/api/d
 
 export const ADD_TO_CART_CUSTOMISATION = {
   'Chrome plated Specialista': 'CHROMED DETAILS',
-  'Body metal wrappings  colors Specialista': 'BODY',
+  'Body metal wrappings Specialista': 'BODY',
   'Body metal Maestosa': 'BODY',
   'Wood kit': 'WOOD KIT',
   'Dot Pattern': 'PATTERN',
@@ -19,3 +19,8 @@ export const ADD_TO_CART_CUSTOMISATION = {
 };
 
 export const COPIED_MESSAGE = 'Current configuration URL is Copied!';
+
+export const SKU_DATA = {
+  11111: { title: 'La Specialista Maestro Tailor-Made', price: 1039.99 },
+  22222: { title: 'Maestosa Tailor-Made', price: 999.99 },
+};

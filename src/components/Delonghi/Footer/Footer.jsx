@@ -9,7 +9,7 @@ import {
   CheckboxAndButtonContainer,
 } from './Footer.styled';
 import { useThreekitSelector } from '@threekit-tools/treble/dist/store';
-import { ADD_TO_CART_CUSTOMISATION } from '../../../constants';
+import { ADD_TO_CART_CUSTOMISATION, SKU_DATA } from '../../../constants';
 
 const Footer = () => {
   const [isAgree, setIsAgree] = useState(false);
@@ -72,7 +72,7 @@ const Footer = () => {
 
   return (
     <FooterWrapper>
-      <Price>$999.99</Price>
+      <Price>{`$${SKU_DATA[window.DLG.config.skuCode].price}`}</Price>
       <CheckboxAndButtonContainer>
         <InputContainer>
           <Input

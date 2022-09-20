@@ -13,6 +13,14 @@ export const ColorButton = styled.button`
   }
 `;
 
+export const InnerColorBlock = styled.div`
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: ${({ backgroundColor }) => backgroundColor};
+`;
+
 export const ColorButtonsTitle = styled.div`
   font-style: normal;
   font-weight: bold;

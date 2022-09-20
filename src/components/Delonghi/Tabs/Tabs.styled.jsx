@@ -1,5 +1,17 @@
 import styled from 'styled-components';
 
 export const TabsWrapper = styled.div`
-  margin-top: 20px;
+  margin-top: 48px;
+`;
+
+export const Tab = styled.div`
+  display: inline-block;
+  font-weight: ${({ active }) => (active ? '500' : 'bold')};
+  font-size: 20px;
+  letter-spacing: 0.01em;
+  font-family: sans-serif;
+  border-bottom: ${({ active }) => (active ? '1px solid #266BBF' : 'none')};
+  margin-right: 20px;
+  cursor: pointer;
+  line-height: 30px;
 `;

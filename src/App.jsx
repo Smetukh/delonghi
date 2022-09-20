@@ -2,7 +2,7 @@ import { ThreekitProvider, Player } from '@threekit-tools/treble';
 import { AppWrapper, PlayerWrapper, FormWrapper } from './App.styled';
 import Share from './components/Delonghi/Share';
 import delonghi from './store/delonghi';
-import { useWindowDimensions } from './utils/hooks';
+import { useUnload, useWindowDimensions } from './utils/hooks';
 
 const App = () => {
   const reducer = {
@@ -10,6 +10,12 @@ const App = () => {
   };
 
   const { width } = useWindowDimensions();
+
+  // Prevent reload page
+  useUnload((e) => {
+    e.preventDefault();
+    e.returnValue = '';
+  });
 
   const getPlayerHeight = () => {
     if (width > 700 && width < 900) {

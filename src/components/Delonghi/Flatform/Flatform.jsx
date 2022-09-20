@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useConfigurator } from '@threekit-tools/treble/dist';
-import { OBSCENE_DATA_API, TITLE_DATA_API } from '../../../constants';
-import { ColorSwatch } from '../ColorSwatch/ColorSwatch';
-import { TextInput } from '../TextInput/TextInput';
+import { OBSCENE_DATA_API, SKU_DATA, TITLE_DATA_API } from '../../../constants';
 import { FlatFormTitle, FlatFormWrapper } from './FlatForm.styled';
 import Footer from '../Footer/Footer';
 import Tabs from '../Tabs/Tabs';
+import FormPage from '../../../pages/FormPage';
+import SummaryPage from '../../../pages/SummaryPage';
 
 const Flatform = () => {
   const [attributes] = useConfigurator();
   if (!attributes) return null;
+
   const [titleList, setTitleList] = useState({});
   const [obsceneList, setObsceneList] = useState([]);
   useEffect(() => {
@@ -40,19 +41,31 @@ const Flatform = () => {
   const swatches = Object.values(attributes).filter((item) => {
     return item.type === 'String' && !item.label.toLowerCase().includes('text');
   });
+
+  const tabs = [
+    {
+      id: 1,
+      tabTitle: 'Configurator',
+      content: (
+        <FormPage
+          swatches={swatches}
+          titleList={titleList}
+          inputAttributes={attributes['text']}
+          obsceneList={obsceneList}
+        />
+      ),
+    },
+    {
+      id: 2,
+      tabTitle: 'Configuration Summary',
+      content: <SummaryPage swatches={swatches} />,
+    },
+  ];
+
   return (
     <FlatFormWrapper>
-      <FlatFormTitle>La Specialista Maestro Tailor-Made</FlatFormTitle>
-      <Tabs></Tabs>
-      {swatches.map((item) => (
-        <ColorSwatch attribute={item} key={item.name} titleList={titleList} />
-      ))}
-      {/* <Switch attribute={attributes['Caraffa Latte']} /> */}
-      <TextInput
-        attribute={attributes['text']}
-        obsceneList={obsceneList}
-        title="Metal Tag"
-      />
+      <FlatFormTitle>{SKU_DATA[window.DLG.config.skuCode].title}</FlatFormTitle>
+      <Tabs tabs={tabs} tabIndex={1} />
       <Footer />
     </FlatFormWrapper>
   );

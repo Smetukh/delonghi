@@ -1,4 +1,5 @@
 import { useShare, useThreekitInitStatus } from '@threekit-tools/treble';
+import { COPIED_MESSAGE } from '../../constants';
 import { ShareIcon } from './icons';
 
 export default function Share(props) {

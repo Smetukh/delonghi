@@ -1,4 +1,4 @@
-export const swatchColors = {
+export const SWATCH_COLOR_CODES = {
   'WHITE NS WH 86/PE': '#FAF9F3',
   'BLACK DL BK 49/M/PE': '#2F2F2D',
   'BROWN DL BW 30/M/PE': '#8C7E63',
@@ -10,4 +10,19 @@ export const swatchColors = {
   'Standard chrome plating': '#7E7C7C',
   Oak: '#CE8C3E',
   Mahogany: '#783F04',
+};
+
+export const SWATCH_COLOR_NAMES = {
+  'WHITE NS WH 86/PE': 'WHITE',
+  'BLACK DL BK 49/M/PE': 'BLACK',
+  'BROWN DL BW 30/M/PE': 'BROWN',
+  'GREEN DL GR 42/PG': 'GREEN',
+  'RED DL RD 45': 'RED',
+  'BEIGE DL BG 25/PG': 'BEIGE',
+  'Black chrome plating': 'Black chrome',
+  'Gold chrome plating': 'Gold chrome',
+  'Standard chrome plating': 'Standard chrome',
+  Oak: 'Oak',
+  Mahogany: 'Mahogany',
+  Off: 'No wood',
 };
