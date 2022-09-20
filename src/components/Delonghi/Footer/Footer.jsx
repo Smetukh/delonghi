@@ -2,27 +2,18 @@ import React, { useState } from 'react';
 import QRCode from 'qrcode';
 import {
   FooterWrapper,
-  Summary,
   Price,
-  ArrowIcon,
   FooterButton,
   Input,
   InputContainer,
   CheckboxAndButtonContainer,
 } from './Footer.styled';
-import { useWindowDimensions } from '../../../utils/hooks';
 import { useThreekitSelector } from '@threekit-tools/treble/dist/store';
 import { ADD_TO_CART_CUSTOMISATION } from '../../../constants';
 
 const Footer = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [isAgree, setIsAgree] = useState(false);
-  const { width } = useWindowDimensions();
-  const onOpenChange = () => {
-    if (width < 744) {
-      setIsOpen(!isOpen);
-    }
-  };
+
   const onCheckboxChange = () => {
     setIsAgree(!isAgree);
   };
@@ -80,34 +71,27 @@ const Footer = () => {
   };
 
   return (
-    <FooterWrapper isOpen={isOpen}>
-      <div onClick={onOpenChange}>
-        <Summary>
-          <span>Conﬁguration Summary</span>
-          {width < 744 && <ArrowIcon isOpen={isOpen} />}
-        </Summary>
-        {(isOpen || width > 744) && (
-          <div>(Beige metal wrapping, Gold chrome plating)</div>
-        )}
-        <Price>999 USD</Price>
-      </div>
-      {(isOpen || width > 744) && (
-        <CheckboxAndButtonContainer>
-          <InputContainer>
-            <Input
-              value={isAgree}
-              defaultChecked={isAgree}
-              onChange={onCheckboxChange}
-              id="terms"
-              type="checkbox"
-            />
-            <label htmlFor="terms">
-              I have read and agree to the terms and conditions
-            </label>
-          </InputContainer>
-          <FooterButton onClick={addToCart}>Add to basket</FooterButton>
-        </CheckboxAndButtonContainer>
-      )}
+    <FooterWrapper>
+      <Price>$999.99</Price>
+      <CheckboxAndButtonContainer>
+        <InputContainer>
+          <Input
+            value={isAgree}
+            defaultChecked={isAgree}
+            onChange={onCheckboxChange}
+            id="terms"
+            type="checkbox"
+          />
+          <label htmlFor="terms">
+            I have read and agree to the terms and conditions. I understand that
+            shipping timings are not guaranteed, the final output could be
+            different from the model and I won’t be able to return the product.
+          </label>
+        </InputContainer>
+        <FooterButton disabled={!isAgree} onClick={addToCart}>
+          Add to basket
+        </FooterButton>
+      </CheckboxAndButtonContainer>
     </FooterWrapper>
   );
 };

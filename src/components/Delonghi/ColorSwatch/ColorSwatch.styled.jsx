@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const ColorButton = styled.button`
-  width: 45px;
-  height: 45px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   border: ${({ selected }) =>
     selected ? '2px solid #0C2340' : '1px solid #00000020'};

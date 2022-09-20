@@ -1,17 +1,15 @@
 import styled from 'styled-components';
 
 export const Input = styled.input`
-  width: 220px;
   height: 40px;
   border: 1px solid #00000020;
   font-size: 18px;
   padding: 10px 16px;
-  margin-top: 20px;
+  width: 100%;
 `;
 
 export const SubmitButton = styled.button`
   font-family: sans-serif;
-  width: 158px;
   height: 40px;
   background-color: #0c2340;
   font-weight: bold;
@@ -21,7 +19,6 @@ export const SubmitButton = styled.button`
   cursor: pointer;
   border: none;
   outline: none;
-  margin-left: 9px;
   border-radius: 3px;
   letter-spacing: 1px;
 `;
@@ -36,4 +33,19 @@ export const InputTitle = styled.div`
 
 export const InputWrapper = styled.div`
   margin-top: 50px;
+`;
+
+export const SubTitle = styled.div`
+  font-family: sans-serif;
+  font-weight: 400;
+  font-size: 14.4px;
+  line-height: 132.4%;
+  margin-top: 15px;
+`;
+
+export const InputButtonWrapper = styled.div`
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10px;
 `;

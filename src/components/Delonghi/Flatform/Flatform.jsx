@@ -3,8 +3,9 @@ import { useConfigurator } from '@threekit-tools/treble/dist';
 import { OBSCENE_DATA_API, TITLE_DATA_API } from '../../../constants';
 import { ColorSwatch } from '../ColorSwatch/ColorSwatch';
 import { TextInput } from '../TextInput/TextInput';
-import { Switch } from '../Switch/Switch';
-import { FlatFormTitle } from './FlatForm.styled';
+import { FlatFormTitle, FlatFormWrapper } from './FlatForm.styled';
+import Footer from '../Footer/Footer';
+import Tabs from '../Tabs/Tabs';
 
 const Flatform = () => {
   const [attributes] = useConfigurator();
@@ -40,18 +41,20 @@ const Flatform = () => {
     return item.type === 'String' && !item.label.toLowerCase().includes('text');
   });
   return (
-    <>
-      <FlatFormTitle>La Specialista Maestro Conﬁgure Your Own</FlatFormTitle>
+    <FlatFormWrapper>
+      <FlatFormTitle>La Specialista Maestro Tailor-Made</FlatFormTitle>
+      <Tabs></Tabs>
       {swatches.map((item) => (
         <ColorSwatch attribute={item} key={item.name} titleList={titleList} />
       ))}
-      <Switch attribute={attributes['Caraffa Latte']} />
+      {/* <Switch attribute={attributes['Caraffa Latte']} /> */}
       <TextInput
         attribute={attributes['text']}
         obsceneList={obsceneList}
         title="Metal Tag"
       />
-    </>
+      <Footer />
+    </FlatFormWrapper>
   );
 };
 

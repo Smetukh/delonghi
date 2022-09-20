@@ -5,6 +5,8 @@ import {
   SubmitButton,
   InputTitle,
   InputWrapper,
+  SubTitle,
+  InputButtonWrapper,
 } from '../TextInput/TextInput.styled';
 
 export const TextInput = (props) => {
@@ -17,23 +19,26 @@ export const TextInput = (props) => {
   return (
     <InputWrapper>
       <InputTitle>{props.title}</InputTitle>
+      <SubTitle>Add text:</SubTitle>
       {hasWarning && <h4>WARNING!!!</h4>}
-      <Input
-        onFocus={() => setInputFocus('On')}
-        onBlur={() => setInputFocus('Off')}
-        type="text"
-        id="message"
-        onChange={(e) => {
-          const sentence = e.target.value;
-          setWarning(false);
-          sentence.split(' ').forEach((word) => {
-            if (props.obsceneList.includes(word.toLowerCase()))
-              setWarning(true);
-          });
-          return setAttribute(sentence);
-        }}
-      />
-      <SubmitButton>Submit</SubmitButton>
+      <InputButtonWrapper>
+        <Input
+          onFocus={() => setInputFocus('On')}
+          onBlur={() => setInputFocus('Off')}
+          type="text"
+          id="message"
+          onChange={(e) => {
+            const sentence = e.target.value;
+            setWarning(false);
+            sentence.split(' ').forEach((word) => {
+              if (props.obsceneList.includes(word.toLowerCase()))
+                setWarning(true);
+            });
+            return setAttribute(sentence);
+          }}
+        />
+        <SubmitButton>Submit</SubmitButton>
+      </InputButtonWrapper>
     </InputWrapper>
   );
 };
