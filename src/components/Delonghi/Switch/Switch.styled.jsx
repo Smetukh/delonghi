@@ -42,5 +42,5 @@ export const SwitcherLabel = styled.label`
 `;
 
 export const Container = styled.div`
-  margin-top: 48px;
+  margin-top: 30px;
 `;

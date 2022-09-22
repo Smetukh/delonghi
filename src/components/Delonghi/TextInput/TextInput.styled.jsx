@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Input = styled.input`
   height: 40px;
-  border: 1px solid #00000020;
+  border: 1px solid ${({ error }) => (error ? 'red' : '#00000020')};
   font-size: 18px;
   padding: 10px 16px;
   width: 100%;

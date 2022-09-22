@@ -20,7 +20,7 @@ const SummaryPage = ({ swatches }) => {
             <SummaryLabel>{swatch.label}</SummaryLabel>
             <ColorButton selected={true}>
               <InnerColorBlock
-                backgroundColor={SWATCH_COLOR_CODES[swatch.value]}
+                backgroundImage={SWATCH_COLOR_CODES[swatch.value]}
               />
             </ColorButton>
             <Value>{SWATCH_COLOR_NAMES[swatch.value]}</Value>

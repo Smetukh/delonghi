@@ -17,7 +17,7 @@ const FormPage = ({ swatches, titleList, attributes, obsceneList }) => {
         <TextInput
           attribute={attributes['text']}
           obsceneList={obsceneList}
-          title="Metal Tag"
+          title="Add text"
         />
       )}
     </FormPageWrapper>

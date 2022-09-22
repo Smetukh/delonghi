@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const FormPageWrapper = styled.div`
-  margin-top: 46px;
+  /* margin-top: 46px; */
 `;
 
 export const SummaryLabel = styled.div`

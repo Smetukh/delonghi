@@ -1,5 +1,7 @@
-import { ThreekitProvider, Player } from '@threekit-tools/treble';
+import { ThreekitProvider, Player, Zoom } from '@threekit-tools/treble';
 import { AppWrapper, PlayerWrapper, FormWrapper } from './App.styled';
+import Help from './components/Delonghi/Help';
+import { QuestionIcon } from './components/Delonghi/icons';
 import Share from './components/Delonghi/Share';
 import { ModalProvider } from './context/modalContext';
 import delonghi from './store/delonghi';
@@ -39,9 +41,15 @@ const App = () => {
             height={getPlayerHeight()}
             minHeight={getPlayerHeight()}
           >
+            {/* <Player.BottomCenterWidgets>
+              <Zoom />
+            </Player.BottomCenterWidgets> */}
             <Player.TopRightWidgets>
               <Share />
             </Player.TopRightWidgets>
+            <Player.BottomRightWidgets>
+              <Help />
+            </Player.BottomRightWidgets>
           </PlayerWrapper>
           <FormWrapper />
         </AppWrapper>

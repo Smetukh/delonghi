@@ -11,32 +11,43 @@ import {
 
 export const TextInput = (props) => {
   const [attribute, setAttribute] = useAttribute('text');
+  const [inputValue, setInputValue] = useState('');
   const [, setInputFocus] = useAttribute('Write Text');
   if (!attribute) return <></>;
   const [hasWarning, setWarning] = useState(false);
 
+  const onSubmitClick = () => {
+    setWarning(false);
+    inputValue.split(' ').forEach((word) => {
+      if (props.obsceneList.includes(word.toLowerCase())) {
+        setWarning(true);
+        return;
+      } else {
+        return setAttribute(inputValue);
+      }
+    });
+  };
+
+  const onHandleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
   return (
     <InputWrapper>
-      <InputTitle>{props.title}</InputTitle>
+      {/* <InputTitle>{props.title}</InputTitle> */}
       <SubTitle>Add text:</SubTitle>
-      {hasWarning && <h4>WARNING!!!</h4>}
+      {/* {hasWarning && <h4>WARNING!!!</h4>} */}
       <InputButtonWrapper>
         <Input
           onFocus={() => setInputFocus('On')}
-          onBlur={() => setInputFocus('Off')}
+          // onBlur={() => setInputFocus('Off')}
           type="text"
           id="message"
-          onChange={(e) => {
-            const sentence = e.target.value;
-            setWarning(false);
-            sentence.split(' ').forEach((word) => {
-              if (props.obsceneList.includes(word.toLowerCase()))
-                setWarning(true);
-            });
-            return setAttribute(sentence);
-          }}
+          value={inputValue}
+          onChange={onHandleChange}
+          error={hasWarning}
         />
-        <SubmitButton>Submit</SubmitButton>
+        <SubmitButton onClick={onSubmitClick}>Submit</SubmitButton>
       </InputButtonWrapper>
     </InputWrapper>
   );

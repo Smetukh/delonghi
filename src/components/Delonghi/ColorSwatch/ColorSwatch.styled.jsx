@@ -18,7 +18,7 @@ export const InnerColorBlock = styled.div`
   height: 100%;
   cursor: pointer;
   border-radius: 50%;
-  background-color: ${({ backgroundColor }) => backgroundColor};
+  background-image: ${({ backgroundImage }) => `url(${backgroundImage})`};
 `;
 
 export const ColorButtonsTitle = styled.div`
@@ -40,7 +40,9 @@ export const Container = styled.div`
 `;
 
 export const ColorsWrapper = styled.div`
-  margin-top: 12px;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
 `;
 
 export const Line = styled.div`

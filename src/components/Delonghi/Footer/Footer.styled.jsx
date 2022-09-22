@@ -45,7 +45,7 @@ export const InputContainer = styled.div`
   margin-top: 18px;
   & label {
     margin-left: 9px;
-    font-size: 14.4px;
+    font-size: 10px;
     line-height: 132.4%;
     letter-spacing: 0.01em;
   }

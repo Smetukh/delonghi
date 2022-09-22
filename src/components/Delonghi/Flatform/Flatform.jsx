@@ -7,11 +7,12 @@ import Tabs from '../Tabs/Tabs';
 import FormPage from '../../../pages/FormPage';
 import SummaryPage from '../../../pages/SummaryPage';
 import { ModalContext } from '../../../context/modalContext';
+import { useThreekitSelector } from '@threekit-tools/treble/dist/store';
 
 const Flatform = () => {
   const [attributes] = useConfigurator();
   if (!attributes) return null;
-
+  const product = useThreekitSelector((s) => s.product);
   const { openModal, closeModal } = useContext(ModalContext);
   const [titleList, setTitleList] = useState({});
   const [obsceneList, setObsceneList] = useState([]);
@@ -69,7 +70,7 @@ const Flatform = () => {
       <CloseIcon
         onClick={() => openModal('CLOSE_CONFIGURATOR', { closeModal })}
       />
-      <FlatFormTitle>{SKU_DATA[window.DLG.config.skuCode].title}</FlatFormTitle>
+      <FlatFormTitle>{product.name}</FlatFormTitle>
       <Tabs tabs={tabs} tabIndex={1} />
       <Footer />
     </FlatFormWrapper>

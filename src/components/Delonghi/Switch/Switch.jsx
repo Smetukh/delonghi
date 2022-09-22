@@ -18,7 +18,7 @@ export const Switch = (props) => {
 
   return (
     <Container>
-      <SwitchTitle>{props.attribute.label}</SwitchTitle>
+      <SwitchTitle>Metal Tag</SwitchTitle>
       <SwitcherLabel>
         <HiddenInput
           type="checkbox"
