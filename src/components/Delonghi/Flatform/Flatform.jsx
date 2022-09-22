@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useConfigurator } from '@threekit-tools/treble/dist';
 import { OBSCENE_DATA_API, SKU_DATA, TITLE_DATA_API } from '../../../constants';
-import { FlatFormTitle, FlatFormWrapper } from './FlatForm.styled';
+import { FlatFormTitle, FlatFormWrapper, CloseIcon } from './FlatForm.styled';
 import Footer from '../Footer/Footer';
 import Tabs from '../Tabs/Tabs';
 import FormPage from '../../../pages/FormPage';
 import SummaryPage from '../../../pages/SummaryPage';
+import { ModalContext } from '../../../context/modalContext';
 
 const Flatform = () => {
   const [attributes] = useConfigurator();
   if (!attributes) return null;
 
+  const { openModal, closeModal } = useContext(ModalContext);
   const [titleList, setTitleList] = useState({});
   const [obsceneList, setObsceneList] = useState([]);
   useEffect(() => {
@@ -50,7 +52,7 @@ const Flatform = () => {
         <FormPage
           swatches={swatches}
           titleList={titleList}
-          inputAttributes={attributes['text']}
+          attributes={attributes}
           obsceneList={obsceneList}
         />
       ),
@@ -64,6 +66,9 @@ const Flatform = () => {
 
   return (
     <FlatFormWrapper>
+      <CloseIcon
+        onClick={() => openModal('CLOSE_CONFIGURATOR', { closeModal })}
+      />
       <FlatFormTitle>{SKU_DATA[window.DLG.config.skuCode].title}</FlatFormTitle>
       <Tabs tabs={tabs} tabIndex={1} />
       <Footer />

@@ -13,18 +13,21 @@ import Check from '../../../assets/svg/Check';
 export const Switch = (props) => {
   const [attribute, setAttribute] = useAttribute(props.attribute.name);
   if (!attribute) return <></>;
+
+  const isChecked = attribute.value === 'On';
+
   return (
     <Container>
       <SwitchTitle>{props.attribute.label}</SwitchTitle>
       <SwitcherLabel>
         <HiddenInput
           type="checkbox"
-          checked={props.attribute.value}
+          checked={isChecked}
           onChange={() => {
-            setAttribute(!props.attribute.value);
+            setAttribute(isChecked ? 'Off' : 'On');
           }}
         />
-        <Switcher checked={props.attribute.value}>
+        <Switcher checked={isChecked}>
           <SwitcherCircle>
             <Check />
           </SwitcherCircle>

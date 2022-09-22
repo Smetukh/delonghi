@@ -1,12 +1,20 @@
 import styled from 'styled-components';
+import Close from '../../../assets/svg/Close';
 
 export const FlatFormTitle = styled.h1`
   font-family: sans-serif;
-  font-weight: 500;
-  font-size: 24px;
+  font-weight: bold;
+  font-size: 33px;
   line-height: 128.4%;
   letter-spacing: 0.01em;
-  max-width: 300px;
+  margin-top: 71px;
+`;
+
+export const CloseIcon = styled(Close)`
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
 `;
 
 export const FlatFormWrapper = styled.div`

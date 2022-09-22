@@ -6,7 +6,7 @@ export const TabsWrapper = styled.div`
 
 export const Tab = styled.div`
   display: inline-block;
-  font-weight: ${({ active }) => (active ? '500' : 'bold')};
+  font-weight: ${({ active }) => (active ? 'bold' : '500')};
   font-size: 20px;
   letter-spacing: 0.01em;
   font-family: sans-serif;

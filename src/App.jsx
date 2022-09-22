@@ -1,6 +1,7 @@
 import { ThreekitProvider, Player } from '@threekit-tools/treble';
 import { AppWrapper, PlayerWrapper, FormWrapper } from './App.styled';
 import Share from './components/Delonghi/Share';
+import { ModalProvider } from './context/modalContext';
 import delonghi from './store/delonghi';
 import { useUnload, useWindowDimensions } from './utils/hooks';
 
@@ -12,10 +13,10 @@ const App = () => {
   const { width } = useWindowDimensions();
 
   // Prevent reload page
-  useUnload((e) => {
-    e.preventDefault();
-    e.returnValue = '';
-  });
+  // useUnload((e) => {
+  //   e.preventDefault();
+  //   e.returnValue = '';
+  // });
 
   const getPlayerHeight = () => {
     if (width > 700 && width < 900) {
@@ -32,14 +33,19 @@ const App = () => {
 
   return (
     <ThreekitProvider>
-      <AppWrapper>
-        <PlayerWrapper height={getPlayerHeight()} minHeight={getPlayerHeight()}>
-          <Player.TopRightWidgets>
-            <Share />
-          </Player.TopRightWidgets>
-        </PlayerWrapper>
-        <FormWrapper />
-      </AppWrapper>
+      <ModalProvider>
+        <AppWrapper>
+          <PlayerWrapper
+            height={getPlayerHeight()}
+            minHeight={getPlayerHeight()}
+          >
+            <Player.TopRightWidgets>
+              <Share />
+            </Player.TopRightWidgets>
+          </PlayerWrapper>
+          <FormWrapper />
+        </AppWrapper>
+      </ModalProvider>
     </ThreekitProvider>
   );
 };
