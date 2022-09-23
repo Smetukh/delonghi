@@ -9,7 +9,7 @@ export const Input = styled.input`
 `;
 
 export const SubmitButton = styled.button`
-  font-family: sans-serif;
+  font-family: DeLonghi;
   height: 40px;
   background-color: #0c2340;
   font-weight: bold;
@@ -24,7 +24,7 @@ export const SubmitButton = styled.button`
 `;
 
 export const InputTitle = styled.div`
-  font-family: sans-serif;
+  font-family: DeLonghi;
   font-weight: bold;
   font-size: 18px;
   line-height: 132.4%;
@@ -36,7 +36,7 @@ export const InputWrapper = styled.div`
 `;
 
 export const SubTitle = styled.div`
-  font-family: sans-serif;
+  font-family: DeLonghi;
   font-weight: 400;
   font-size: 14.4px;
   line-height: 132.4%;

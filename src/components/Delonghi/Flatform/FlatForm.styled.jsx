@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Close from '../../../assets/svg/Close';
 
 export const FlatFormTitle = styled.h1`
-  font-family: sans-serif;
+  font-family: DeLonghi;
   font-weight: bold;
   font-size: 25px;
   line-height: 128.4%;

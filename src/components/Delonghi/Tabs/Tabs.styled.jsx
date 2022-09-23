@@ -9,7 +9,7 @@ export const Tab = styled.div`
   font-weight: ${({ active }) => (active ? 'bold' : '500')};
   font-size: 20px;
   letter-spacing: 0.01em;
-  font-family: sans-serif;
+  font-family: DeLonghi;
   border-bottom: ${({ active }) => (active ? '1px solid #266BBF' : 'none')};
   margin-right: 20px;
   cursor: pointer;

@@ -14,6 +14,11 @@ import {
 export const ColorSwatch = ({ title, attribute }) => {
   if (!attribute) return <></>;
 
+  console.log(
+    `%cqqq attribute?.values = `,
+    'font-weight: bold;color: #90ee90',
+    attribute?.values
+  );
   return (
     <Container>
       <ColorButtonsTitle>

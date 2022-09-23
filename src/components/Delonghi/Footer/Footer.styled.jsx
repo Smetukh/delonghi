@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const FooterWrapper = styled.div`
   width: 100%;
-  font-family: sans-serif;
+  font-family: DeLonghi;
   margin-top: 44px;
 `;
 

@@ -33,7 +33,7 @@ export const SwitchTitle = styled.div`
   font-weight: bold;
   font-size: 18px;
   line-height: 132.4%;
-  font-family: sans-serif;
+  font-family: DeLonghi;
   letter-spacing: 0.01em;
 `;
 

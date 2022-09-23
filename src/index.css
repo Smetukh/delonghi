@@ -5,3 +5,19 @@
   margin: 0;
   padding: 0;
 }
+@font-face {
+  font-family: 'DeLonghi';
+  src: local('DeLonghi'), url(./assets/fonts/DeLonghi_Sans_Regular.ttf) format('truetype');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+@font-face {
+  font-family: 'DeLonghi-bold';
+  src: local('DeLonghi-bold'), url(./assets/fonts/DeLonghi_Sans_Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'DeLonghi-medium';
+  src: local('DeLonghi-medium'), url(./assets/fonts/DeLonghi_Sans_Medium.ttf) format('truetype');
+}

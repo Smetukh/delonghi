@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Button } from '../../components/Delonghi/common/Common.styled';
 
 export const ModalWrapper = styled.div`
-  font-family: sans-serif;
+  font-family: DeLonghi;
   max-width: 516px;
   padding: 33px 42px 30px;
 `;

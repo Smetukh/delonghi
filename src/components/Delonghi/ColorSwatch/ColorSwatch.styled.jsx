@@ -26,7 +26,7 @@ export const ColorButtonsTitle = styled.div`
   font-weight: bold;
   font-size: 18px;
   line-height: 132.4%;
-  font-family: sans-serif;
+  font-family: DeLonghi;
 `;
 
 export const SelectedColor = styled.span`
