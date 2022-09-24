@@ -37,6 +37,9 @@ export const FooterButton = styled.button`
 export const Input = styled.input`
   width: 24px;
   height: 24px;
+  @media (max-width: 747px) {
+    width: 60px;
+  }
 `;
 
 export const InputContainer = styled.div`
@@ -55,4 +58,9 @@ export const CheckboxAndButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: end;
+`;
+
+export const TermsAndCond = styled.span`
+  color: #266bbf;
+  cursor: pointer;
 `;

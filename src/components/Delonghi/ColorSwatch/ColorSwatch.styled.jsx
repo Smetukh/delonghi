@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const ColorButton = styled.button`
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
+  box-sizing: border-box;
+  width: ${({ isSquare }) => (isSquare ? '50px' : '32px')};
+  height: ${({ isSquare }) => (isSquare ? '50px' : '32px')};
+  border-radius: ${({ isSquare }) => (isSquare ? '5px' : '50%')};
   border: ${({ selected }) =>
     selected ? '2px solid #0C2340' : '1px solid #00000020'};
   padding: ${({ selected }) => (selected ? '2px' : '0px')};
@@ -13,11 +14,33 @@ export const ColorButton = styled.button`
   }
 `;
 
+export const InnerImageBlock = styled.div`
+  cursor: pointer;
+  background-image: ${({ backgroundImage }) =>
+    backgroundImage ? `url(${backgroundImage})` : 'none'};
+  width: 100%;
+  height: 112px;
+  background-size: cover;
+  background-position: bottom;
+`;
+
+export const ImageButton = styled.button`
+  width: 83px;
+  height: 118px;
+  box-sizing: border-box;
+  border: ${({ selected }) => (selected ? '2px solid #0C2340' : 'none')};
+  padding: ${({ selected }) => (selected ? '1px' : '0px')};
+  margin-right: 12px;
+  margin-top: 20px;
+`;
+
+export const Image = styled.img``;
+
 export const InnerColorBlock = styled.div`
   width: 100%;
   height: 100%;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: ${({ isSquare }) => (isSquare ? '5px' : '50%')};
   background-image: ${({ backgroundImage }) => `url(${backgroundImage})`};
 `;
 
@@ -43,6 +66,7 @@ export const ColorsWrapper = styled.div`
   margin-top: 4px;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 `;
 
 export const Line = styled.div`
@@ -50,3 +74,5 @@ export const Line = styled.div`
   height: 2px;
   background-color: black;
 `;
+
+export const DotPattern = styled.div``;

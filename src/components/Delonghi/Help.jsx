@@ -9,7 +9,7 @@ export default function Help(props) {
   const hasLoaded = useThreekitInitStatus();
   const { openModal, closeModal } = useContext(ModalContext);
   const handleClick = () => {
-    openModal('CLOSE_CONFIGURATOR', { closeModal });
+    openModal('PLAYER_HELP_MODAL', { closeModal });
   };
 
   if (!hasLoaded) return null;

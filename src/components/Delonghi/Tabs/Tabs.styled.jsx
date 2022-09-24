@@ -8,6 +8,9 @@ export const Tab = styled.div`
   display: inline-block;
   font-weight: ${({ active }) => (active ? 'bold' : '500')};
   font-size: 20px;
+  @media (max-width: 747px) {
+    font-size: 18px;
+  }
   letter-spacing: 0.01em;
   font-family: DeLonghi;
   border-bottom: ${({ active }) => (active ? '1px solid #266BBF' : 'none')};

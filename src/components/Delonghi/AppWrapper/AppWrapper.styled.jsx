@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import { Player } from '@threekit-tools/treble';
-import Flatform from './components/Delonghi/Flatform/Flatform';
-import Close from './assets/svg/Close';
+// import Flatform from './components/Delonghi/Flatform/Flatform';
+import Close from '../../../assets/svg/Close';
+import Flatform from '../Flatform/Flatform';
+// import Close from './assets/svg/Close';
 
-export const AppWrapper = styled.div`
+export const Container = styled.div`
   display: grid;
   grid-template-areas:
     'player'

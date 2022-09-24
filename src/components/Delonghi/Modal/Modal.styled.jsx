@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ModalWrapper = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -14,7 +14,9 @@ export const ModalWrapper = styled.div`
 `;
 
 export const BaseModal = styled.div`
-  background: #ffffff;
+  background: ${({ isPlayerModal }) =>
+    isPlayerModal ? 'transparent' : '#fff'};
   box-shadow: 0px 4px 45px rgba(0, 0, 0, 0.1);
   border-radius: 2px;
+  width: ${({ isPlayerModal }) => (isPlayerModal ? '100%' : 'auto')};
 `;

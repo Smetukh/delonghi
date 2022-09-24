@@ -24,3 +24,5 @@ export const SKU_DATA = {
   11111: { title: 'La Specialista Maestro Tailor-Made', price: 1039.99 },
   22222: { title: 'Maestosa Tailor-Made', price: 999.99 },
 };
+
+export const inputTextMaxLength = 30;

@@ -46,10 +46,12 @@ const useUnload = (fn) => {
 const useModal = () => {
   const [modal, setModal] = useState(false);
   const [modalContent, setModalContent] = useState();
+  const [modalName, setModalName] = useState('');
 
   const openModal = (name = false, props = {}) => {
     setModal(true);
     if (name) {
+      setModalName(name);
       setModalContent(modals(props)[name]);
     }
   };
@@ -58,7 +60,7 @@ const useModal = () => {
     setModal(false);
   };
 
-  return { modal, openModal, modalContent, closeModal };
+  return { modal, openModal, modalContent, closeModal, modalName };
 };
 
 export { useWindowDimensions, useUnload, useModal };

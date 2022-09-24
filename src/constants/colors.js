@@ -10,6 +10,27 @@ import {
   Red,
   StandardChrome,
   White,
+  BROWN_NS_BW,
+  BLACK_TR_BK_50P,
+  BROWN_NS_BW_87_M_PM,
+  GREEN_DL_GR_31,
+  GREEN_DL_GR_84_PE,
+  GREEN_DL_GR,
+  GREEN_DL,
+  GREY_LC_BW_62_M_PM,
+  GREY_LC_BW,
+  RED_DL_RD_34_PE,
+  RED_DL_RD,
+  SILVER_AT_BG_50_M_PE,
+  SILVER_AT_BG,
+  SILVER_DL_RD_30_M_PE,
+  SILVER_DL_YE_45_M_PEG,
+  WHITE_NS_WH_15_PE,
+  WHITE_NS_WH,
+  SILVER_DL_YE,
+  SILVER_LC_RD,
+  YELLOW_DL_YE_78_PE,
+  YELLOW_DL_YE,
 } from '../assets/colors/colors';
 
 export const SWATCH_COLOR_CODES = {
@@ -24,6 +45,19 @@ export const SWATCH_COLOR_CODES = {
   'Standard chrome plating': StandardChrome,
   Oak: Oak,
   Mahogany: Mahogany,
+  'BROWN NS BW': BROWN_NS_BW,
+
+  'BLACK TR BK 50/P': BLACK_TR_BK_50P,
+  'BROWN NS BW 87/M/PM': BROWN_NS_BW_87_M_PM,
+  'GREEN DL GR 31': GREEN_DL_GR_31,
+  'GREEN DL GR 84/PE': GREEN_DL_GR_84_PE,
+  'RED DL RD 34/PE': RED_DL_RD_34_PE,
+  'YELLOW DL YE 78/PE': YELLOW_DL_YE_78_PE,
+  'SILVER AT BG 50/M/PE': SILVER_AT_BG_50_M_PE,
+  'GREY LC BW 62/M/PM': GREY_LC_BW_62_M_PM,
+  'SILVER DL RD 30/M/PE': SILVER_DL_RD_30_M_PE,
+  'SILVER DL YE 45/M/PEG': SILVER_DL_YE_45_M_PEG,
+  'WHITE NS WH 15/PE': WHITE_NS_WH_15_PE,
 };
 
 export const SWATCH_COLOR_NAMES = {
@@ -39,4 +73,17 @@ export const SWATCH_COLOR_NAMES = {
   Oak: 'Oak',
   Mahogany: 'Mahogany',
   Off: 'None',
+};
+
+export const SWATCH_IMAGE_NAMES = {
+  'WHITE NS WH': WHITE_NS_WH,
+  'YELLOW DL YE': YELLOW_DL_YE,
+  'RED DL RD': RED_DL_RD,
+  'GREEN DL GR': GREEN_DL_GR,
+  'GREEN DL': GREEN_DL,
+  'SILVER DL YE': SILVER_DL_YE,
+  'SILVER LC RD': SILVER_LC_RD,
+  'BROWN NS BW': BROWN_NS_BW,
+  'SILVER AT BG': SILVER_AT_BG,
+  'GREY LC BW': GREY_LC_BW,
 };

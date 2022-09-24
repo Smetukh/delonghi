@@ -10,8 +10,12 @@ import {
   SummaryItem,
   SummaryPageWrapper,
 } from './Pages.styled';
+import { useAttribute } from '@threekit-tools/treble/dist';
 
 const SummaryPage = ({ swatches }) => {
+  const [textAttribute, setAttribute] = useAttribute('text');
+  const [tagAttribute, setTagAttribute] = useAttribute('Write Text');
+
   return (
     <SummaryPageWrapper>
       {swatches.map((swatch, i) => {
@@ -27,6 +31,13 @@ const SummaryPage = ({ swatches }) => {
           </SummaryItem>
         );
       })}
+      {!!textAttribute.value && tagAttribute.value === 'On' && (
+        <SummaryItem>
+          <SummaryLabel>Metal Tag:</SummaryLabel>
+          <span></span>
+          <Value>{`"${textAttribute.value}"`}</Value>
+        </SummaryItem>
+      )}
     </SummaryPageWrapper>
   );
 };

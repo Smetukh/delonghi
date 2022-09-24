@@ -13,7 +13,7 @@ const Flatform = () => {
   const [attributes] = useConfigurator();
   if (!attributes) return null;
   const product = useThreekitSelector((s) => s.product);
-  const { openModal, closeModal } = useContext(ModalContext);
+  // const { openModal, closeModal } = useContext(ModalContext);
   const [titleList, setTitleList] = useState({});
   const [obsceneList, setObsceneList] = useState([]);
   useEffect(() => {
@@ -67,9 +67,9 @@ const Flatform = () => {
 
   return (
     <FlatFormWrapper>
-      <CloseIcon
+      {/* <CloseIcon
         onClick={() => openModal('CLOSE_CONFIGURATOR', { closeModal })}
-      />
+      /> */}
       <FlatFormTitle>{product.name}</FlatFormTitle>
       <Tabs tabs={tabs} tabIndex={1} />
       <Footer />

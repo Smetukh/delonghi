@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import QRCode from 'qrcode';
 import {
   FooterWrapper,
@@ -7,12 +7,15 @@ import {
   Input,
   InputContainer,
   CheckboxAndButtonContainer,
+  TermsAndCond,
 } from './Footer.styled';
 import { useThreekitSelector } from '@threekit-tools/treble/dist/store';
 import { ADD_TO_CART_CUSTOMISATION, SKU_DATA } from '../../../constants';
+import { ModalContext } from '../../../context/modalContext';
 
 const Footer = () => {
   const [isAgree, setIsAgree] = useState(false);
+  const { openModal, closeModal } = useContext(ModalContext);
 
   const onCheckboxChange = () => {
     setIsAgree(!isAgree);
@@ -82,10 +85,16 @@ const Footer = () => {
             id="terms"
             type="checkbox"
           />
-          <label htmlFor="terms">
-            I have read and agree to the terms and conditions. I understand that
-            shipping timings are not guaranteed, the final output could be
-            different from the model and I won’t be able to return the product.
+          <label>
+            I have read and agree to the{' '}
+            <TermsAndCond
+              onClick={() => openModal('TERMS_AND_CONDITIONS', { closeModal })}
+            >
+              terms and conditions
+            </TermsAndCond>
+            . I understand that shipping timings are not guaranteed, the final
+            output could be different from the model and I won’t be able to
+            return the product.
           </label>
         </InputContainer>
         <FooterButton disabled={!isAgree} onClick={addToCart}>

@@ -9,9 +9,11 @@ const FormPage = ({ swatches, titleList, attributes, obsceneList }) => {
   const switchAttribute = attributes['Write Text'];
   return (
     <FormPageWrapper>
-      {swatches.map((item) => (
-        <ColorSwatch attribute={item} key={item.name} titleList={titleList} />
-      ))}
+      {swatches.map((item) => {
+        return (
+          <ColorSwatch attribute={item} key={item.name} titleList={titleList} />
+        );
+      })}
       <Switch attribute={switchAttribute} />
       {switchAttribute.value === 'On' && (
         <TextInput
