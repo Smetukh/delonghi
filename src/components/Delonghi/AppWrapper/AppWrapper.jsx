@@ -49,11 +49,12 @@ const AppWrapper = () => {
           {/* <Player.BottomCenterWidgets>
                 <Zoom />
               </Player.BottomCenterWidgets> */}
-          <Player.TopRightWidgets>
+          {/* <Player.TopRightWidgets>
             <Share />
-          </Player.TopRightWidgets>
+          </Player.TopRightWidgets> */}
           <HelperButtonWrapper>
             <Help />
+            <Share />
           </HelperButtonWrapper>
         </PlayerWrapper>
       </PlayerModalProvider>

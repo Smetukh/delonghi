@@ -9,6 +9,7 @@ export const ColorButton = styled.button`
     selected ? '2px solid #0C2340' : '1px solid #00000020'};
   padding: ${({ selected }) => (selected ? '2px' : '0px')};
   margin-right: 12px;
+  margin-bottom: 4px;
   &:hover {
     padding: 2px;
   }
@@ -67,6 +68,7 @@ export const ColorsWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  max-width: ${({ hasDotPattern }) => (hasDotPattern ? '100%' : '270px')};
 `;
 
 export const Line = styled.div`

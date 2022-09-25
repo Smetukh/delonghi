@@ -16,7 +16,7 @@ import {
 
 export const ColorSwatch = ({ title, attribute }) => {
   if (!attribute) return <></>;
-
+  const hasDotPattern = attribute.name === 'Dot Pattern';
   return (
     <Container>
       <ColorButtonsTitle>
@@ -26,12 +26,12 @@ export const ColorSwatch = ({ title, attribute }) => {
           {SWATCH_COLOR_NAMES[attribute?.value] || attribute?.value}
         </SelectedColor>
       </ColorButtonsTitle>
-      <ColorsWrapper>
+      <ColorsWrapper hasDotPattern={hasDotPattern}>
         {attribute?.values.map((item, i) => {
-          return attribute.name === 'Dot Pattern' ? (
+          return hasDotPattern ? (
             <ImageButton key={i} selected={item.selected}>
               <InnerImageBlock
-                backgroundImage={SWATCH_IMAGE_NAMES[item.value]}
+                backgroundImage={SWATCH_COLOR_CODES[item.value]}
                 onClick={item.handleSelect}
               ></InnerImageBlock>
             </ImageButton>

@@ -48,7 +48,7 @@ export const PlayerModalProvider = styled.div`
 `;
 
 export const HelperButtonWrapper = styled(Player.BottomRightWidgets)`
-  bottom: 50px;
+  bottom: 8px;
 `;
 
 export const CloseIcon = styled(Close)`
