@@ -34,6 +34,7 @@ export const TextInput = (props) => {
     //   return;
     // }
     setAttribute(inputValue);
+    setInputFocus('Fixed');
   };
 
   const onHandleChange = (e) => {
