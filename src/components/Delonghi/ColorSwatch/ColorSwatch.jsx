@@ -23,9 +23,11 @@ export const ColorSwatch = ({
   if (!attribute) return <></>;
 
   // separate Dot pattern name 'Off' and set it as a switcher (On/Off)
-  const attributeValues = attribute.values.filter((i) => i.value !== 'Off');
   const hasDotPattern = attribute.name === 'Dot Pattern';
-  const isNoneSquareItem = attribute.name === 'Wood Kit';
+  const attributeValues = hasDotPattern
+    ? attribute.values.filter((i) => i.value !== 'Off')
+    : attribute.values;
+  const isNoneSquareItem = isSquare; // attribute.name === 'Wood Kit';
   const dotPatternOffObj =
     (hasDotPattern && attribute.values.find((item) => item.value === 'Off')) ||
     {};

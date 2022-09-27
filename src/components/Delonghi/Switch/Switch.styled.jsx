@@ -29,7 +29,7 @@ export const SwitcherCircle = styled.div`
   align-items: center;
 `;
 
-export const SwitchTitle = styled.span`
+export const SwitchTitle = styled.div`
   font-weight: bold;
   font-size: 18px;
   line-height: 132.4%;
@@ -41,6 +41,6 @@ export const SwitcherLabel = styled.label`
   margin-top: 10px;
 `;
 
-export const Container = styled.span`
+export const Container = styled.div`
   margin-top: 30px;
 `;

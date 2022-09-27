@@ -18,7 +18,7 @@ export const Switch = ({ value, setValue, isDotPattern }) => {
 
   return (
     <Container>
-      {!isDotPattern && <SwitchTitle>'Metal Tag'</SwitchTitle>}
+      {!isDotPattern && <SwitchTitle>Metal Tag</SwitchTitle>}
       <SwitcherLabel>
         <HiddenInput
           type="checkbox"
