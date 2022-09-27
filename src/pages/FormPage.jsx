@@ -11,7 +11,12 @@ const FormPage = ({ swatches, titleList, attributes, obsceneList }) => {
     <FormPageWrapper>
       {swatches.map((item) => {
         return (
-          <ColorSwatch attribute={item} key={item.name} titleList={titleList} />
+          <ColorSwatch
+            isSquare={item.name === 'Wood Kit'}
+            attribute={item}
+            key={item.name}
+            titleList={titleList}
+          />
         );
       })}
       <Switch attribute={switchAttribute} />

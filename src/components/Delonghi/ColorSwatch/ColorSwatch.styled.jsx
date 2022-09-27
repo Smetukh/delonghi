@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const ColorButton = styled.button`
   box-sizing: border-box;
-  width: ${({ isSquare }) => (isSquare ? '50px' : '32px')};
-  height: ${({ isSquare }) => (isSquare ? '50px' : '32px')};
+  width: ${({ isSquare }) => (isSquare ? '40px' : '32px')};
+  height: ${({ isSquare }) => (isSquare ? '40px' : '32px')};
   border-radius: ${({ isSquare }) => (isSquare ? '5px' : '50%')};
   border: ${({ selected }) =>
     selected ? '2px solid #0C2340' : '1px solid #00000020'};

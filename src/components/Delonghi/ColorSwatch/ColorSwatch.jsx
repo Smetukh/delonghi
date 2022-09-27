@@ -1,7 +1,6 @@
 import {
   SWATCH_COLOR_CODES,
   SWATCH_COLOR_NAMES,
-  SWATCH_IMAGE_NAMES,
 } from '../../../constants/colors';
 import {
   ColorButton,
@@ -14,7 +13,7 @@ import {
   InnerImageBlock,
 } from './ColorSwatch.styled';
 
-export const ColorSwatch = ({ title, attribute }) => {
+export const ColorSwatch = ({ title, attribute, isSquare }) => {
   if (!attribute) return <></>;
   const hasDotPattern = attribute.name === 'Dot Pattern';
   return (
@@ -36,8 +35,9 @@ export const ColorSwatch = ({ title, attribute }) => {
               ></InnerImageBlock>
             </ImageButton>
           ) : (
-            <ColorButton key={i} selected={item.selected}>
+            <ColorButton isSquare={isSquare} key={i} selected={item.selected}>
               <InnerColorBlock
+                isSquare={isSquare}
                 backgroundImage={SWATCH_COLOR_CODES[item.value]}
                 onClick={item.handleSelect}
               ></InnerColorBlock>

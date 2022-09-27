@@ -1,19 +1,19 @@
-import { ThreekitProvider, Player, Zoom } from '@threekit-tools/treble';
 import {
   Container,
   PlayerWrapper,
-  FormWrapper,
   PlayerModalProvider,
   HelperButtonWrapper,
+  CloseIconBlock,
+  IconsWrapper,
   CloseIcon,
 } from './AppWrapper.styled';
 import Help from '../Help';
-import { QuestionIcon } from '../icons';
 import Share from '../Share';
 // import delonghi from './store/delonghi';
 import { useContext } from 'react';
 import { ModalContext } from '../../../context/modalContext';
 import { useWindowDimensions } from '../../../utils/hooks';
+import FlatForm from '../Flatform/Flatform';
 
 const AppWrapper = () => {
   const { openModal, closeModal } = useContext(ModalContext);
@@ -53,15 +53,19 @@ const AppWrapper = () => {
             <Share />
           </Player.TopRightWidgets> */}
           <HelperButtonWrapper>
-            <Help />
-            <Share />
+            <IconsWrapper>
+              <Help />
+              <Share />
+            </IconsWrapper>
           </HelperButtonWrapper>
         </PlayerWrapper>
       </PlayerModalProvider>
-      <CloseIcon
+      <CloseIconBlock
         onClick={() => openModal('CLOSE_CONFIGURATOR', { closeModal })}
-      />
-      <FormWrapper />
+      >
+        <CloseIcon />
+      </CloseIconBlock>
+      <FlatForm />
     </Container>
   );
 };

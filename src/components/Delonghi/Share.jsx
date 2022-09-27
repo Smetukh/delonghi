@@ -1,6 +1,6 @@
 import { useShare, useThreekitInitStatus } from '@threekit-tools/treble';
 import { COPIED_MESSAGE } from '../../constants';
-import { ShareIcon } from './icons';
+import ShareIcon from '../../assets/svg/Share';
 
 export default function Share(props) {
   const handleShare = useShare();
@@ -14,7 +14,7 @@ export default function Share(props) {
 
   return (
     <button type="button" onClick={handleClick} className="trbl-wgt-btn">
-      <ShareIcon />
+      <ShareIcon style={{ width: '24px', height: '24px' }} />
     </button>
   );
 }

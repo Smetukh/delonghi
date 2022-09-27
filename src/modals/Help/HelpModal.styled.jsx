@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(126, 124, 124, 0.5);
   @media (min-width: 747px) {
     height: 521px;
   }
@@ -21,10 +22,11 @@ export const Wrapper = styled.div`
 
 export const Image = styled.div`
   background-image: url(${HelperImage});
-  background-size: cover;
+  background-size: contain;
   width: 100%;
   height: 384px;
-  background-repeat: round;
+  background-repeat: no-repeat;
+  background-position: center;
   @media (min-width: 747px) {
     height: 521px;
   }

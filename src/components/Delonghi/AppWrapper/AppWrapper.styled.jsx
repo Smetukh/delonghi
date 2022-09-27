@@ -8,6 +8,7 @@ import Flatform from '../Flatform/Flatform';
 export const Container = styled.div`
   display: grid;
   grid-template-areas:
+    'closeIcon'
     'player'
     'form';
   [class*='tk-player'] {
@@ -20,13 +21,25 @@ export const Container = styled.div`
     }
   }
   @media (min-width: 900px) {
-    grid-template-columns: 50% 50%;
-    grid-template-areas: 'player form';
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.02fr 0.98fr;
+    grid-template-areas:
+      'player closeIcon'
+      'player form';
   }
 `;
 
+export const CloseIconBlock = styled.div`
+  cursor: pointer;
+  grid-area: closeIcon;
+  display: flex;
+  justify-content: flex-end;
+  padding: 14px 16px;
+`;
+
+export const CloseIcon = styled(Close)``;
+
 export const PlayerWrapper = styled(Player)`
-  grid-area: player;
   height: 384px;
   min-height: 384px;
   @media (min-width: 747px) {
@@ -39,21 +52,16 @@ export const PlayerWrapper = styled(Player)`
   }
 `;
 
-export const FormWrapper = styled(Flatform)`
-  grid-area: form;
-`;
-
 export const PlayerModalProvider = styled.div`
   position: relative;
+  grid-area: player;
 `;
 
-export const HelperButtonWrapper = styled(Player.BottomRightWidgets)`
-  bottom: 8px;
-`;
+export const HelperButtonWrapper = styled(Player.BottomRightWidgets)``;
 
-export const CloseIcon = styled(Close)`
+export const IconsWrapper = styled.div`
   position: absolute;
+  display: flex;
+  bottom: -10px;
   right: 20px;
-  top: 20px;
-  cursor: pointer;
 `;

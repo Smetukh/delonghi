@@ -1,8 +1,6 @@
-import {
-  useShare,
-  ShareIcon,
-  useThreekitInitStatus,
-} from '@threekit-tools/treble';
+import { useShare, useThreekitInitStatus } from '@threekit-tools/treble';
+
+import ShareIcon from '../assets/svg/Share';
 
 const COPIED_MESSAGE = 'Link Copied!';
 
