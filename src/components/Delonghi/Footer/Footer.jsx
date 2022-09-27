@@ -20,6 +20,7 @@ const Footer = () => {
   const onCheckboxChange = () => {
     setIsAgree(!isAgree);
   };
+
   const attributes = useThreekitSelector((state) => state).attributes;
 
   const addToCart = async () => {
@@ -84,11 +85,17 @@ const Footer = () => {
             onChange={onCheckboxChange}
             id="terms"
             type="checkbox"
+            key={Math.random()}
           />
           <label>
             I have read and agree to the{' '}
             <TermsAndCond
-              onClick={() => openModal('TERMS_AND_CONDITIONS', { closeModal })}
+              onClick={() =>
+                openModal('TERMS_AND_CONDITIONS', {
+                  closeModal,
+                  setIsAgree,
+                })
+              }
             >
               terms and conditions
             </TermsAndCond>

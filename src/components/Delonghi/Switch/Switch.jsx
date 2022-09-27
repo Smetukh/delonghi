@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAttribute } from '@threekit-tools/treble';
+// import { useAttribute } from '@threekit-tools/treble';
 import {
   HiddenInput,
   Switcher,
@@ -10,21 +10,21 @@ import {
 } from './Switch.styled';
 import Check from '../../../assets/svg/Check';
 
-export const Switch = (props) => {
-  const [attribute, setAttribute] = useAttribute(props.attribute.name);
-  if (!attribute) return <></>;
+export const Switch = ({ value, setValue, isDotPattern }) => {
+  // const [attribute, setAttribute] = useAttribute(props.attribute.name);
+  // if (!attribute) return <></>;
 
-  const isChecked = attribute.value === 'On';
+  const isChecked = value === 'On';
 
   return (
     <Container>
-      <SwitchTitle>Metal Tag</SwitchTitle>
+      {!isDotPattern && <SwitchTitle>'Metal Tag'</SwitchTitle>}
       <SwitcherLabel>
         <HiddenInput
           type="checkbox"
           checked={isChecked}
           onChange={() => {
-            setAttribute(isChecked ? 'Off' : 'On');
+            setValue(isChecked ? 'Off' : 'On');
           }}
         />
         <Switcher checked={isChecked}>

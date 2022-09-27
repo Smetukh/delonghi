@@ -4,9 +4,13 @@ import { ColorSwatch } from '../components/Delonghi/ColorSwatch/ColorSwatch';
 import { TextInput } from '../components/Delonghi/TextInput/TextInput';
 import { Switch } from '../components/Delonghi/Switch/Switch';
 import { FormPageWrapper } from './Pages.styled';
+import { useAttribute } from '@threekit-tools/treble';
 
 const FormPage = ({ swatches, titleList, attributes, obsceneList }) => {
-  const switchAttribute = attributes['Write Text'];
+  // const switchAttribute = attributes['Write Text'];
+  const [switchAttribute, setValue] = useAttribute(
+    attributes['Write Text'].name
+  );
   return (
     <FormPageWrapper>
       {swatches.map((item) => {
@@ -19,7 +23,7 @@ const FormPage = ({ swatches, titleList, attributes, obsceneList }) => {
           />
         );
       })}
-      <Switch attribute={switchAttribute} />
+      <Switch value={switchAttribute.value} setValue={setValue} />
       {switchAttribute.value === 'On' && (
         <TextInput
           attribute={attributes['text']}

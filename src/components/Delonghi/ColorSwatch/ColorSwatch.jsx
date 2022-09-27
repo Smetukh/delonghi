@@ -2,6 +2,7 @@ import {
   SWATCH_COLOR_CODES,
   SWATCH_COLOR_NAMES,
 } from '../../../constants/colors';
+import { Switch } from '../Switch/Switch';
 import {
   ColorButton,
   ColorButtonsTitle,
@@ -12,21 +13,48 @@ import {
   ImageButton,
   InnerImageBlock,
 } from './ColorSwatch.styled';
+import DiagonalLine from '../../../assets/svg/DiagonalLine';
 
-export const ColorSwatch = ({ title, attribute, isSquare }) => {
+export const ColorSwatch = ({
+  title,
+  attribute = { values: [] },
+  isSquare,
+}) => {
   if (!attribute) return <></>;
+
+  // separate Dot pattern name 'Off' and set it as a switcher (On/Off)
+  const attributeValues = attribute.values.filter((i) => i.value !== 'Off');
   const hasDotPattern = attribute.name === 'Dot Pattern';
+  const isNoneSquareItem = attribute.name === 'Wood Kit';
+  const dotPatternOffObj =
+    (hasDotPattern && attribute.values.find((item) => item.value === 'Off')) ||
+    {};
+
+  const dotPatternOffValue =
+    hasDotPattern && dotPatternOffObj.selected ? 'Off' : 'On';
+
+  const switchDotPattern = (value) => {
+    if (value === 'Off') dotPatternOffObj.handleSelect();
+    else attributeValues[0].handleSelect();
+  };
   return (
     <Container>
       <ColorButtonsTitle>
         {title || attribute?.label}:
         <SelectedColor>
           {' '}
+          {hasDotPattern && (
+            <Switch
+              isDotPattern={true}
+              setValue={switchDotPattern}
+              value={dotPatternOffValue}
+            />
+          )}
           {SWATCH_COLOR_NAMES[attribute?.value] || attribute?.value}
         </SelectedColor>
       </ColorButtonsTitle>
       <ColorsWrapper hasDotPattern={hasDotPattern}>
-        {attribute?.values.map((item, i) => {
+        {attributeValues.map((item, i) => {
           return hasDotPattern ? (
             <ImageButton key={i} selected={item.selected}>
               <InnerImageBlock
@@ -39,8 +67,11 @@ export const ColorSwatch = ({ title, attribute, isSquare }) => {
               <InnerColorBlock
                 isSquare={isSquare}
                 backgroundImage={SWATCH_COLOR_CODES[item.value]}
+                selected={item.selected}
                 onClick={item.handleSelect}
-              ></InnerColorBlock>
+              >
+                {isNoneSquareItem && item.value === 'Off' && <DiagonalLine />}
+              </InnerColorBlock>
             </ColorButton>
           );
         })}

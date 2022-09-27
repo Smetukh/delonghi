@@ -4,12 +4,14 @@ export const ColorButton = styled.button`
   box-sizing: border-box;
   width: ${({ isSquare }) => (isSquare ? '40px' : '32px')};
   height: ${({ isSquare }) => (isSquare ? '40px' : '32px')};
-  border-radius: ${({ isSquare }) => (isSquare ? '5px' : '50%')};
+  border-radius: ${({ isSquare }) => (isSquare ? '7px' : '50%')};
   border: ${({ selected }) =>
     selected ? '2px solid #0C2340' : '1px solid #00000020'};
-  padding: ${({ selected }) => (selected ? '2px' : '0px')};
+  padding: ${({ selected, isSquare }) =>
+    selected && !isSquare ? '2px' : '0px'};
   margin-right: 12px;
   margin-bottom: 4px;
+  padding: ${({ selected }) => (selected ? '2px' : '0')};
   &:hover {
     padding: 2px;
   }
@@ -43,6 +45,10 @@ export const InnerColorBlock = styled.div`
   cursor: pointer;
   border-radius: ${({ isSquare }) => (isSquare ? '5px' : '50%')};
   background-image: ${({ backgroundImage }) => `url(${backgroundImage})`};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: ${({ selected }) => (selected ? '1px solid #0C2340' : 'none')};
 `;
 
 export const ColorButtonsTitle = styled.div`
