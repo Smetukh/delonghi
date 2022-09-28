@@ -8,24 +8,30 @@ import {
   CloseIcon,
   InnerImage,
 } from './AppWrapper.styled';
-import { Player } from '@threekit-tools/treble';
+import { Player, useThreekitInitStatus } from '@threekit-tools/treble';
 import Help from '../Help';
 import Share from '../Share';
 // import delonghi from './store/delonghi';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { ModalContext } from '../../../context/modalContext';
 import { useWindowDimensions } from '../../../utils/hooks';
 import FlatForm from '../Flatform/Flatform';
 import { useAttribute } from '@threekit-tools/treble/dist';
-import LaSpecialista from '../../../assets/png/LaSpecialista.png';
+import LaSpecialista from '../../../assets/png/La Specialista Maestro Tailor-Made.png';
+import { useThreekitSelector } from '@threekit-tools/treble/dist/store';
 
 const AppWrapper = () => {
   const { openModal, closeModal } = useContext(ModalContext);
+  const hasPlayerLoaded = useThreekitInitStatus();
   const [inputAttribute, setInputFocus] = useAttribute('Camera Text');
+  const product = useThreekitSelector((s) => s.product);
   // const reducer = {
   //   delonghi,
   // };
 
+  useEffect(() => {
+    if (hasPlayerLoaded) openModal('PLAYER_HELP_MODAL', { closeModal });
+  }, [hasPlayerLoaded]);
   const { width } = useWindowDimensions();
 
   const getPlayerHeight = () => {
@@ -49,7 +55,11 @@ const AppWrapper = () => {
       >
         <PlayerWrapper height={getPlayerHeight()} minHeight={getPlayerHeight()}>
           <Player.TopCenterWidgets>
-            <InnerImage src={LaSpecialista} />
+            {product?.name && (
+              <InnerImage
+                src={require(`../../../assets/png/${product.name}.png`)}
+              />
+            )}
           </Player.TopCenterWidgets>
           <HelperButtonWrapper>
             <IconsWrapper>

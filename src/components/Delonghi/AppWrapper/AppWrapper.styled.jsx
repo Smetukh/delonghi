@@ -69,4 +69,5 @@ export const IconsWrapper = styled.div`
 export const InnerImage = styled.img`
   display: block;
   margin: 5px auto 0;
+  width: 300px;
 `;
