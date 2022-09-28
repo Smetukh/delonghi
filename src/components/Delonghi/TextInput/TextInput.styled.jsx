@@ -39,7 +39,6 @@ export const InputWrapper = styled.div`
   @media (min-width: 900px) {
     width: 70%;
   }
-  margin-top: 50px;
 `;
 
 export const InputTitle = styled.div`

@@ -17,7 +17,6 @@ export default function Share(props) {
   }, [messageVisible]);
 
   const handleClick = () => {
-    console.log('qqq window.location.href ===', window.location.href);
     const copiedLink = window.location.href;
     navigator.clipboard.writeText(copiedLink);
     setIsMessageVisible(true);

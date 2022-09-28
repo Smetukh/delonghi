@@ -4,6 +4,9 @@ export const HiddenInput = styled.input`
   width: 0px;
   height: 0px;
   visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
 
 export const Switcher = styled.div`
@@ -35,12 +38,13 @@ export const SwitchTitle = styled.div`
   line-height: 132.4%;
   font-family: DeLonghi;
   letter-spacing: 0.01em;
+  margin-right: 25px;
 `;
 
-export const SwitcherLabel = styled.label`
-  margin-top: 10px;
-`;
+export const SwitcherLabel = styled.label``;
 
 export const Container = styled.div`
   margin-top: 30px;
+  display: flex;
+  align-items: center;
 `;

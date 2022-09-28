@@ -27,6 +27,7 @@ export const TextInput = (props) => {
     });
     if (warningValue) {
       setWarning(warningValue);
+      setAttribute('');
       return;
     }
     // if (inputValue.length > inputTextLength) {
@@ -53,7 +54,7 @@ export const TextInput = (props) => {
         <Input
           autoFocus
           onFocus={() => setInputFocus('Fixed')}
-          onBlur={() => setInputFocus('Free')}
+          // onBlur={() => setInputFocus('Free')}
           type="text"
           id="message"
           value={inputValue}

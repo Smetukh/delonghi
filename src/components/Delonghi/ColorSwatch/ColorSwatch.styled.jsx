@@ -57,12 +57,16 @@ export const ColorButtonsTitle = styled.div`
   font-size: 18px;
   line-height: 132.4%;
   font-family: DeLonghi;
+  display: flex;
+  align-items: center;
 `;
 
 export const SelectedColor = styled.span`
   font-weight: 400;
   font-size: 16px;
   line-height: 132.4%;
+  display: flex;
+  align-items: center;
 `;
 
 export const Container = styled.div`
@@ -84,3 +88,11 @@ export const Line = styled.div`
 `;
 
 export const DotPattern = styled.div``;
+
+export const SelectedValue = styled.span`
+  margin-left: 21px;
+`;
+
+export const SwitchWrapper = styled.span`
+  margin-left: 20px;
+`;

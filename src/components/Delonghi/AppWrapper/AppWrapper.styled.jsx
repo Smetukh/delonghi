@@ -65,3 +65,8 @@ export const IconsWrapper = styled.div`
   bottom: -10px;
   right: 20px;
 `;
+
+export const InnerImage = styled.img`
+  display: block;
+  margin: 5px auto 0;
+`;

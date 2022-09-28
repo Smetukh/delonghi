@@ -1,13 +1,10 @@
 import React from 'react';
-import { Wrapper, Image, InnerImage } from './HelpModal.styled';
-import LaSpecialista from '../../assets/png/LaSpecialista.png';
+import { Wrapper, Image } from './HelpModal.styled';
 
 const HelpModal = ({ closeModal }) => {
   return (
     <Wrapper>
-      <Image onClick={closeModal}>
-        <InnerImage src={LaSpecialista} />
-      </Image>
+      <Image onClick={closeModal}></Image>
     </Wrapper>
   );
 };

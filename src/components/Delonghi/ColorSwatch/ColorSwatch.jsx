@@ -12,6 +12,8 @@ import {
   InnerColorBlock,
   ImageButton,
   InnerImageBlock,
+  SelectedValue,
+  SwitchWrapper,
 } from './ColorSwatch.styled';
 import DiagonalLine from '../../../assets/svg/DiagonalLine';
 
@@ -46,13 +48,17 @@ export const ColorSwatch = ({
         <SelectedColor>
           {' '}
           {hasDotPattern && (
-            <Switch
-              isDotPattern={true}
-              setValue={switchDotPattern}
-              value={dotPatternOffValue}
-            />
+            <SwitchWrapper>
+              <Switch
+                isDotPattern={true}
+                setValue={switchDotPattern}
+                value={dotPatternOffValue}
+              />
+            </SwitchWrapper>
           )}
-          {SWATCH_COLOR_NAMES[attribute?.value] || attribute?.value}
+          <SelectedValue>
+            {SWATCH_COLOR_NAMES[attribute?.value] || attribute?.value}
+          </SelectedValue>
         </SelectedColor>
       </ColorButtonsTitle>
       <ColorsWrapper hasDotPattern={hasDotPattern}>

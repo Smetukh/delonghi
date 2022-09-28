@@ -4,7 +4,7 @@ export const Button = styled.button`
   display: block;
   text-align: center;
   color: #fff;
-  background-color: ${({ isDisabled }) => (isDisabled ? '#dadada' : '#0C2340')};
+  background-color: ${({ isDisabled }) => (isDisabled ? '#266BBF' : '#0C2340')};
   height: 50px;
   font-weight: 700;
   font-size: 16px;
