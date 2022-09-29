@@ -21,14 +21,14 @@ const DotPattern = ({ title, attribute = { values: [] }, isSquare }) => {
 
   const attributes = useThreekitSelector((s) => s.attributes);
 
+  // for metal glossy top cover we may have some not allowed colors
   const disallowedDotPatterns =
-    colorRules[attributes['Chrome Details'].value][
-      attributes['Body Metal Wrapping'].value
-    ] || [];
+    attributes['Glossy Stainless Steel Top cover'].value === 'Metal'
+      ? colorRules[attributes['Chrome Details'].value][
+          attributes['Body Metal Wrapping'].value
+        ] || []
+      : [];
 
-  // const [dotPatternAttribute, setDotPatternAttribute] = useAttribute(
-  //   attributes['Dot Pattern']
-  // );
   // separate Dot pattern name 'Off' and set it as a switcher (On/Off)
   const hasDotPattern = attribute.name === 'Dot Pattern';
   const attributeValues = hasDotPattern
