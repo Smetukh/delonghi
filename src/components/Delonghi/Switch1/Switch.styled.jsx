@@ -44,7 +44,7 @@ export const SwitchTitle = styled.div`
 export const SwitcherLabel = styled.label``;
 
 export const Container = styled.div`
-  /* margin-top: 30px; */
+  margin-top: 30px;
   display: flex;
   align-items: center;
 `;

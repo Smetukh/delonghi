@@ -12,7 +12,7 @@ export const FlatFormWrapper = styled.div`
   padding: 12px 18px 20px;
   grid-area: form;
   @media (min-width: 700px) {
-    padding: 21px 39px 10px;
+    padding: 5px 39px 10px;
   }
   @media (min-width: 900px) {
     height: calc(100vh - 47px);

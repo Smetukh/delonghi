@@ -1,19 +1,19 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useConfigurator } from '@threekit-tools/treble/dist';
 import { OBSCENE_DATA_API, SKU_DATA, TITLE_DATA_API } from '../../../constants';
-import { FlatFormTitle, FlatFormWrapper, CloseIcon } from './FlatForm.styled';
+import { FlatFormTitle, FlatFormWrapper } from './FlatForm.styled';
 import Footer from '../Footer/Footer';
 import Tabs from '../Tabs/Tabs';
-import FormPage from '../../../pages/FormPage';
 import SummaryPage from '../../../pages/SummaryPage';
-import { ModalContext } from '../../../context/modalContext';
 import { useThreekitSelector } from '@threekit-tools/treble/dist/store';
+import ProductPage from '../../../pages/ProductPage';
 
 const Flatform = () => {
   const [attributes] = useConfigurator();
   if (!attributes) return null;
   const product = useThreekitSelector((s) => s.product);
-  // const { openModal, closeModal } = useContext(ModalContext);
+  const productName = product.name;
+
   const [titleList, setTitleList] = useState({});
   const [obsceneList, setObsceneList] = useState([]);
   useEffect(() => {
@@ -40,18 +40,16 @@ const Flatform = () => {
   }, []);
 
   if (!Object.keys(attributes).length) return <></>;
-
   const swatches = Object.values(attributes).filter((item) => {
-    return item.type === 'String' && !item.label.toLowerCase().includes('text');
+    return item.type === 'String' && item.name !== 'Body Metal Wrapping';
   });
-
   const tabs = [
     {
       id: 1,
       tabTitle: 'Configurator',
       content: (
-        <FormPage
-          swatches={swatches}
+        <ProductPage
+          productName={productName}
           titleList={titleList}
           attributes={attributes}
           obsceneList={obsceneList}
@@ -70,7 +68,7 @@ const Flatform = () => {
       {/* <CloseIcon
         onClick={() => openModal('CLOSE_CONFIGURATOR', { closeModal })}
       /> */}
-      <FlatFormTitle>{product.name}</FlatFormTitle>
+      <FlatFormTitle>{productName}</FlatFormTitle>
       <Tabs tabs={tabs} tabIndex={1} />
       <Footer />
     </FlatFormWrapper>
