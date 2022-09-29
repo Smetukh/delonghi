@@ -110,6 +110,10 @@ export const SWATCH_COLOR_NAMES = {
   'BROWN NS BW': 'Brown',
   'SILVER AT BG': 'SILVER_AT_BG',
   'GREY LC BW': 'Grey',
+
+  // Top Glossy
+  Color: 'No',
+  Metal: 'Yes',
 };
 
 export const SWATCH_IMAGE_NAMES = {

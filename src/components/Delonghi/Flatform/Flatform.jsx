@@ -46,9 +46,11 @@ const Flatform = () => {
       // item.name !== 'Body Metal Wrapping' &&
       item.name !== 'Write Text' &&
       item.name !== 'Camera Text' &&
-      item.name !== 'text'
+      item.name !== 'text' &&
+      item.name !== 'Glossy Stainless Steel Top cover'
     );
   });
+
   const tabs = [
     {
       id: 1,

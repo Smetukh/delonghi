@@ -12,9 +12,22 @@ import {
 } from './Pages.styled';
 import { useAttribute } from '@threekit-tools/treble/dist';
 
+const NonSwatchComponent = ({ label, value }) => {
+  return (
+    <SummaryItem>
+      <SummaryLabel>{`${label}:`}</SummaryLabel>
+      <span></span>
+      <Value>{value}</Value>
+    </SummaryItem>
+  );
+};
+
 const SummaryPage = ({ swatches }) => {
   const [textAttribute, setAttribute] = useAttribute('text');
   const [tagAttribute, setTagAttribute] = useAttribute('Write Text');
+  const [glossyAttribute, setGlossyAttribute] = useAttribute(
+    'Glossy Stainless Steel Top cover'
+  );
 
   return (
     <SummaryPageWrapper>
@@ -28,15 +41,23 @@ const SummaryPage = ({ swatches }) => {
               />
             </ColorButton>
             <Value>{SWATCH_COLOR_NAMES[swatch.value]}</Value>
+            {/* </>
+            )} */}
           </SummaryItem>
         );
       })}
+
+      {!!glossyAttribute?.value && (
+        <NonSwatchComponent
+          label={glossyAttribute.label}
+          value={SWATCH_COLOR_NAMES[glossyAttribute.value]}
+        />
+      )}
       {!!textAttribute.value && tagAttribute.value === 'On' && (
-        <SummaryItem>
-          <SummaryLabel>Metal Tag:</SummaryLabel>
-          <span></span>
-          <Value>{`"${textAttribute.value}"`}</Value>
-        </SummaryItem>
+        <NonSwatchComponent
+          label={'Metal Tag'}
+          value={`"${textAttribute.value}"`}
+        />
       )}
     </SummaryPageWrapper>
   );

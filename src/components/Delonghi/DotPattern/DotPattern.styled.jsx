@@ -61,10 +61,11 @@ export const Line = styled.div`
 export const DotPattern = styled.div``;
 
 export const SelectedValue = styled.span`
+  font-family: DeLonghi;
   margin-left: 21px;
 `;
 
 export const SwitchWrapper = styled.span`
-  margin-left: 20px;
+  /* margin-left: 20px; */
   margin-top: -30px;
 `;

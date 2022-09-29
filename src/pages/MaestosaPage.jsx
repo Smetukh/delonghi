@@ -11,13 +11,13 @@ const MaestosaPage = ({ titleList, attributes }) => {
   );
 
   const setTopCover = (isSelected) => {
-    const newAttribute = isSelected ? 'Color' : 'Metal';
+    const newAttribute = isSelected ? 'Metal' : 'Color';
     setTopCoverAttribute(newAttribute);
   };
   return (
     <FormPageWrapper>
       <Switch
-        isSelected={topCoverAttribute.value === 'Color'}
+        isSelected={topCoverAttribute.value === 'Metal'}
         setValue={setTopCover}
         title={'Glossy Stainless Steel Top Cover:'}
       />

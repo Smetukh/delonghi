@@ -5,6 +5,7 @@ export const FormPageWrapper = styled.div`
 `;
 
 export const SummaryLabel = styled.div`
+  margin-top: 5px;
   font-family: DeLonghi;
   font-style: normal;
   font-weight: 500;
@@ -15,6 +16,7 @@ export const SummaryLabel = styled.div`
 `;
 
 export const Value = styled.div`
+  margin-top: 5px;
   font-family: DeLonghi;
   font-weight: 400;
   font-size: 16px;

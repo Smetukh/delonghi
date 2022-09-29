@@ -1,3 +1,5 @@
+import { useThreekitSelector } from '@threekit-tools/treble/dist/store';
+import { colorRules } from '../../../constants/color-rules';
 import {
   SWATCH_COLOR_CODES,
   SWATCH_COLOR_NAMES,
@@ -17,42 +19,48 @@ import {
 const DotPattern = ({ title, attribute = { values: [] }, isSquare }) => {
   if (!attribute) return <></>;
 
+  const attributes = useThreekitSelector((s) => s.attributes);
+
+  const disallowedDotPatterns =
+    colorRules[attributes['Chrome Details'].value][
+      attributes['Body Metal Wrapping'].value
+    ] || [];
+
+  // const [dotPatternAttribute, setDotPatternAttribute] = useAttribute(
+  //   attributes['Dot Pattern']
+  // );
   // separate Dot pattern name 'Off' and set it as a switcher (On/Off)
   const hasDotPattern = attribute.name === 'Dot Pattern';
   const attributeValues = hasDotPattern
-    ? attribute.values.filter((i) => i.value !== 'Off')
+    ? attribute.values.filter((i) => {
+        // filter out No color and colors which are not allowed from pdf
+        return i.value !== 'Off' && !disallowedDotPatterns.includes(i.value);
+      })
     : attribute.values;
   const dotPatternOffObj =
     (hasDotPattern && attribute.values.find((item) => item.value === 'Off')) ||
     {};
 
-  const dotPatternOffValue =
-    hasDotPattern && dotPatternOffObj.selected ? 'Off' : 'On';
-
-  const switchDotPattern = (value) => {
-    if (value === 'Off') dotPatternOffObj.handleSelect();
-    else attributeValues[0].handleSelect();
+  const switchDotPattern = (isSelected) => {
+    if (isSelected) attributeValues[0].handleSelect();
+    else dotPatternOffObj.handleSelect();
   };
+
   return (
     <Container>
-      <ColorButtonsTitle>
-        {title || attribute?.label}:
-        <SelectedColor>
-          {' '}
-          {hasDotPattern && (
-            <SwitchWrapper>
-              <Switch
-                isDotPattern={true}
-                setValue={switchDotPattern}
-                value={dotPatternOffValue}
-              />
-            </SwitchWrapper>
-          )}
-          <SelectedValue>
-            {SWATCH_COLOR_NAMES[attribute?.value] || attribute?.value}
-          </SelectedValue>
-        </SelectedColor>
-      </ColorButtonsTitle>
+      <SelectedColor>
+        {' '}
+        <SwitchWrapper>
+          <Switch
+            title={title || attribute?.label}
+            setValue={switchDotPattern}
+            isSelected={!dotPatternOffObj.selected}
+          />
+        </SwitchWrapper>
+        <SelectedValue>
+          {SWATCH_COLOR_NAMES[attribute?.value] || attribute?.value}
+        </SelectedValue>
+      </SelectedColor>
       <ColorsWrapper hasDotPattern={hasDotPattern}>
         {attributeValues.map((item, i) => {
           return (

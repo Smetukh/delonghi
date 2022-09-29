@@ -1,0 +1,46 @@
+// colors which are not allowed to match
+// GLOSSY SS TOP COVER --> CHROMED DETAILS --> BODY --> Dot PATTERN
+export const colorRules = {
+  'Standard chrome plating': {
+    'Brushed Stainless Steel': [],
+    'RED DL RD 34/PE': ['SILVER LC RD'],
+    'GREEN DL GR 31': [],
+    'WHITE NS WH 15/PE': [],
+    'BLACK TR BK 50/P': [],
+    'GREEN DL GR 84/PE': [],
+    'YELLOW DL YE 78/PE': ['SILVER LC RD', 'SILVER DL YE'],
+    'SILVER AT BG 50/M/PE': ['SILVER LC RD'],
+    'GREY LC BW 62/M/PM': ['BROWN NS BW'],
+    'BROWN NS BW 87/M/PM': ['GREY LC BW'],
+    'SILVER DL RD 30/M/PE': ['YELLOW DL YE', 'RED DL RD'],
+    'SILVER DL YE 45/M/PEG': ['SILVER LC RD', 'YELLOW DL YE'],
+  },
+  'Gold chrome plating': {
+    'Brushed Stainless Steel': ['SILVER LC RD', 'YELLOW DL YE'],
+    'RED DL RD 34/PE': ['SILVER LC RD', 'YELLOW DL YE'],
+    'GREEN DL GR 31': ['SILVER LC RD', 'YELLOW DL YE'],
+    'WHITE NS WH 15/PE': ['SILVER LC RD', 'YELLOW DL YE'],
+    'BLACK TR BK 50/P': ['SILVER LC RD', 'YELLOW DL YE'],
+    'GREEN DL GR 84/PE': ['SILVER LC RD', 'YELLOW DL YE'],
+    // 'YELLOW DL YE 78/PE':[]
+    'SILVER AT BG 50/M/PE': ['SILVER LC RD', 'YELLOW DL YE'],
+    'GREY LC BW 62/M/PM': ['SILVER LC RD', 'YELLOW DL YE', 'BROWN NS BW'],
+    'BROWN NS BW 87/M/PM': ['SILVER LC RD', 'YELLOW DL YE', 'GREY LC BW'],
+    'SILVER DL RD 30/M/PE': ['YELLOW DL YE', 'RED DL RD'],
+    'SILVER DL YE 45/M/PEG': ['SILVER LC RD', 'YELLOW DL YE'],
+  },
+  'Black chrome plating': {
+    'Brushed Stainless Steel': [],
+    'RED DL RD 34/PE': ['SILVER LC RD'],
+    'GREEN DL GR 31': [],
+    'WHITE NS WH 15/PE': [],
+    'BLACK TR BK 50/P': [],
+    'GREEN DL GR 84/PE': [],
+    'YELLOW DL YE 78/PE': ['SILVER LC RD', 'SILVER DL YE'],
+    'SILVER AT BG 50/M/PE': ['SILVER LC RD'],
+    'GREY LC BW 62/M/PM': ['BROWN NS BW'],
+    'BROWN NS BW 87/M/PM': ['GREY LC BW'],
+    'SILVER DL RD 30/M/PE': ['YELLOW DL YE', 'RED DL RD'],
+    'SILVER DL YE 45/M/PEG': ['SILVER LC RD', 'YELLOW DL YE'],
+  },
+};
