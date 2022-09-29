@@ -41,7 +41,13 @@ const Flatform = () => {
 
   if (!Object.keys(attributes).length) return <></>;
   const swatches = Object.values(attributes).filter((item) => {
-    return item.type === 'String' && item.name !== 'Body Metal Wrapping';
+    return (
+      item.type === 'String' &&
+      // item.name !== 'Body Metal Wrapping' &&
+      item.name !== 'Write Text' &&
+      item.name !== 'Camera Text' &&
+      item.name !== 'text'
+    );
   });
   const tabs = [
     {
