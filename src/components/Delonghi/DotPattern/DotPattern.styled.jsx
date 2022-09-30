@@ -8,6 +8,7 @@ export const InnerImageBlock = styled.div`
   height: 112px;
   background-size: cover;
   background-position: bottom;
+  /* cursor: ${({ disabled }) => (disabled ? `not-allowed` : 'pointer')}; */
 `;
 
 export const ImageButton = styled.button`
@@ -17,7 +18,13 @@ export const ImageButton = styled.button`
   border: ${({ selected }) => (selected ? '2px solid #0C2340' : 'none')};
   padding: ${({ selected }) => (selected ? '1px' : '0px')};
   margin-right: 12px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    /* cursor: not-allowed; */
+  }
 `;
 
 export const Image = styled.img``;

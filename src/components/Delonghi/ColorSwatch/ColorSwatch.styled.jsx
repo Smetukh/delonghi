@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+export const ColorContainer = styled.div`
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+`;
 export const ColorButton = styled.button`
   box-sizing: border-box;
   width: ${({ isSquare }) => (isSquare ? '40px' : '32px')};
@@ -15,10 +18,14 @@ export const ColorButton = styled.button`
   &:hover {
     padding: 2px;
   }
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 `;
 
 export const InnerImageBlock = styled.div`
-  cursor: pointer;
+  /* cursor: pointer; */
   background-image: ${({ backgroundImage }) =>
     backgroundImage ? `url(${backgroundImage})` : 'none'};
   width: 100%;
@@ -87,12 +94,6 @@ export const Line = styled.div`
   background-color: black;
 `;
 
-export const DotPattern = styled.div``;
-
 export const SelectedValue = styled.span`
   margin-left: 21px;
-`;
-
-export const SwitchWrapper = styled.span`
-  margin-left: 20px;
 `;

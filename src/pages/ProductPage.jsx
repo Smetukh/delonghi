@@ -4,28 +4,38 @@ import { TextInput } from '../components/Delonghi/TextInput/TextInput';
 import { Switch } from '../components/Delonghi/Switch1/Switch';
 import { FormPageWrapper } from './Pages.styled';
 import { useAttribute } from '@threekit-tools/treble';
-import DotPattern from '../components/Delonghi/DotPattern/DotPattern';
-import MaestosaPage from './MaestosaPage';
-import SpecialistaPage from './SpecialistaPage';
+import { colorRules } from '../constants/color-rules';
 
-const ProductPage = ({ titleList, attributes, obsceneList, productName }) => {
+const ProductPage = ({
+  titleList,
+  attributes,
+  obsceneList,
+  ProductComponent,
+}) => {
   const [textSwitchAttribute, setTextSwitchAttribute] = useAttribute(
     attributes['Write Text'].name
   );
-
-  const components = {
-    'Maestosa Tailor-Made': MaestosaPage,
-    'La Specialista Maestro Tailor-Made': SpecialistaPage,
-  };
-  const ProductComponent = components[productName] || FormPage;
 
   const setTextSwitch = (isSelected) => {
     const newAttribute = isSelected ? 'On' : 'Off';
     setTextSwitchAttribute(newAttribute);
   };
+
+  // maestosa body color filtering
+  let disabledBodyColors = [];
+  const chromeDetailsColors =
+    colorRules[attributes?.['Chrome Details']?.value] || [];
+  const dotPatternValue = attributes?.['Dot Pattern']?.value;
+  Object.keys(chromeDetailsColors).forEach((bodyColor) => {
+    // check if 'Body' color has mismatching 'dot pattern' colors
+    if (chromeDetailsColors[bodyColor].includes(dotPatternValue))
+      disabledBodyColors = [...disabledBodyColors, bodyColor];
+  });
+
   return (
     <FormPageWrapper>
       <ColorSwatch
+        disabledColors={disabledBodyColors}
         attribute={attributes['Body Metal Wrapping']}
         titleList={titleList}
       />

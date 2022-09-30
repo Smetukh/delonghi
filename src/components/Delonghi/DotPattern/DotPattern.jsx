@@ -22,19 +22,18 @@ const DotPattern = ({ title, attribute = { values: [] }, isSquare }) => {
   const attributes = useThreekitSelector((s) => s.attributes);
 
   // for metal glossy top cover we may have some not allowed colors
-  const disallowedDotPatterns =
+  const disabedDotPatterns =
     attributes['Glossy Stainless Steel Top cover'].value === 'Metal'
       ? colorRules[attributes['Chrome Details'].value][
           attributes['Body Metal Wrapping'].value
         ] || []
       : [];
-
   // separate Dot pattern name 'Off' and set it as a switcher (On/Off)
   const hasDotPattern = attribute.name === 'Dot Pattern';
   const attributeValues = hasDotPattern
     ? attribute.values.filter((i) => {
         // filter out No color and colors which are not allowed from pdf
-        return i.value !== 'Off' && !disallowedDotPatterns.includes(i.value);
+        return i.value !== 'Off';
       })
     : attribute.values;
   const dotPatternOffObj =
@@ -63,9 +62,11 @@ const DotPattern = ({ title, attribute = { values: [] }, isSquare }) => {
       </SelectedColor>
       <ColorsWrapper hasDotPattern={hasDotPattern}>
         {attributeValues.map((item, i) => {
+          const disabled = disabedDotPatterns.includes(item.value);
           return (
-            <ImageButton key={i} selected={item.selected}>
+            <ImageButton key={i} selected={item.selected} disabled={disabled}>
               <InnerImageBlock
+                disabled={disabled}
                 backgroundImage={SWATCH_COLOR_CODES[item.value]}
                 onClick={item.handleSelect}
               ></InnerImageBlock>

@@ -1,12 +1,15 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useConfigurator } from '@threekit-tools/treble/dist';
-import { OBSCENE_DATA_API, SKU_DATA, TITLE_DATA_API } from '../../../constants';
+import { OBSCENE_DATA_API, TITLE_DATA_API } from '../../../constants';
 import { FlatFormTitle, FlatFormWrapper } from './FlatForm.styled';
 import Footer from '../Footer/Footer';
 import Tabs from '../Tabs/Tabs';
-import SummaryPage from '../../../pages/SummaryPage';
 import { useThreekitSelector } from '@threekit-tools/treble/dist/store';
 import ProductPage from '../../../pages/ProductPage';
+import MaestosaPage from '../../../pages/MaestosaPage';
+import SpecialistaPage from '../../../pages/SpecialistaPage';
+import MaestosaSummary from '../../../pages/MaestosaSummary';
+import SpecialistaSummary from '../../../pages/SpecialistaSummary';
 
 const Flatform = () => {
   const [attributes] = useConfigurator();
@@ -50,6 +53,24 @@ const Flatform = () => {
       item.name !== 'Glossy Stainless Steel Top cover'
     );
   });
+  const components = {
+    'Maestosa Tailor-Made': {
+      configurator: MaestosaPage,
+      summary: MaestosaSummary,
+    },
+    'La Specialista Maestro Tailor-Made': {
+      configurator: SpecialistaPage,
+      summary: SpecialistaSummary,
+    },
+  };
+
+  console.log(
+    `%cqqq productName = `,
+    'font-weight: bold;color: #90ee90',
+    productName
+  );
+  const ProductComponent = components[productName].configurator;
+  const ProductSummary = components[productName].summary;
 
   const tabs = [
     {
@@ -57,6 +78,7 @@ const Flatform = () => {
       tabTitle: 'Configurator',
       content: (
         <ProductPage
+          ProductComponent={ProductComponent}
           productName={productName}
           titleList={titleList}
           attributes={attributes}
@@ -67,7 +89,7 @@ const Flatform = () => {
     {
       id: 2,
       tabTitle: 'Configuration Summary',
-      content: <SummaryPage swatches={swatches} />,
+      content: <ProductSummary attributes={attributes} />,
     },
   ];
 

@@ -4,6 +4,7 @@ import { Switch } from '../components/Delonghi/Switch1/Switch';
 import { FormPageWrapper } from './Pages.styled';
 import { useAttribute } from '@threekit-tools/treble';
 import DotPattern from '../components/Delonghi/DotPattern/DotPattern';
+import { colorRules } from '../constants/color-rules';
 
 const MaestosaPage = ({ titleList, attributes }) => {
   const [topCoverAttribute, setTopCoverAttribute] = useAttribute(
@@ -14,6 +15,16 @@ const MaestosaPage = ({ titleList, attributes }) => {
     const newAttribute = isSelected ? 'Metal' : 'Color';
     setTopCoverAttribute(newAttribute);
   };
+
+  // maestosa chrome color filtering
+  let disabledChromeColors = [];
+  const bodyColorValue = attributes['Body Metal Wrapping'].value;
+  Object.keys(colorRules).forEach((chromeColor) => {
+    // build an array of disabled Chrome Colors
+    if (!colorRules[chromeColor][bodyColorValue])
+      disabledChromeColors = [...disabledChromeColors, chromeColor];
+  });
+
   return (
     <FormPageWrapper>
       <Switch
@@ -22,6 +33,7 @@ const MaestosaPage = ({ titleList, attributes }) => {
         title={'Glossy Stainless Steel Top Cover:'}
       />
       <ColorSwatch
+        disabledColors={disabledChromeColors}
         attribute={attributes['Chrome Details']}
         titleList={titleList}
       />

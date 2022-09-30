@@ -17,7 +17,6 @@ import { ModalContext } from '../../../context/modalContext';
 import { useWindowDimensions } from '../../../utils/hooks';
 import FlatForm from '../Flatform/Flatform';
 import { useAttribute } from '@threekit-tools/treble/dist';
-import LaSpecialista from '../../../assets/png/La Specialista Maestro Tailor-Made.png';
 import { useThreekitSelector } from '@threekit-tools/treble/dist/store';
 
 const AppWrapper = () => {
@@ -25,9 +24,6 @@ const AppWrapper = () => {
   const hasPlayerLoaded = useThreekitInitStatus();
   const [inputAttribute, setInputFocus] = useAttribute('Camera Text');
   const product = useThreekitSelector((s) => s.product);
-  // const reducer = {
-  //   delonghi,
-  // };
 
   useEffect(() => {
     if (hasPlayerLoaded) openModal('PLAYER_HELP_MODAL', { closeModal });
@@ -36,13 +32,10 @@ const AppWrapper = () => {
 
   const getPlayerHeight = () => {
     if (width > 700 && width < 900) {
-      console.log('width > 700');
       return '521px'; // tablet
     } else if (width > 900) {
-      console.log('width > 900');
       return '100vh'; // desktop
     } else {
-      console.log('width default', width);
       return '384px'; // mobile
     }
   };
