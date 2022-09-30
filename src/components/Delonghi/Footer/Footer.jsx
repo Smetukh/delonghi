@@ -29,9 +29,12 @@ const Footer = () => {
         await window.threekit.treble.saveConfiguration();
       const snapshot = await window.threekit.player.snapshotAsync();
       const token = window.DLG.config.CSRFToken;
-      const enableARUrl = `${window.location.href}?tkcsid=${savedConfiguration.shortId}&enableAR=true`;
-      const enableARQRcode = await QRCode.toDataURL(enableARUrl);
 
+      const enableARUrl = new URL(window.location.href);
+      enableARUrl.searchParams.append('tkcsid', savedConfiguration.shortId);
+      enableARUrl.searchParams.append('enableAR', true);
+
+      const enableARQRcode = await QRCode.toDataURL(enableARUrl.href);
       let customisation = [];
 
       // mapping model attributes into customisation array
@@ -44,7 +47,7 @@ const Footer = () => {
         }
       });
       const requestBody = {
-        enableARUrl,
+        enableARUrl: enableARUrl.href,
         enableARQRcode,
         skuCode: window.DLG.config.skuCode,
         qty: 555,
