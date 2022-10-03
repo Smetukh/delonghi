@@ -22,13 +22,18 @@ const ProductPage = ({
   };
 
   // maestosa body color filtering
+  const chromeDetailsValue = attributes?.['Chrome Details']?.value;
   let disabledBodyColors = [];
-  const chromeDetailsColors =
-    colorRules[attributes?.['Chrome Details']?.value] || [];
+  const chromeDetailsColors = colorRules[chromeDetailsValue] || [];
   const dotPatternValue = attributes?.['Dot Pattern']?.value;
   Object.keys(chromeDetailsColors).forEach((bodyColor) => {
-    // check if 'Body' color has mismatching 'dot pattern' colors
-    if (chromeDetailsColors[bodyColor].includes(dotPatternValue))
+    if (
+      // check if 'Body' color has mismatching 'dot pattern' colors
+      (chromeDetailsColors[bodyColor] || []).includes(dotPatternValue) ||
+      // case: gold chrome does not match yellow body colors
+      (bodyColor === 'YELLOW DL YE 78/PE' &&
+        chromeDetailsValue === 'Gold chrome plating')
+    )
       disabledBodyColors = [...disabledBodyColors, bodyColor];
   });
 

@@ -64,11 +64,6 @@ const Flatform = () => {
     },
   };
 
-  console.log(
-    `%cqqq productName = `,
-    'font-weight: bold;color: #90ee90',
-    productName
-  );
   const ProductComponent = components[productName].configurator;
   const ProductSummary = components[productName].summary;
 

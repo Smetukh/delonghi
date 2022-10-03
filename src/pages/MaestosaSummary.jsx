@@ -40,7 +40,9 @@ const MaestosaSummary = ({ attributes }) => {
             backgroundImage={SWATCH_COLOR_CODES[bodyAttribute.value]}
           />
         </ColorButton>
-        <Value>{SWATCH_COLOR_NAMES[bodyAttribute.value]}</Value>
+        <Value>
+          {SWATCH_COLOR_NAMES[bodyAttribute.value] || bodyAttribute.value}
+        </Value>
       </SummaryItem>
       {topCoverAttribute?.value === 'Metal' && (
         <NonSwatchComponent

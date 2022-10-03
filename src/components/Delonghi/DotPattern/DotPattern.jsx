@@ -23,11 +23,10 @@ const DotPattern = ({ title, attribute = { values: [] }, isSquare }) => {
 
   // for metal glossy top cover we may have some not allowed colors
   const disabedDotPatterns =
-    attributes['Glossy Stainless Steel Top cover'].value === 'Metal'
-      ? colorRules[attributes['Chrome Details'].value][
-          attributes['Body Metal Wrapping'].value
-        ] || []
-      : [];
+    colorRules[attributes['Chrome Details'].value]?.[
+      attributes['Body Metal Wrapping'].value
+    ] || [];
+
   // separate Dot pattern name 'Off' and set it as a switcher (On/Off)
   const hasDotPattern = attribute.name === 'Dot Pattern';
   const attributeValues = hasDotPattern
