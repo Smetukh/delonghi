@@ -10,18 +10,23 @@ import {
   TermsAndCond,
 } from './Footer.styled';
 import { useThreekitSelector } from '@threekit-tools/treble/dist/store';
-import { ADD_TO_CART_CUSTOMISATION, SKU_DATA } from '../../../constants';
+import { ADD_TO_CART_CUSTOMISATION } from '../../../constants';
 import { ModalContext } from '../../../context/modalContext';
 
-const Footer = () => {
+const Footer = (props) => {
   const [isAgree, setIsAgree] = useState(false);
   const { openModal, closeModal } = useContext(ModalContext);
-
+  const { productData, ...attributes } = props;
+  console.log(
+    `%cqqq productData Footer = `,
+    'font-weight: bold;color: #90ee90',
+    productData
+  );
   const onCheckboxChange = () => {
     setIsAgree(!isAgree);
   };
 
-  const attributes = useThreekitSelector((state) => state).attributes;
+  // const attributes = useThreekitSelector((state) => state).attributes;
 
   const addToCart = async () => {
     try {
@@ -38,18 +43,35 @@ const Footer = () => {
       let customisation = [];
 
       // mapping model attributes into customisation array
+      console.log(
+        `%cqqq attributes = `,
+        'font-weight: bold;color: #90ee90',
+        attributes
+      );
       Object.keys(attributes).forEach((key) => {
-        const apiKey = ADD_TO_CART_CUSTOMISATION[key];
+        const name = attributes[key].name;
+        console.log(`%cqqq key = `, 'font-weight: bold;color: #90ee90', name);
+        const apiKey = ADD_TO_CART_CUSTOMISATION[name];
+        console.log(
+          `%cqqq apiKey = `,
+          'font-weight: bold;color: #90ee90',
+          apiKey
+        );
         if (apiKey) {
           let value = attributes[key].value;
           if (value === 'Off') value = `NO ${apiKey}`; // Example: 'NO PATTERN', 'NO WOOD KIT'
           customisation = [...customisation, { apiKey, value }];
         }
       });
+      console.log(
+        `%cqqq customisation = `,
+        'font-weight: bold;color: #90ee90',
+        customisation
+      );
       const requestBody = {
         enableARUrl: enableARUrl.href,
         enableARQRcode,
-        skuCode: window.DLG.config.skuCode,
+        sku: window.DLG.pdp.sku,
         qty: 555,
         snapshot,
         configurationId: savedConfiguration.shortId,
@@ -79,7 +101,7 @@ const Footer = () => {
 
   return (
     <FooterWrapper>
-      <Price>{`$${SKU_DATA[window.DLG.config.skuCode].price}`}</Price>
+      <Price>{window.DLG?.pdp?.formattedPrice || 0}</Price>
       <CheckboxAndButtonContainer>
         <InputContainer>
           <Input

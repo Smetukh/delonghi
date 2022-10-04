@@ -23,13 +23,20 @@ const NonSwatchComponent = ({ label, value }) => {
   );
 };
 
-const MaestosaSummary = ({ attributes }) => {
-  const bodyAttribute = attributes['Body Metal Wrapping'];
-  const topCoverAttribute = attributes['Glossy Stainless Steel Top cover'];
-  const chromeDetailsAttribute = attributes['Chrome Details'];
-  const dotPatternAttribute = attributes['Dot Pattern'];
-  const textAttribute = attributes['text'];
-  const tagAttribute = attributes['Write Text'];
+const MaestosaSummary = ({
+  bodyAttribute,
+  topCoverAttribute,
+  chromeDetailsAttribute,
+  dotPatternAttribute,
+  textAttribute,
+  tagAttribute,
+}) => {
+  // const bodyAttribute = attributes['Body Metal Wrapping'];
+  // const topCoverAttribute = attributes['Glossy Stainless Steel Top cover'];
+  // const chromeDetailsAttribute = attributes['Chrome Details'];
+  // const dotPatternAttribute = attributes['Dot Pattern'];
+  // const textAttribute = attributes['text'];
+  // const tagAttribute = attributes['Write Text'];
 
   return (
     <SummaryPageWrapper>

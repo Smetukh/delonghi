@@ -11,7 +11,10 @@ const MaestosaPage = ({ titleList, attributes }) => {
     'Glossy Stainless Steel Top cover'
   );
   const bodyColorValue = attributes['Body Metal Wrapping'].value;
+  const dotPatternValue = attributes['Dot Pattern'].value;
+  const chromeDetailsAttribute = attributes['Chrome Details'];
   useEffect(() => {
+    // update top cover on specific body color
     if (bodyColorValue === 'Brushed Stainless Steel')
       setTopCoverAttribute('Metal');
   }, [bodyColorValue]);
@@ -22,12 +25,15 @@ const MaestosaPage = ({ titleList, attributes }) => {
 
   // maestosa chrome color filtering
   let disabledChromeColors = [];
+
   Object.keys(colorRules).forEach((chromeColor) => {
     // build an array of disabled Chrome Colors
-    if (!colorRules[chromeColor][bodyColorValue])
+    if (colorRules[chromeColor][bodyColorValue].includes(dotPatternValue))
       disabledChromeColors = [...disabledChromeColors, chromeColor];
   });
 
+  const disabledDotPatterns =
+    colorRules[chromeDetailsAttribute.value][bodyColorValue] || [];
   return (
     <FormPageWrapper>
       <Switch
@@ -37,10 +43,14 @@ const MaestosaPage = ({ titleList, attributes }) => {
       />
       <ColorSwatch
         disabledColors={disabledChromeColors}
-        attribute={attributes['Chrome Details']}
+        attribute={chromeDetailsAttribute}
         titleList={titleList}
       />
-      <DotPattern attribute={attributes['Dot Pattern']} titleList={titleList} />
+      <DotPattern
+        attribute={attributes['Dot Pattern']}
+        titleList={titleList}
+        disabledColors={disabledDotPatterns}
+      />
     </FormPageWrapper>
   );
 };

@@ -22,7 +22,18 @@ export const colorRules = {
     'WHITE NS WH 15/PE': ['SILVER LC RD', 'YELLOW DL YE'],
     'BLACK TR BK 50/P': ['SILVER LC RD', 'YELLOW DL YE'],
     'GREEN DL GR 84/PE': ['SILVER LC RD', 'YELLOW DL YE'],
-    'YELLOW DL YE 78/PE': null, // not matching color
+    'YELLOW DL YE 78/PE': [
+      'WHITE NS WH',
+      'YELLOW DL YE',
+      'RED DL RD',
+      'GREEN DL GR',
+      'GREEN DL',
+      'SILVER DL YE',
+      'SILVER LC RD',
+      'BROWN NS BW',
+      'SILVER AT BG',
+      'GREY LC BW',
+    ], // all dot patterns
     'SILVER AT BG 50/M/PE': ['SILVER LC RD', 'YELLOW DL YE'],
     'GREY LC BW 62/M/PM': ['SILVER LC RD', 'YELLOW DL YE', 'BROWN NS BW'],
     'BROWN NS BW 87/M/PM': ['SILVER LC RD', 'YELLOW DL YE', 'GREY LC BW'],

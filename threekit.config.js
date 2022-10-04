@@ -1,19 +1,24 @@
-const skuToId = {
+const skuToAssetId = {
   11111: '0b79a8d9-cfb4-4020-841a-ec649006a796',
   22222: '17192fd3-7f01-4473-a670-10d608b85f12',
+  '17192fd3-7f01-4473-a670-10d608b85f12':
+    '17192fd3-7f01-4473-a670-10d608b85f12',
 };
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const assetId = urlParams.get('assetId');
+const sku = urlParams.get('assetId'); // TODO: remove url param. sku should arrive from window
 
 window.DLG = {
+  pdp: {
+    sku: sku || '11111',
+    formattedPrice: '$1039.99',
+  },
   config: {
-    skuCode: '11111',
     CSRFToken: 'CSRFTokenCSRFTokenCSRFTokenCSRFTokenCSRFTokenCSRFToken',
   },
 }; // TODO: REMOVE after testing mocked data sku to assetId mapping
-const skuCodeAssetId = skuToId[window.DLG.config.skuCode];
+const assetId = skuToAssetId[window.DLG.pdp.sku];
 
 export default {
   credentials: {
@@ -33,8 +38,7 @@ export default {
 
   products: {
     preview: {
-      assetId:
-        assetId || skuCodeAssetId || '17192fd3-7f01-4473-a670-10d608b85f12', // TODO: remove mocked data
+      assetId,
       configurationId: undefined,
       stageId: undefined,
     },

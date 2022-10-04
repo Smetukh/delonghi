@@ -7,6 +7,9 @@ export const HiddenInput = styled.input`
   position: absolute;
   top: 0;
   left: 0;
+  &:disabled {
+    pointer-events: none;
+  }
 `;
 
 export const Switcher = styled.div`
@@ -20,6 +23,7 @@ export const Switcher = styled.div`
   display: flex;
   justify-content: ${({ checked }) => (checked ? 'flex-end' : 'flex-start')};
   transition: all ease-out 0.4s;
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'auto')};
 `;
 
 export const SwitcherCircle = styled.div`

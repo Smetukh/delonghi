@@ -10,7 +10,7 @@ import {
 } from './Switch.styled';
 import Check from '../../../assets/svg/Check';
 
-export const Switch = ({ isSelected, setValue, title }) => {
+export const Switch = ({ isSelected, setValue, title, disabled }) => {
   // const [attribute, setAttribute] = useAttribute(props.attribute.name);
   // if (!attribute) return <></>;
 
@@ -21,13 +21,15 @@ export const Switch = ({ isSelected, setValue, title }) => {
       {!!title && <SwitchTitle>{title}</SwitchTitle>}
       <SwitcherLabel>
         <HiddenInput
+          disabled={disabled}
           type="checkbox"
           checked={isSelected}
           onChange={() => {
+            // if (disabled) return;
             setValue(!isSelected);
           }}
         />
-        <Switcher checked={isSelected}>
+        <Switcher checked={isSelected} disabled={disabled}>
           <SwitcherCircle>
             <Check />
           </SwitcherCircle>

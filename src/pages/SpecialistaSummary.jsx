@@ -21,12 +21,18 @@ const NonSwatchComponent = ({ label, value }) => {
   );
 };
 
-const SpecialistaSummary = ({ attributes }) => {
-  const bodyAttribute = attributes['Body Metal Wrapping'] || {};
-  const chromeDetailsAttribute = attributes['Chrome Details'] || {};
-  const woodKitAttribute = attributes['Wood Kit'] || {};
-  const textAttribute = attributes['text'] || {};
-  const tagAttribute = attributes['Write Text'] || {};
+const SpecialistaSummary = ({
+  bodyAttribute,
+  chromeDetailsAttribute,
+  woodKitAttribute,
+  textAttribute,
+  tagAttribute,
+}) => {
+  // const bodyAttribute = attributes['Body Metal Wrapping'] || {};
+  // const chromeDetailsAttribute = attributes['Chrome Details'] || {};
+  // const woodKitAttribute = attributes['Wood Kit'] || {};
+  // const textAttribute = attributes['text'] || {};
+  // const tagAttribute = attributes['Write Text'] || {};
 
   return (
     <SummaryPageWrapper>

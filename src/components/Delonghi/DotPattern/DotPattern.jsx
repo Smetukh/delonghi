@@ -16,16 +16,10 @@ import {
   SwitchWrapper,
 } from './DotPattern.styled';
 
-const DotPattern = ({ title, attribute = { values: [] }, isSquare }) => {
+const DotPattern = ({ title, attribute = { values: [] }, disabledColors }) => {
   if (!attribute) return <></>;
 
-  const attributes = useThreekitSelector((s) => s.attributes);
-
-  // for metal glossy top cover we may have some not allowed colors
-  const disabedDotPatterns =
-    colorRules[attributes['Chrome Details'].value]?.[
-      attributes['Body Metal Wrapping'].value
-    ] || [];
+  // const attributes = useThreekitSelector((s) => s.attributes);
 
   // separate Dot pattern name 'Off' and set it as a switcher (On/Off)
   const hasDotPattern = attribute.name === 'Dot Pattern';
@@ -53,6 +47,7 @@ const DotPattern = ({ title, attribute = { values: [] }, isSquare }) => {
             title={title || attribute?.label}
             setValue={switchDotPattern}
             isSelected={!dotPatternOffObj.selected}
+            disabled={disabledColors.length === attributeValues.length}
           />
         </SwitchWrapper>
         <SelectedValue>
@@ -61,7 +56,7 @@ const DotPattern = ({ title, attribute = { values: [] }, isSquare }) => {
       </SelectedColor>
       <ColorsWrapper hasDotPattern={hasDotPattern}>
         {attributeValues.map((item, i) => {
-          const disabled = disabedDotPatterns.includes(item.value);
+          const disabled = disabledColors.includes(item.value);
           return (
             <ImageButton key={i} selected={item.selected} disabled={disabled}>
               <InnerImageBlock
