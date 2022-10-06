@@ -25,7 +25,7 @@ export const Value = styled.div`
   align-items: center;
 `;
 
-export const SummaryItem = styled.div`
+export const SummaryItemContainer = styled.div`
   display: grid;
   grid-template-columns: 4fr 1fr 4fr;
   padding-bottom: 14px;

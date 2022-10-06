@@ -30,6 +30,7 @@ import SILVER_DL_YE from './SILVER_DL_YE.png';
 import SILVER_LC_RD from './SILVER_LC_RD.png';
 import YELLOW_DL_YE_78_PE from './YELLOW_DL_YE_78_PE.png';
 import YELLOW_DL_YE from './YELLOW_DL_YE.png';
+import STAINLESS_STEEL from './STAINLESS_STEEL.png';
 
 export {
   Beige,
@@ -64,4 +65,5 @@ export {
   SILVER_LC_RD,
   YELLOW_DL_YE_78_PE,
   YELLOW_DL_YE,
+  STAINLESS_STEEL,
 };

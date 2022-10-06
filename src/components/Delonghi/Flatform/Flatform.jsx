@@ -9,11 +9,8 @@ import MaestosaPage from '../../../pages/MaestosaPage';
 import SpecialistaPage from '../../../pages/SpecialistaPage';
 import MaestosaSummary from '../../../pages/MaestosaSummary';
 import SpecialistaSummary from '../../../pages/SpecialistaSummary';
-import {
-  TITLE_DATA_API,
-  OBSCENE_DATA_API,
-  PRODUCTS_DATA_API,
-} from '../../../constants/api';
+import { OBSCENE_DATA_API, PRODUCTS_DATA_API } from '../../../constants/api';
+import { THREEKIT_PREVIEW_PUBLIC_TOKEN } from '../../../constants';
 
 const Flatform = () => {
   const [attributes] = useConfigurator();
@@ -21,37 +18,22 @@ const Flatform = () => {
   const product = useThreekitSelector((s) => s.product);
   const productName = product.name;
 
-  const [titleList, setTitleList] = useState({});
   const [obsceneList, setObsceneList] = useState([]);
-  const [productData, setProductData] = useState([]);
+  const [productsData, setProductsData] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const dataTables = await Promise.all(
-        [TITLE_DATA_API, OBSCENE_DATA_API, PRODUCTS_DATA_API].map(
-          async (url) => {
-            const resp = await fetch(url);
-            return resp.json();
-          }
-        )
+        [PRODUCTS_DATA_API, OBSCENE_DATA_API].map(async (url) => {
+          const resp = await fetch(url);
+          return resp.json();
+        })
       );
-      // map swatch titles from data table
-      let titleRes = {};
-      dataTables[0].rows.forEach(({ value = {} }) => {
-        titleRes = { ...titleRes, [value.Key]: value.Value };
-      });
-      setTitleList(titleRes);
-
-      // map obscene language
       const obscene = dataTables[1].rows.map(({ value: { phrase } }) => phrase);
       setObsceneList(obscene);
 
-      console.log(
-        `%cqqq dataTables[2] = `,
-        'font-weight: bold;color: #90ee90',
-        dataTables[2]
-      );
-      let productData = {};
-      dataTables[2].rows.forEach(
+      let productsData = {};
+      dataTables[0].rows.forEach(
         ({
           value: {
             Product,
@@ -62,35 +44,28 @@ const Flatform = () => {
             'Attribute (name)': finalColorName,
           },
         }) => {
-          if (!(Product in productData)) productData[Product] = {};
-          if (!(attributeName in productData[Product]))
-            productData[Product][attributeName] = {};
-          let productAttribute = productData[Product][attributeName];
+          if (!(Product in productsData)) productsData[Product] = {};
+          if (!(attributeName in productsData[Product]))
+            productsData[Product][attributeName] = {};
+          let productAttribute = productsData[Product][attributeName];
           productAttribute.key = attributeKey;
           productAttribute[designColorCode] = {
             finalColorCode,
             finalColorName,
           };
-          console.log(
-            `%cqqq productAttribute = `,
-            'font-weight: bold;color: #90ee90',
-            productAttribute
-          );
         }
       );
-      console.log(
-        `%cqqq productData = `,
-        'font-weight: bold;color: #90ee90',
-        productData
-      );
-      setProductData(productData);
+
+      if (!!THREEKIT_PREVIEW_PUBLIC_TOKEN) setProductsData(productsData);
     };
 
     fetchData();
-  }, []);
+  }, [THREEKIT_PREVIEW_PUBLIC_TOKEN]);
   if (!Object.keys(attributes).length) return <></>;
 
+  const productData = productsData[productName] || {};
   const commonSummaryProps = {
+    productData,
     bodyAttribute: attributes['Body Metal Wrapping'],
     chromeDetailsAttribute: attributes['Chrome Details'],
     textAttribute: attributes['text'],
@@ -115,10 +90,8 @@ const Flatform = () => {
       },
     },
   };
-
   const ProductComponent = products[productName].configurator;
   const ProductSummary = products[productName].summary;
-
   const tabs = [
     {
       id: 1,
@@ -127,9 +100,9 @@ const Flatform = () => {
         <ProductPage
           ProductComponent={ProductComponent}
           productName={productName}
-          titleList={titleList}
           attributes={attributes}
           obsceneList={obsceneList}
+          productData={productData}
         />
       ),
     },
@@ -142,12 +115,14 @@ const Flatform = () => {
 
   return (
     <FlatFormWrapper>
-      {/* <CloseIcon
-        onClick={() => openModal('CLOSE_CONFIGURATOR', { closeModal })}
-      /> */}
       <FlatFormTitle>{productName}</FlatFormTitle>
       <Tabs tabs={tabs} tabIndex={1} />
-      <Footer {...{ ...products[productName].summaryProps, productData }} />
+      <Footer
+        {...{
+          ...products[productName].summaryProps,
+          productData,
+        }}
+      />
     </FlatFormWrapper>
   );
 };

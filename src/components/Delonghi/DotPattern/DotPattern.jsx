@@ -21,16 +21,17 @@ const DotPattern = ({ title, attribute = { values: [] }, disabledColors }) => {
 
   // const attributes = useThreekitSelector((s) => s.attributes);
 
-  // separate Dot pattern name 'Off' and set it as a switcher (On/Off)
+  // separate Dot pattern name 'NO PATTERN' and set it as a switcher (On/Off)
   const hasDotPattern = attribute.name === 'Dot Pattern';
   const attributeValues = hasDotPattern
     ? attribute.values.filter((i) => {
         // filter out No color and colors which are not allowed from pdf
-        return i.value !== 'Off';
+        return i.value !== 'NO PATTERN';
       })
     : attribute.values;
   const dotPatternOffObj =
-    (hasDotPattern && attribute.values.find((item) => item.value === 'Off')) ||
+    (hasDotPattern &&
+      attribute.values.find((item) => item.value === 'NO PATTERN')) ||
     {};
 
   const switchDotPattern = (isSelected) => {

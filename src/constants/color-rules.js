@@ -1,8 +1,8 @@
 // colors which are not allowed to match
 // GLOSSY SS TOP COVER --> CHROMED DETAILS --> BODY --> Dot PATTERN
 export const colorRules = {
-  'Standard chrome plating': {
-    'Brushed Stainless Steel': [],
+  'STANDARD CHROME': {
+    'STAINLESS STEEL': [],
     'RED DL RD 34/PE': ['SILVER LC RD'],
     'GREEN DL GR 31': [],
     'WHITE NS WH 15/PE': [],
@@ -15,8 +15,8 @@ export const colorRules = {
     'SILVER DL RD 30/M/PE': ['YELLOW DL YE', 'RED DL RD'],
     'SILVER DL YE 45/M/PEG': ['SILVER LC RD', 'YELLOW DL YE'],
   },
-  'Gold chrome plating': {
-    'Brushed Stainless Steel': ['SILVER LC RD', 'YELLOW DL YE'],
+  'GOLD CHROME': {
+    'STAINLESS STEEL': ['SILVER LC RD', 'YELLOW DL YE'],
     'RED DL RD 34/PE': ['SILVER LC RD', 'YELLOW DL YE'],
     'GREEN DL GR 31': ['SILVER LC RD', 'YELLOW DL YE'],
     'WHITE NS WH 15/PE': ['SILVER LC RD', 'YELLOW DL YE'],
@@ -40,8 +40,8 @@ export const colorRules = {
     'SILVER DL RD 30/M/PE': ['YELLOW DL YE', 'RED DL RD'],
     'SILVER DL YE 45/M/PEG': ['SILVER LC RD', 'YELLOW DL YE'],
   },
-  'Black chrome plating': {
-    'Brushed Stainless Steel': [],
+  'BLACK CHROME': {
+    'STAINLESS STEEL': [],
     'RED DL RD 34/PE': ['SILVER LC RD'],
     'GREEN DL GR 31': [],
     'WHITE NS WH 15/PE': [],

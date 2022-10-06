@@ -31,6 +31,7 @@ import {
   SILVER_LC_RD,
   YELLOW_DL_YE_78_PE,
   YELLOW_DL_YE,
+  STAINLESS_STEEL,
 } from '../assets/colors/colors';
 
 export const SWATCH_COLOR_CODES = {
@@ -40,11 +41,11 @@ export const SWATCH_COLOR_CODES = {
   'GREEN DL GR 42/PG': Green,
   'RED DL RD 45': Red,
   'BEIGE DL BG 25/PG': Beige,
-  'Black chrome plating': BlackChrome,
-  'Gold chrome plating': GoldChrome,
-  'Standard chrome plating': StandardChrome,
-  Oak: Oak,
-  Mahogany: Mahogany,
+  'BLACK CHROME': BlackChrome,
+  'GOLD CHROME': GoldChrome,
+  'STANDARD CHROME': StandardChrome,
+  OAK: Oak,
+  MAHOGANY: Mahogany,
   'BROWN NS BW': BROWN_NS_BW,
 
   // Maestosa Body
@@ -59,6 +60,7 @@ export const SWATCH_COLOR_CODES = {
   'SILVER DL RD 30/M/PE': SILVER_DL_RD_30_M_PE,
   'SILVER DL YE 45/M/PEG': SILVER_DL_YE_45_M_PEG,
   'WHITE NS WH 15/PE': WHITE_NS_WH_15_PE,
+  'STAINLESS STEEL': STAINLESS_STEEL,
 
   // Maestosa Dot Pattern
   'WHITE NS WH': WHITE_NS_WH,

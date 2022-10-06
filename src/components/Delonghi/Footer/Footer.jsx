@@ -9,24 +9,16 @@ import {
   CheckboxAndButtonContainer,
   TermsAndCond,
 } from './Footer.styled';
-import { useThreekitSelector } from '@threekit-tools/treble/dist/store';
-import { ADD_TO_CART_CUSTOMISATION } from '../../../constants';
 import { ModalContext } from '../../../context/modalContext';
+import { ADD_TO_CART_API } from '../../../constants/api';
 
 const Footer = (props) => {
   const [isAgree, setIsAgree] = useState(false);
   const { openModal, closeModal } = useContext(ModalContext);
   const { productData, ...attributes } = props;
-  console.log(
-    `%cqqq productData Footer = `,
-    'font-weight: bold;color: #90ee90',
-    productData
-  );
   const onCheckboxChange = () => {
     setIsAgree(!isAgree);
   };
-
-  // const attributes = useThreekitSelector((state) => state).attributes;
 
   const addToCart = async () => {
     try {
@@ -43,31 +35,47 @@ const Footer = (props) => {
       let customisation = [];
 
       // mapping model attributes into customisation array
-      console.log(
-        `%cqqq attributes = `,
-        'font-weight: bold;color: #90ee90',
-        attributes
-      );
-      Object.keys(attributes).forEach((key) => {
-        const name = attributes[key].name;
-        console.log(`%cqqq key = `, 'font-weight: bold;color: #90ee90', name);
-        const apiKey = ADD_TO_CART_CUSTOMISATION[name];
-        console.log(
-          `%cqqq apiKey = `,
-          'font-weight: bold;color: #90ee90',
-          apiKey
-        );
-        if (apiKey) {
-          let value = attributes[key].value;
-          if (value === 'Off') value = `NO ${apiKey}`; // Example: 'NO PATTERN', 'NO WOOD KIT'
-          customisation = [...customisation, { apiKey, value }];
+      const { textAttribute, tagAttribute, ...restAttributes } = attributes;
+      if (tagAttribute.value === 'On' && !!textAttribute.value)
+        customisation = [
+          {
+            custKey: 'TESTO_UTENTE',
+            custData: textAttribute.value,
+            custDes: textAttribute.value,
+          },
+        ];
+
+      Object.keys(restAttributes).forEach((key) => {
+        let custData, custDes;
+        const attributeName = restAttributes[key].name;
+        const attributeValue = restAttributes[key].value;
+
+        const attributeObj = productData[attributeName];
+        const custKey = attributeObj.key;
+
+        // assign Top cover as 'Stainless Steel' or body color
+        if (
+          key === 'Glossy Stainless Steel Top cover' &&
+          attributeValue === 'Metal'
+        ) {
+          custData = attributeObj['GLOSSY STAINLESS STEEL'].finalColorCode;
+          custDes = attributeObj['GLOSSY STAINLESS STEEL'].finalColorName;
+        } else if (
+          key === 'Glossy Stainless Steel Top cover' &&
+          attributeValue === 'Color'
+        ) {
+          const bodyAttributeValue = restAttributes['bodyAttribute'].value;
+          custData = attributeObj[bodyAttributeValue].finalColorCode;
+          custDes = attributeObj[bodyAttributeValue].finalColorName;
+        } else {
+          custData = attributeObj[attributeValue]?.finalColorCode || 0;
+          custDes =
+            attributeObj[attributeValue]?.finalColorName || 'Invalid value';
         }
+
+        customisation = [...customisation, { custKey, custData, custDes }];
       });
-      console.log(
-        `%cqqq customisation = `,
-        'font-weight: bold;color: #90ee90',
-        customisation
-      );
+
       const requestBody = {
         enableARUrl: enableARUrl.href,
         enableARQRcode,
@@ -78,7 +86,7 @@ const Footer = (props) => {
         customisation,
       };
 
-      const rawResponse = await fetch('api/cart/add', {
+      const rawResponse = await fetch(ADD_TO_CART_API, {
         method: 'POST',
         headers: {
           Accept: 'application/json',

@@ -1,13 +1,10 @@
 import React from 'react';
 import { SWATCH_COLOR_CODES, SWATCH_COLOR_NAMES } from '../constants/colors';
-import {
-  ColorButton,
-  InnerColorBlock,
-} from '../components/Delonghi/ColorSwatch/ColorSwatch.styled';
+import SummarySwatch from './SummarySwatch';
 import {
   SummaryLabel,
   Value,
-  SummaryItem,
+  SummaryItemContainer,
   SummaryDotItem,
   SummaryPageWrapper,
   InnerImageBlock,
@@ -15,11 +12,11 @@ import {
 
 const NonSwatchComponent = ({ label, value }) => {
   return (
-    <SummaryItem>
+    <SummaryItemContainer>
       <SummaryLabel>{`${label}:`}</SummaryLabel>
       <span></span>
       <Value>{value}</Value>
-    </SummaryItem>
+    </SummaryItemContainer>
   );
 };
 
@@ -30,43 +27,32 @@ const MaestosaSummary = ({
   dotPatternAttribute,
   textAttribute,
   tagAttribute,
+  productData,
 }) => {
-  // const bodyAttribute = attributes['Body Metal Wrapping'];
-  // const topCoverAttribute = attributes['Glossy Stainless Steel Top cover'];
-  // const chromeDetailsAttribute = attributes['Chrome Details'];
-  // const dotPatternAttribute = attributes['Dot Pattern'];
-  // const textAttribute = attributes['text'];
-  // const tagAttribute = attributes['Write Text'];
-
   return (
     <SummaryPageWrapper>
-      <SummaryItem>
-        <SummaryLabel>{bodyAttribute.label}</SummaryLabel>
-        <ColorButton selected={true}>
-          <InnerColorBlock
-            backgroundImage={SWATCH_COLOR_CODES[bodyAttribute.value]}
-          />
-        </ColorButton>
-        <Value>
-          {SWATCH_COLOR_NAMES[bodyAttribute.value] || bodyAttribute.value}
-        </Value>
-      </SummaryItem>
+      <SummarySwatch
+        label={bodyAttribute.name}
+        value={bodyAttribute.value}
+        colorName={
+          productData[bodyAttribute.name][bodyAttribute.value].finalColorName
+        }
+      />
       {topCoverAttribute?.value === 'Metal' && (
         <NonSwatchComponent
           label={topCoverAttribute.label}
           value={SWATCH_COLOR_NAMES[topCoverAttribute.value]}
         />
       )}
-      <SummaryItem>
-        <SummaryLabel>{chromeDetailsAttribute.label}</SummaryLabel>
-        <ColorButton selected={true}>
-          <InnerColorBlock
-            backgroundImage={SWATCH_COLOR_CODES[chromeDetailsAttribute.value]}
-          />
-        </ColorButton>
-        <Value>{SWATCH_COLOR_NAMES[chromeDetailsAttribute.value]}</Value>
-      </SummaryItem>
-      {dotPatternAttribute.value !== 'Off' && (
+      <SummarySwatch
+        label={chromeDetailsAttribute.name}
+        value={chromeDetailsAttribute.value}
+        colorName={
+          productData[chromeDetailsAttribute.name][chromeDetailsAttribute.value]
+            .finalColorName
+        }
+      />
+      {dotPatternAttribute.value !== 'NO PATTERN' && (
         <SummaryDotItem>
           <SummaryLabel>{dotPatternAttribute.label}</SummaryLabel>
           <InnerImageBlock

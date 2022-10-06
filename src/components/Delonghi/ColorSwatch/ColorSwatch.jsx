@@ -1,7 +1,4 @@
-import {
-  SWATCH_COLOR_CODES,
-  SWATCH_COLOR_NAMES,
-} from '../../../constants/colors';
+import { SWATCH_COLOR_CODES } from '../../../constants/colors';
 import {
   ColorButton,
   ColorButtonsTitle,
@@ -9,8 +6,6 @@ import {
   SelectedColor,
   ColorsWrapper,
   InnerColorBlock,
-  ImageButton,
-  InnerImageBlock,
   SelectedValue,
   ColorContainer,
 } from './ColorSwatch.styled';
@@ -21,32 +16,23 @@ export const ColorSwatch = ({
   title,
   attribute = { values: [] },
   isSquare,
+  productData,
 }) => {
   if (!attribute) return <></>;
-  // const hasTopCover = attribute.name === 'Glossy Stainless Steel Top cover';
 
-  // const hasTopCoverObj =
-  //   (hasTopCover && attribute.values.find((item) => item.value === 'Off')) ||
-  //   {};
-
-  // const hasTopCoverOffValue =
-  //   hasTopCover && hasTopCoverObj.value === 'Metal' ? 'Off' : 'On';
-
-  // separate Dot pattern name 'Off' and set it as a switcher (On/Off)
-  // const hasDotPattern = attribute.name === 'Dot Pattern';
   const attributeValues = attribute.values;
-  // hasDotPattern
-  //   ? attribute.values.filter((i) => i.value !== 'Off')
-  //   : attribute.values;
+  const attributeName = attribute.name;
+  const attributeValue = attribute.value;
 
   return (
     <Container>
       <ColorButtonsTitle>
-        {title || attribute?.label}:
+        {title || attributeName}:
         <SelectedColor>
           {' '}
           <SelectedValue>
-            {SWATCH_COLOR_NAMES[attribute?.value] || attribute?.value}
+            {productData[attributeName]?.[attributeValue]?.finalColorName ||
+              attributeValue}
           </SelectedValue>
         </SelectedColor>
       </ColorButtonsTitle>
@@ -66,7 +52,7 @@ export const ColorSwatch = ({
                   selected={item.selected}
                   onClick={item.handleSelect}
                 >
-                  {isSquare && item.value === 'Off' && <DiagonalLine />}
+                  {isSquare && item.value === 'NO WOOD' && <DiagonalLine />}
                 </InnerColorBlock>
               </ColorButton>
             </ColorContainer>

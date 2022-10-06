@@ -7,7 +7,7 @@ import { useAttribute } from '@threekit-tools/treble';
 import { colorRules } from '../constants/color-rules';
 
 const ProductPage = ({
-  titleList,
+  productData,
   attributes,
   obsceneList,
   ProductComponent,
@@ -42,9 +42,9 @@ const ProductPage = ({
       <ColorSwatch
         disabledColors={disabledBodyColors}
         attribute={attributes['Body Metal Wrapping']}
-        titleList={titleList}
+        productData={productData}
       />
-      <ProductComponent titleList={titleList} attributes={attributes} />
+      <ProductComponent productData={productData} attributes={attributes} />
       <Switch
         isSelected={textSwitchAttribute.value === 'On'}
         setValue={setTextSwitch}

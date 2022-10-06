@@ -6,7 +6,7 @@ import { useAttribute } from '@threekit-tools/treble';
 import DotPattern from '../components/Delonghi/DotPattern/DotPattern';
 import { colorRules } from '../constants/color-rules';
 
-const MaestosaPage = ({ titleList, attributes }) => {
+const MaestosaPage = ({ productData, attributes }) => {
   const [topCoverAttribute, setTopCoverAttribute] = useAttribute(
     'Glossy Stainless Steel Top cover'
   );
@@ -15,8 +15,7 @@ const MaestosaPage = ({ titleList, attributes }) => {
   const chromeDetailsAttribute = attributes['Chrome Details'];
   useEffect(() => {
     // update top cover on specific body color
-    if (bodyColorValue === 'Brushed Stainless Steel')
-      setTopCoverAttribute('Metal');
+    if (bodyColorValue === 'STAINLESS STEEL') setTopCoverAttribute('Metal');
   }, [bodyColorValue]);
   const setTopCover = (isSelected) => {
     const newAttribute = isSelected ? 'Metal' : 'Color';
@@ -31,7 +30,11 @@ const MaestosaPage = ({ titleList, attributes }) => {
     if (colorRules[chromeColor][bodyColorValue].includes(dotPatternValue))
       disabledChromeColors = [...disabledChromeColors, chromeColor];
   });
-
+  console.log(
+    `%cqqq chromeDetailsAttribute = `,
+    'font-weight: bold;color: #90ee90',
+    chromeDetailsAttribute
+  );
   const disabledDotPatterns =
     colorRules[chromeDetailsAttribute.value][bodyColorValue] || [];
   return (
@@ -44,11 +47,11 @@ const MaestosaPage = ({ titleList, attributes }) => {
       <ColorSwatch
         disabledColors={disabledChromeColors}
         attribute={chromeDetailsAttribute}
-        titleList={titleList}
+        productData={productData}
       />
       <DotPattern
         attribute={attributes['Dot Pattern']}
-        titleList={titleList}
+        productData={productData}
         disabledColors={disabledDotPatterns}
       />
     </FormPageWrapper>
