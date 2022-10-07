@@ -53,17 +53,11 @@ const Footer = (props) => {
         const attributeObj = productData[attributeName];
         const custKey = attributeObj.key;
 
-        // assign Top cover as 'Stainless Steel' or body color
-        if (
-          key === 'Glossy Stainless Steel Top cover' &&
-          attributeValue === 'Metal'
-        ) {
+        // assign Top cover attribute as 'Stainless Steel' or same as body color value
+        if (key === 'topCoverAttribute' && attributeValue === 'Metal') {
           custData = attributeObj['GLOSSY STAINLESS STEEL'].finalColorCode;
           custDes = attributeObj['GLOSSY STAINLESS STEEL'].finalColorName;
-        } else if (
-          key === 'Glossy Stainless Steel Top cover' &&
-          attributeValue === 'Color'
-        ) {
+        } else if (key === 'topCoverAttribute' && attributeValue === 'Color') {
           const bodyAttributeValue = restAttributes['bodyAttribute'].value;
           custData = attributeObj[bodyAttributeValue].finalColorCode;
           custDes = attributeObj[bodyAttributeValue].finalColorName;

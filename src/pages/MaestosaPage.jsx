@@ -30,11 +30,7 @@ const MaestosaPage = ({ productData, attributes }) => {
     if (colorRules[chromeColor][bodyColorValue].includes(dotPatternValue))
       disabledChromeColors = [...disabledChromeColors, chromeColor];
   });
-  console.log(
-    `%cqqq chromeDetailsAttribute = `,
-    'font-weight: bold;color: #90ee90',
-    chromeDetailsAttribute
-  );
+
   const disabledDotPatterns =
     colorRules[chromeDetailsAttribute.value][bodyColorValue] || [];
   return (

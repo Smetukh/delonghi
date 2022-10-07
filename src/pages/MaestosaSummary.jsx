@@ -58,7 +58,12 @@ const MaestosaSummary = ({
           <InnerImageBlock
             backgroundImage={SWATCH_COLOR_CODES[dotPatternAttribute.value]}
           ></InnerImageBlock>
-          <Value>{SWATCH_COLOR_NAMES[dotPatternAttribute.value]}</Value>
+          <Value>
+            {
+              productData[dotPatternAttribute.name]?.[dotPatternAttribute.value]
+                ?.finalColorName
+            }
+          </Value>
         </SummaryDotItem>
       )}
       {!!textAttribute.value && tagAttribute.value === 'On' && (

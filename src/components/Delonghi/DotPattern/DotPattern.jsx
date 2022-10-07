@@ -16,13 +16,19 @@ import {
   SwitchWrapper,
 } from './DotPattern.styled';
 
-const DotPattern = ({ title, attribute = { values: [] }, disabledColors }) => {
+const DotPattern = ({
+  productData,
+  attribute = { values: [] },
+  disabledColors,
+}) => {
   if (!attribute) return <></>;
 
   // const attributes = useThreekitSelector((s) => s.attributes);
 
   // separate Dot pattern name 'NO PATTERN' and set it as a switcher (On/Off)
-  const hasDotPattern = attribute.name === 'Dot Pattern';
+  const attributeName = attribute.name;
+  const attributeValue = attribute.value;
+  const hasDotPattern = attributeName === 'Dot Pattern';
   const attributeValues = hasDotPattern
     ? attribute.values.filter((i) => {
         // filter out No color and colors which are not allowed from pdf
@@ -45,14 +51,15 @@ const DotPattern = ({ title, attribute = { values: [] }, disabledColors }) => {
         {' '}
         <SwitchWrapper>
           <Switch
-            title={title || attribute?.label}
+            title={attributeName}
             setValue={switchDotPattern}
             isSelected={!dotPatternOffObj.selected}
             disabled={disabledColors.length === attributeValues.length}
           />
         </SwitchWrapper>
         <SelectedValue>
-          {SWATCH_COLOR_NAMES[attribute?.value] || attribute?.value}
+          {productData[attributeName]?.[attributeValue]?.finalColorName ||
+            attributeValue}
         </SelectedValue>
       </SelectedColor>
       <ColorsWrapper hasDotPattern={hasDotPattern}>
