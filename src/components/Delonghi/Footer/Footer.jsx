@@ -10,7 +10,7 @@ import {
   TermsAndCond,
 } from './Footer.styled';
 import { ModalContext } from '../../../context/modalContext';
-import { ADD_TO_CART_API } from '../../../constants/api';
+import { ADD_TO_CART_API, EXPORT_ASSET_API } from '../../../constants/api';
 
 const Footer = (props) => {
   const [isAgree, setIsAgree] = useState(false);
@@ -22,10 +22,24 @@ const Footer = (props) => {
 
   const addToCart = async () => {
     try {
+      const tokenDLG = window.DLG.config.CSRFToken;
+      const rawExportResponse = await fetch(EXPORT_ASSET_API, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      });
+      const exportContent = await rawExportResponse.json(); // TODO: handle export file
+      console.log(
+        `%cqqq exportContent = `,
+        'font-weight: bold;color: #90ee90',
+        exportContent
+      );
+
       const savedConfiguration =
         await window.threekit.treble.saveConfiguration();
       const snapshot = await window.threekit.player.snapshotAsync();
-      const token = window.DLG.config.CSRFToken;
 
       const enableARUrl = new URL(window.location.href);
       enableARUrl.searchParams.append('tkcsid', savedConfiguration.shortId);
@@ -85,7 +99,7 @@ const Footer = (props) => {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${tokenDLG}`,
         },
         body: JSON.stringify(requestBody),
       });

@@ -40,13 +40,20 @@ export const TextInput = (props) => {
 
   const onHandleChange = (e) => {
     const targetValue = e.target.value;
+    console.log(
+      `%cqqq targetValue = `,
+      'font-weight: bold;color: #90ee90',
+      targetValue
+    );
     if (hasWarning) setWarning(false);
 
     if (targetValue.length > inputTextMaxLength) set30Characters(true);
     else if (has30Characters === true) set30Characters(false);
     setInputValue(targetValue);
   };
-
+  const onKeyDown = (e) => {
+    if (e.keyCode === 13) onSubmitClick();
+  };
   return (
     <InputWrapper>
       <InputTitle>Add text:</InputTitle>
@@ -55,6 +62,7 @@ export const TextInput = (props) => {
           autoFocus
           onFocus={() => setInputFocus('Fixed')}
           // onBlur={() => setInputFocus('Free')}
+          onKeyDown={onKeyDown}
           type="text"
           id="message"
           value={inputValue}

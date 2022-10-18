@@ -48,7 +48,7 @@ const ProductPage = ({
       <Switch
         isSelected={textSwitchAttribute.value === 'On'}
         setValue={setTextSwitch}
-        title={'Metal Tag'}
+        title={'Write your text'}
       />
       {textSwitchAttribute.value === 'On' && (
         <TextInput
