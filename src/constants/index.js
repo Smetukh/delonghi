@@ -27,14 +27,17 @@ if (!window.DLG?.pdp?.sku) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const sku = urlParams.get('sku'); // TODO: remove url param. sku should arrive from window
+  const formattedPrice = urlParams.get('formattedPrice'); // TODO: remove url param. sku should arrive from window
+  const CSRFToken = urlParams.get('CSRFToken'); // TODO: remove url param. sku should arrive from window
 
   window.DLG = {
     pdp: {
       sku: sku || '0132900001',
-      formattedPrice: '$1039.99',
+      formattedPrice: formattedPrice || '$0.00',
     },
     config: {
       CSRFToken:
+        CSRFToken ||
         'invalid token invalid token invalid token invalid token invalid token ',
     },
   };

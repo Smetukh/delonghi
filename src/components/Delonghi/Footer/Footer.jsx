@@ -31,11 +31,6 @@ const Footer = (props) => {
         },
       });
       const exportContent = await rawExportResponse.json(); // TODO: handle export file
-      console.log(
-        `%cqqq exportContent = `,
-        'font-weight: bold;color: #90ee90',
-        exportContent
-      );
 
       const savedConfiguration =
         await window.threekit.treble.saveConfiguration();

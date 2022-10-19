@@ -4,6 +4,11 @@ import {
   SWATCH_COLOR_CODES,
   SWATCH_COLOR_NAMES,
 } from '../../../constants/colors';
+import {
+  ColorButton,
+  ColorContainer,
+  InnerColorBlock,
+} from '../ColorSwatch/ColorSwatch.styled';
 import { Switch } from '../Switch1/Switch';
 import {
   ColorButtonsTitle,
@@ -66,13 +71,24 @@ const DotPattern = ({
         {attributeValues.map((item, i) => {
           const disabled = disabledColors.includes(item.value);
           return (
-            <ImageButton key={i} selected={item.selected} disabled={disabled}>
-              <InnerImageBlock
-                disabled={disabled}
-                backgroundImage={SWATCH_COLOR_CODES[item.value]}
-                onClick={item.handleSelect}
-              ></InnerImageBlock>
-            </ImageButton>
+            // <ImageButton key={i} selected={item.selected} disabled={disabled}>
+            //   <InnerImageBlock
+            //     disabled={disabled}
+            //     backgroundImage={SWATCH_COLOR_CODES[item.value]}
+            //     onClick={item.handleSelect}
+            //   ></InnerImageBlock>
+            // </ImageButton>
+            <ColorContainer key={i} disabled={disabled}>
+              <ColorButton selected={item.selected} disabled={disabled}>
+                <InnerColorBlock
+                  backgroundImage={SWATCH_COLOR_CODES[item.value]}
+                  selected={item.selected}
+                  onClick={item.handleSelect}
+                />
+                {/* {item.value === 'NO WOOD' && <DiagonalLine />}
+                </InnerColorBlock> */}
+              </ColorButton>
+            </ColorContainer>
           );
         })}
       </ColorsWrapper>

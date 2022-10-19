@@ -10,6 +10,7 @@ const MaestosaPage = ({ productData, attributes }) => {
   const [topCoverAttribute, setTopCoverAttribute] = useAttribute(
     'Glossy Stainless Steel Top cover'
   );
+  const topCoverAttributeValue = topCoverAttribute.value;
   const bodyColorValue = attributes['Body Metal Wrapping'].value;
   const dotPatternValue = attributes['Dot Pattern'].value;
   const chromeDetailsAttribute = attributes['Chrome Details'];
@@ -33,10 +34,15 @@ const MaestosaPage = ({ productData, attributes }) => {
 
   const disabledDotPatterns =
     colorRules[chromeDetailsAttribute.value][bodyColorValue] || [];
+
   return (
     <FormPageWrapper>
       <Switch
-        isSelected={topCoverAttribute.value === 'Metal'}
+        disabled={
+          bodyColorValue === 'STAINLESS STEEL' &&
+          topCoverAttributeValue === 'Metal'
+        }
+        isSelected={topCoverAttributeValue === 'Metal'}
         setValue={setTopCover}
         title={'Glossy Stainless Steel Top Cover:'}
       />

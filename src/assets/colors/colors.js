@@ -9,28 +9,30 @@ import Oak from './Oak.png';
 import Red from './Red.png';
 import StandardChrome from './StandardChrome.png';
 import White from './White.png';
-import BROWN_NS_BW from './BROWN_NS_BW.png';
-import BLACK_TR_BK_50P from './BLACK_TR_BK_50P.png';
 import BROWN_NS_BW_87_M_PM from './BROWN_NS_BW_87_M_PM.png';
 import GREEN_DL_GR_31 from './GREEN_DL_GR_31.png';
 import GREEN_DL_GR_84_PE from './GREEN_DL_GR_84_PE.png';
-import GREEN_DL_GR from './GREEN_DL_GR.png';
-import GREEN_DL from './GREEN_DL.png';
+import BLACK_TR_BK_50P from './BLACK_TR_BK_50P.png';
 import GREY_LC_BW_62_M_PM from './GREY_LC_BW_62_M_PM.png';
-import GREY_LC_BW from './GREY_LC_BW.png';
 import RED_DL_RD_34_PE from './RED_DL_RD_34_PE.png';
-import RED_DL_RD from './RED_DL_RD.png';
 import SILVER_AT_BG_50_M_PE from './SILVER_AT_BG_50_M_PE.png';
-import SILVER_AT_BG from './SILVER_AT_BG.png';
 import SILVER_DL_RD_30_M_PE from './SILVER_DL_RD_30_M_PE.png';
 import SILVER_DL_YE_45_M_PEG from './SILVER_DL_YE_45_M_PEG.png';
 import WHITE_NS_WH_15_PE from './WHITE_NS_WH_15_PE.png';
-import WHITE_NS_WH from './WHITE_NS_WH.png';
-import SILVER_DL_YE from './SILVER_DL_YE.png';
-import SILVER_LC_RD from './SILVER_LC_RD.png';
 import YELLOW_DL_YE_78_PE from './YELLOW_DL_YE_78_PE.png';
-import YELLOW_DL_YE from './YELLOW_DL_YE.png';
 import STAINLESS_STEEL from './STAINLESS_STEEL.png';
+
+// dot pattern
+import BROWN_NS_BW from './BLACK_BROWN_NS_BW.png';
+import GREEN_DL_GR from './BLACK_GREEN_DL_GR.png';
+import GREEN_DL from './BLACK_GREEN_DL.png';
+import GREY_LC_BW from './BLACK_GREY_LC_BW.png';
+import RED_DL_RD from './BLACK_RED_DL_RD.png';
+import SILVER_AT_BG from './BLACK_SILVER_AT_BG.png';
+import WHITE_NS_WH from './BLACK_WHITE_NS_WH.png';
+import SILVER_DL_YE from './BLACK_SILVER_DL_YE.png';
+import SILVER_LC_RD from './BLACK_SILVER_LC_RD.png';
+import YELLOW_DL_YE from './BLACK_YELLOW_DL_YE.png';
 
 export {
   Beige,

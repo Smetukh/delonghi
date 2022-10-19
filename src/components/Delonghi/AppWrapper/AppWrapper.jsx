@@ -54,12 +54,12 @@ const AppWrapper = () => {
               />
             )}
           </Player.TopCenterWidgets>
-          <HelperButtonWrapper>
+          {/* <HelperButtonWrapper>
             <IconsWrapper>
               <Help />
               <Share />
             </IconsWrapper>
-          </HelperButtonWrapper>
+          </HelperButtonWrapper> */}
         </PlayerWrapper>
       </PlayerModalProvider>
       <CloseIconBlock

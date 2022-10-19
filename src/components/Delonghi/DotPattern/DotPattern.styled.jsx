@@ -56,7 +56,7 @@ export const ColorsWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  max-width: ${({ hasDotPattern }) => (hasDotPattern ? '500px' : '270px')};
+  max-width: 320px;
 `;
 
 export const Line = styled.div`
