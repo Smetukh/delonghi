@@ -56,7 +56,7 @@ export const ColorsWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 320px;
+  max-width: 260px;
 `;
 
 export const Line = styled.div`
