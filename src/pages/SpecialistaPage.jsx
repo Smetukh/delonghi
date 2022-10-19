@@ -14,7 +14,6 @@ const SpecialistaPage = ({ titleList, attributes, productData }) => {
     <FormPageWrapper>
       {swatches.map((item) => (
         <ColorSwatch
-          isSquare={item.name === 'Wood Kit'}
           attribute={item}
           key={item.name}
           titleList={titleList}

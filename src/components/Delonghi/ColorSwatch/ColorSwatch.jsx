@@ -15,7 +15,6 @@ export const ColorSwatch = ({
   disabledColors = [],
   title,
   attribute = { values: [] },
-  isSquare,
   productData,
 }) => {
   if (!attribute) return <></>;
@@ -41,18 +40,13 @@ export const ColorSwatch = ({
           const disabled = disabledColors.includes(item.value);
           return (
             <ColorContainer key={i} disabled={disabled}>
-              <ColorButton
-                isSquare={isSquare}
-                selected={item.selected}
-                disabled={disabled}
-              >
+              <ColorButton selected={item.selected} disabled={disabled}>
                 <InnerColorBlock
-                  isSquare={isSquare}
                   backgroundImage={SWATCH_COLOR_CODES[item.value]}
                   selected={item.selected}
                   onClick={item.handleSelect}
                 >
-                  {isSquare && item.value === 'NO WOOD' && <DiagonalLine />}
+                  {item.value === 'NO WOOD' && <DiagonalLine />}
                 </InnerColorBlock>
               </ColorButton>
             </ColorContainer>

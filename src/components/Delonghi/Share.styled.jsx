@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ShareMessage = styled.div`
-  font-family: 'DeLonghi Sans';
+  font-family: 'DeLonghi';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;

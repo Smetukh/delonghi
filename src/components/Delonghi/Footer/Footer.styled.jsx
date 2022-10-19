@@ -37,6 +37,7 @@ export const FooterButton = styled.button`
 export const Input = styled.input`
   width: 24px;
   height: 24px;
+  accent-color: #266bbf;
   @media (max-width: 747px) {
     width: 60px;
   }

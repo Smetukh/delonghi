@@ -5,13 +5,16 @@ export const ColorContainer = styled.div`
 `;
 export const ColorButton = styled.button`
   box-sizing: border-box;
-  width: ${({ isSquare }) => (isSquare ? '40px' : '32px')};
-  height: ${({ isSquare }) => (isSquare ? '40px' : '32px')};
-  border-radius: ${({ isSquare }) => (isSquare ? '7px' : '50%')};
+  /* width: ${({ isSquare }) => (isSquare ? '40px' : '32px')}; */
+  width: 40px;
+  /* height: ${({ isSquare }) => (isSquare ? '40px' : '32px')}; */
+  height: 40px;
+  /* border-radius: ${({ isSquare }) => (isSquare ? '7px' : '50%')}; */
+  border-radius: 7px;
   border: ${({ selected }) =>
     selected ? '2px solid #0C2340' : '1px solid #00000020'};
-  padding: ${({ selected, isSquare }) =>
-    selected && !isSquare ? '2px' : '0px'};
+  /* padding: ${({ selected, isSquare }) =>
+    selected && !isSquare ? '2px' : '0px'}; */
   margin-right: 12px;
   margin-bottom: 4px;
   padding: ${({ selected }) => (selected ? '2px' : '0')};
@@ -50,7 +53,8 @@ export const InnerColorBlock = styled.div`
   width: 100%;
   height: 100%;
   cursor: pointer;
-  border-radius: ${({ isSquare }) => (isSquare ? '5px' : '50%')};
+  /* border-radius: ${({ isSquare }) => (isSquare ? '5px' : '50%')}; */
+  border-radius: 5px;
   background-image: ${({ backgroundImage }) => `url(${backgroundImage})`};
   display: flex;
   justify-content: center;
