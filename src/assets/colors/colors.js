@@ -24,8 +24,8 @@ import STAINLESS_STEEL from './STAINLESS_STEEL.png';
 
 // dot pattern
 import BROWN_NS_BW from './BLACK_BROWN_NS_BW.png';
-import GREEN_DL_GR from './BLACK_GREEN_DL_GR.png';
-import GREEN_DL from './BLACK_GREEN_DL.png';
+import GREEN_DL from './BLACK_GREEN_DL_GR.png';
+import GREEN_DL_GR from './BLACK_GREEN_DL.png';
 import GREY_LC_BW from './BLACK_GREY_LC_BW.png';
 import RED_DL_RD from './BLACK_RED_DL_RD.png';
 import SILVER_AT_BG from './BLACK_SILVER_AT_BG.png';
