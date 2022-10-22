@@ -5,7 +5,7 @@ export default {
   showLoadingProgress: true,
   onLoadingProgress: undefined,
   showAR: true,
-  showShare: false,
+  showShare: true,
   locale: undefined,
   allowMobileVerticalOrbit: false,
   publishStage: 'draft',
