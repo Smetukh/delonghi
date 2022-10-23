@@ -1,4 +1,5 @@
 import { useThreekitSelector } from '@threekit-tools/treble/dist/store';
+import DiagonalLine from '../../../assets/svg/DiagonalLine';
 import { colorRules } from '../../../constants/color-rules';
 import {
   SWATCH_COLOR_CODES,
@@ -84,9 +85,9 @@ const DotPattern = ({
                   backgroundImage={SWATCH_COLOR_CODES[item.value]}
                   selected={item.selected}
                   onClick={item.handleSelect}
-                />
-                {/* {item.value === 'NO WOOD' && <DiagonalLine />}
-                </InnerColorBlock> */}
+                >
+                  {disabled && <DiagonalLine />}{' '}
+                </InnerColorBlock>
               </ColorButton>
             </ColorContainer>
           );

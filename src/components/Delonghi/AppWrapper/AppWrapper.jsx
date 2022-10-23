@@ -11,6 +11,7 @@ import {
 import { Player, useThreekitInitStatus } from '@threekit-tools/treble';
 import Help from '../Help';
 import Share from '../Share';
+import FullScreen from '../FullScreen';
 // import delonghi from './store/delonghi';
 import { useContext, useEffect } from 'react';
 import { ModalContext } from '../../../context/modalContext';
@@ -28,6 +29,7 @@ const AppWrapper = () => {
   useEffect(() => {
     if (hasPlayerLoaded) openModal('PLAYER_HELP_MODAL', { closeModal });
   }, [hasPlayerLoaded]);
+
   const { width } = useWindowDimensions();
 
   const getPlayerHeight = () => {
@@ -54,12 +56,13 @@ const AppWrapper = () => {
               />
             )}
           </Player.TopCenterWidgets>
-          {/* <HelperButtonWrapper>
+          <HelperButtonWrapper>
             <IconsWrapper>
               <Help />
               <Share />
+              <FullScreen />
             </IconsWrapper>
-          </HelperButtonWrapper> */}
+          </HelperButtonWrapper>
         </PlayerWrapper>
       </PlayerModalProvider>
       <CloseIconBlock
