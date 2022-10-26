@@ -60,7 +60,7 @@ const AppWrapper = () => {
             <IconsWrapper>
               <Help />
               <Share />
-              <FullScreen />
+              {/* <FullScreen /> */}
             </IconsWrapper>
           </HelperButtonWrapper>
         </PlayerWrapper>
