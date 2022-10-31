@@ -60,6 +60,7 @@ export const PlayerModalProvider = styled.div`
       border-radius: 50% !important;
       height: 40px !important;
       width: 40px !important;
+      background-color: rgba(251, 251, 251, 0.5) !important;
       &:hover {
         background: rgba(240, 240, 240, 0.75) !important;
         box-shadow: 0px 0px 4px rgb(0 0 0 / 25%) !important;
@@ -73,7 +74,7 @@ export const HelperButtonWrapper = styled(Player.BottomRightWidgets)``;
 export const IconsWrapper = styled.div`
   position: absolute;
   display: flex;
-  bottom: -12px;
+  bottom: -10px;
   right: 30px;
 `;
 

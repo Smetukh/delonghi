@@ -1,5 +1,24 @@
 import styled from 'styled-components';
-import HelperImage from '../../assets/png/Helper.png';
+import HelperTouchImage from '../../assets/png/HelperTouch.png';
+import HelperMouseImage from '../../assets/png/HelperMouse.png';
+import { createTheme } from '@mui/material/styles';
+
+export const theme = createTheme({
+  components: {
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          color: 'black',
+          padding: '8px 16px',
+          fontSize: '20px',
+          fontFamily: 'DeLonghi',
+          textTransform: 'none',
+          '&.Mui-selected': { color: 'black', fontFamily: 'DeLonghi-medium' },
+        },
+      },
+    },
+  },
+});
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -21,7 +40,10 @@ export const Wrapper = styled.div`
 `;
 
 export const Image = styled.div`
-  background-image: url(${HelperImage});
+  background-image: ${({ imageType }) =>
+    imageType === 'mouse'
+      ? `url(${HelperMouseImage})`
+      : `url(${HelperTouchImage})`};
   background-size: contain;
   width: 100%;
   height: 384px;
@@ -38,4 +60,12 @@ export const Image = styled.div`
 export const InnerImage = styled.img`
   display: block;
   margin: 14px auto 0;
+`;
+
+export const TabsContainer = styled.div`
+  width: fit-content;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 `;
