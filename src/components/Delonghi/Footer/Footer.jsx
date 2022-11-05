@@ -11,6 +11,7 @@ import {
 } from './Footer.styled';
 import { ModalContext } from '../../../context/modalContext';
 import { ADD_TO_CART_API, EXPORT_ASSET_API } from '../../../constants/api';
+import { eventTracker } from '../../../utils/helpers';
 
 const Footer = (props) => {
   const [isAgree, setIsAgree] = useState(false);
@@ -21,6 +22,7 @@ const Footer = (props) => {
   };
 
   const addToCart = async () => {
+    eventTracker('add_to_cart');
     try {
       const tokenDLG = window.DLG.config.CSRFToken;
       const rawExportResponse = await fetch(EXPORT_ASSET_API, {

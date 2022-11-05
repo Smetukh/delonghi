@@ -4,9 +4,10 @@ import {
   PortalToElement,
   FlatForm,
 } from '@threekit-tools/treble';
+import { TRBL_THREEKIT_ENV } from '../constants';
 
 const products = {
-  'product-identifier': { preview: { assetId: '%ASSET_ID%' } },
+  'product-identifier': { [TRBL_THREEKIT_ENV]: { assetId: '%ASSET_ID%' } },
 };
 
 export default function Product() {

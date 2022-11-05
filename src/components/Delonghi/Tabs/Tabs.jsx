@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { eventTracker } from '../../../utils/helpers';
 import { Tab, TabsWrapper } from './Tabs.styled';
 
 const Tabs = ({ tabs, tabIndex }) => {
   const [currentTab, setCurrentTab] = useState(tabIndex);
 
   const handleTabClick = (e) => {
-    setCurrentTab(+e.target.id);
+    const tabId = +e.target.id;
+    if (tabId === 2) eventTracker('configuration_summary');
+    setCurrentTab(tabId);
   };
 
   return (

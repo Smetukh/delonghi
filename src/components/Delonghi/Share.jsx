@@ -3,6 +3,7 @@ import { useThreekitInitStatus } from '@threekit-tools/treble';
 import { COPIED_MESSAGE } from '../../constants';
 import ShareIcon from '../../assets/svg/Share';
 import { ShareMessage } from './Share.styled';
+import { eventTracker } from '../../utils/helpers';
 
 export default function Share(props) {
   const hasLoaded = useThreekitInitStatus();
@@ -17,6 +18,7 @@ export default function Share(props) {
   }, [messageVisible]);
 
   const handleClick = () => {
+    eventTracker('share');
     const copiedLink = window.location.href;
     navigator.clipboard.writeText(copiedLink);
     setIsMessageVisible(true);

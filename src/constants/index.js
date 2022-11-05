@@ -1,26 +1,25 @@
-export const {
-  TRBL_THREEKIT_ENV = 'preview', // TODO: fix process.env undefined
-  THREEKIT_PREVIEW_ORG_ID = '41317b8e-32f8-4d07-95cf-3786368a003d', // TODO: fix process.env undefined
-  THREEKIT_PREVIEW_PUBLIC_TOKEN = 'b146a11a-e717-412d-9659-38155ad5ac85', // TODO: fix process.env undefined
-} = process.env;
+export const TRBL_THREEKIT_ENV = process.env.TRBL_THREEKIT_ENV;
+export const THREEKIT_ADMIN_FTS_ORG_ID = process.env.THREEKIT_ADMIN_FTS_ORG_ID;
+export const THREEKIT_PREVIEW_ORG_ID = process.env.THREEKIT_PREVIEW_ORG_ID;
+export const THREEKIT_PREVIEW_PUBLIC_TOKEN =
+  process.env.THREEKIT_PREVIEW_PUBLIC_TOKEN;
+export const THREEKIT_ADMIN_FTS_PUBLIC_TOKEN =
+  process.env.THREEKIT_ADMIN_FTS_PUBLIC_TOKEN;
 
-export const titleDataTableId = '10cf41dd-6cee-41ea-a6a1-5f8c4ca59fdd';
-export const obsceneDataTableId = 'e25f1681-3b49-4595-95ef-a54f3474d9a6';
-export const PRODUCTS_DATA_TABLE_ID = '9aecd028-899b-428f-a89d-80709bb9f22c';
-
-export const ADD_TO_CART_CUSTOMISATION = {
-  'Chrome Details': 'CHROMED_DETAILS',
-  'Body Metal Wrapping': 'BODY',
-  'Wood Kit': 'WOOD_KIT',
-  'Dot Pattern': 'PATTERN',
-  'Top cover': 'TOP_COVER',
-  text: 'TESTO_UTENTE',
+const ENV = {
+  preview: {
+    token: THREEKIT_PREVIEW_PUBLIC_TOKEN,
+    orgId: THREEKIT_PREVIEW_ORG_ID,
+  },
+  'admin-fts': {
+    token: THREEKIT_ADMIN_FTS_PUBLIC_TOKEN,
+    orgId: THREEKIT_ADMIN_FTS_ORG_ID,
+  },
 };
 
-export const SKU_TO_ASSET_ID = {
-  '0132900001': '17192fd3-7f01-4473-a670-10d608b85f12',
-  '0132900002': '0b79a8d9-cfb4-4020-841a-ec649006a796',
-};
+export const BEARER_TOKEN = ENV[TRBL_THREEKIT_ENV]?.token;
+export const ORG_ID = ENV[TRBL_THREEKIT_ENV]?.orgId;
+
 // TODO: REMOVE START - after testing mocked data sku to assetId mapping
 // TODO: handle missing/incorrect sku
 if (!window.DLG?.pdp?.sku) {
@@ -43,6 +42,19 @@ if (!window.DLG?.pdp?.sku) {
   };
 }
 // TODO: REMOVE END - after testing mocked data sku to assetId mapping
+
+const SKU_TO_ASSET_ID = {
+  '0132900001': '17192fd3-7f01-4473-a670-10d608b85f12',
+  '0132900002': '0b79a8d9-cfb4-4020-841a-ec649006a796',
+};
+
+export const assetId =
+  SKU_TO_ASSET_ID[window.DLG?.pdp?.sku?.toString()] ||
+  SKU_TO_ASSET_ID['0132900001'];
+
+export const titleDataTableId = '10cf41dd-6cee-41ea-a6a1-5f8c4ca59fdd';
+export const obsceneDataTableId = 'e25f1681-3b49-4595-95ef-a54f3474d9a6';
+export const PRODUCTS_DATA_TABLE_ID = '9aecd028-899b-428f-a89d-80709bb9f22c';
 
 export const COPIED_MESSAGE = 'Current configuration URL is Copied!';
 

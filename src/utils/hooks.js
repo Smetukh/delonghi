@@ -63,4 +63,11 @@ const useModal = () => {
   return { modal, openModal, modalContent, closeModal, modalName };
 };
 
+// const useAnalyticsEventTracker = (category="Blog category") => {
+//   const eventTracker = (action = "test action", label = "test label") => {
+//     ReactGA.event({category, action, label});
+//   }
+//   return eventTracker;
+// }
+
 export { useWindowDimensions, useUnload, useModal };

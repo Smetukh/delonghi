@@ -10,7 +10,7 @@ import SpecialistaPage from '../../../pages/SpecialistaPage';
 import MaestosaSummary from '../../../pages/MaestosaSummary';
 import SpecialistaSummary from '../../../pages/SpecialistaSummary';
 import { OBSCENE_DATA_API, PRODUCTS_DATA_API } from '../../../constants/api';
-import { THREEKIT_PREVIEW_PUBLIC_TOKEN } from '../../../constants';
+import { BEARER_TOKEN } from '../../../constants';
 
 const Flatform = () => {
   const [attributes] = useConfigurator();
@@ -55,12 +55,12 @@ const Flatform = () => {
           };
         }
       );
-
-      if (!!THREEKIT_PREVIEW_PUBLIC_TOKEN) setProductsData(productsData);
+      setProductsData(productsData);
     };
 
-    fetchData();
-  }, [THREEKIT_PREVIEW_PUBLIC_TOKEN]);
+    if (!!BEARER_TOKEN) fetchData();
+  }, [BEARER_TOKEN]);
+
   if (!Object.keys(attributes).length) return <></>;
 
   const productData = productsData[productName] || {};

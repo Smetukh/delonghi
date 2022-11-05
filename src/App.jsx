@@ -4,6 +4,7 @@ import delonghi from './store/delonghi';
 import '../i18next';
 
 import AppWrapper from './components/Delonghi/AppWrapper/AppWrapper';
+import { TRBL_THREEKIT_ENV } from './constants';
 
 const App = () => {
   // const reducer = {
@@ -11,7 +12,7 @@ const App = () => {
   // };
 
   return (
-    <ThreekitProvider>
+    <ThreekitProvider threekitEnv={TRBL_THREEKIT_ENV}>
       <ModalProvider>
         <AppWrapper />
       </ModalProvider>

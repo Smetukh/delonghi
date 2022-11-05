@@ -38,11 +38,6 @@ export const ColorSwatch = ({
       <ColorsWrapper>
         {attributeValues.map((item, i) => {
           const disabled = disabledColors.includes(item.value);
-          console.log(
-            `%cqqq disabled [${SWATCH_COLOR_CODES[item.value]}]= `,
-            'font-weight: bold;color: #90ee90',
-            disabled
-          );
           return (
             <ColorContainer key={i} disabled={disabled}>
               <ColorButton selected={item.selected} disabled={disabled}>

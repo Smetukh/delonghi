@@ -40,11 +40,6 @@ export const TextInput = (props) => {
 
   const onHandleChange = (e) => {
     const targetValue = e.target.value;
-    console.log(
-      `%cqqq targetValue = `,
-      'font-weight: bold;color: #90ee90',
-      targetValue
-    );
     if (hasWarning) setWarning(false);
 
     if (targetValue.length > inputTextMaxLength) set30Characters(true);
