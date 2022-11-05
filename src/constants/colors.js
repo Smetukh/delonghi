@@ -112,7 +112,6 @@ export const SWATCH_COLOR_NAMES = {
   // 'SILVER LC RD 30/M/PE': 'SILVER_LC_RD',
   // 'BROWN NS BW': 'Brown',
   // 'SILVER AT BG': 'SILVER_AT_BG',
-  // 'GREY LC BW': 'Grey',
 
   // Top Glossy
   Color: 'No',
