@@ -6,7 +6,6 @@ import {
   InputTitle,
   InputWrapper,
   SubTitle,
-  Title,
   InputButtonWrapper,
 } from '../TextInput/TextInput.styled';
 import { inputTextMaxLength } from '../../../constants';
@@ -14,7 +13,6 @@ import { inputTextMaxLength } from '../../../constants';
 export const TextInput = (props) => {
   const [attribute, setAttribute] = useAttribute('text');
   const [inputValue, setInputValue] = useState(attribute.value);
-  // const [, setInputFocus] = useAttribute('Write Text');
   const [, setInputFocus] = useAttribute('Camera Text');
   if (!attribute) return <></>;
   const [hasWarning, setWarning] = useState(false);
@@ -30,10 +28,6 @@ export const TextInput = (props) => {
       setAttribute('');
       return;
     }
-    // if (inputValue.length > inputTextLength) {
-    //   set30Characters(true);
-    //   return;
-    // }
     setAttribute(inputValue);
     setInputFocus('Fixed');
   };
@@ -41,10 +35,9 @@ export const TextInput = (props) => {
   const onHandleChange = (e) => {
     const targetValue = e.target.value;
     if (hasWarning) setWarning(false);
-
     if (targetValue.length > inputTextMaxLength) set30Characters(true);
     else if (has30Characters === true) set30Characters(false);
-    setInputValue(targetValue);
+    setInputValue(targetValue.slice(0, 30));
   };
   const onKeyDown = (e) => {
     if (e.keyCode === 13) onSubmitClick();
@@ -64,7 +57,10 @@ export const TextInput = (props) => {
           onChange={onHandleChange}
           error={hasWarning}
         />
-        <SubmitButton disabled={has30Characters} onClick={onSubmitClick}>
+        <SubmitButton
+          // disabled={has30Characters}
+          onClick={onSubmitClick}
+        >
           Submit
         </SubmitButton>
       </InputButtonWrapper>

@@ -1,3 +1,14 @@
+import { useContext, useEffect, useState } from 'react';
+import { Player, useThreekitInitStatus } from '@threekit-tools/treble';
+import { useThreekitSelector } from '@threekit-tools/treble/dist/store';
+import { useAttribute } from '@threekit-tools/treble/dist';
+import { ModalContext } from '../../../context/modalContext';
+import { useWindowDimensions } from '../../../utils/hooks';
+import { eventTracker } from '../../../utils/helpers';
+import Help from '../Help';
+import Share from '../Share';
+// import delonghi from './store/delonghi';
+import FlatForm from '../Flatform/Flatform';
 import {
   Container,
   PlayerWrapper,
@@ -8,29 +19,28 @@ import {
   CloseIcon,
   InnerImage,
 } from './AppWrapper.styled';
-import { Player, useThreekitInitStatus } from '@threekit-tools/treble';
-import Help from '../Help';
-import Share from '../Share';
-import FullScreen from '../FullScreen';
-// import delonghi from './store/delonghi';
-import { useContext, useEffect } from 'react';
-import { ModalContext } from '../../../context/modalContext';
-import { useWindowDimensions } from '../../../utils/hooks';
-import FlatForm from '../Flatform/Flatform';
-import { useAttribute } from '@threekit-tools/treble/dist';
-import { useThreekitSelector } from '@threekit-tools/treble/dist/store';
 
 const AppWrapper = () => {
-  const { openModal, closeModal } = useContext(ModalContext);
+  const { modal, openModal, closeModal } = useContext(ModalContext);
   const hasPlayerLoaded = useThreekitInitStatus();
   const [inputAttribute, setInputFocus] = useAttribute('Camera Text');
+  const [hasArButton, setHasArButton] = useState(null);
   const product = useThreekitSelector((s) => s.product);
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
-    if (hasPlayerLoaded) openModal('PLAYER_HELP_MODAL', { closeModal });
+    if (hasPlayerLoaded) {
+      openModal('PLAYER_HELP_MODAL', { closeModal }); // open helper modal on init
+    }
   }, [hasPlayerLoaded]);
-
-  const { width } = useWindowDimensions();
+  useEffect(() => {
+    const arButton = document.querySelector('.arButton___2g-fQ');
+    if (!modal && !hasArButton && arButton) {
+      // AR button is not visible while helper modal is on. Add eventTracker on modal close
+      setHasArButton(true);
+      arButton.addEventListener('click', () => eventTracker('share'), false);
+    }
+  }, [modal]);
 
   const getPlayerHeight = () => {
     if (width > 700 && width < 900) {
@@ -58,9 +68,8 @@ const AppWrapper = () => {
           </Player.TopCenterWidgets>
           <HelperButtonWrapper>
             <IconsWrapper>
-              <Help />
               <Share />
-              {/* <FullScreen /> */}
+              {/* <Help /> */}
             </IconsWrapper>
           </HelperButtonWrapper>
         </PlayerWrapper>

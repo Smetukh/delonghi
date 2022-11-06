@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useThreekitInitStatus } from '@threekit-tools/treble';
-import { COPIED_MESSAGE } from '../../constants';
 import ShareIcon from '../../assets/svg/Share';
 import { ShareMessage } from './Share.styled';
 import { eventTracker } from '../../utils/helpers';
@@ -17,10 +16,10 @@ export default function Share(props) {
     }
   }, [messageVisible]);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     eventTracker('share');
-    const copiedLink = window.location.href;
-    navigator.clipboard.writeText(copiedLink);
+    const configuration = await window.threekit.treble.saveConfiguration();
+    navigator.clipboard.writeText(configuration?.resumableUrl);
     setIsMessageVisible(true);
   };
 
