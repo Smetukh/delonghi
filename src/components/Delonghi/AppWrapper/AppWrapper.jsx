@@ -69,7 +69,7 @@ const AppWrapper = () => {
           <HelperButtonWrapper>
             <IconsWrapper>
               <Share />
-              {/* <Help /> */}
+              <Help />
             </IconsWrapper>
           </HelperButtonWrapper>
         </PlayerWrapper>
