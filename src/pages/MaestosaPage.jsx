@@ -52,6 +52,7 @@ const MaestosaPage = ({ productData, attributes }) => {
         productData={productData}
       />
       <DotPattern
+        bodyColorValue={bodyColorValue}
         attribute={attributes['Dot Pattern']}
         productData={productData}
         disabledColors={disabledDotPatterns}

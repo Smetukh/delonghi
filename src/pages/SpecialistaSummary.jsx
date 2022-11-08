@@ -52,7 +52,7 @@ const SpecialistaSummary = ({
       />
       {!!textAttribute.value && tagAttribute.value === 'On' && (
         <NonSwatchComponent
-          label={'Metal Tag'}
+          label={'Write your text'}
           value={`"${textAttribute.value}"`}
         />
       )}

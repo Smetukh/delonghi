@@ -6,7 +6,7 @@
     "@emotion/styled": "^11.10.5",
     "@mui/lab": "^5.0.0-alpha.105",
     "@mui/material": "^5.10.11",
-    "@threekit-tools/treble": "0.0.86",
+    "@threekit-tools/treble": "^0.0.88",
     "@threekit-tools/treble-scripts": "^0.0.44",
     "cors": "2.8.5",
     "eslint": "8.23.0",

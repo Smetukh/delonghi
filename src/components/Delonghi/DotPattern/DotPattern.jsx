@@ -1,10 +1,6 @@
-import { useThreekitSelector } from '@threekit-tools/treble/dist/store';
+import { useEffect } from 'react';
 import DiagonalLine from '../../../assets/svg/DiagonalLine';
-import { colorRules } from '../../../constants/color-rules';
-import {
-  SWATCH_COLOR_CODES,
-  SWATCH_COLOR_NAMES,
-} from '../../../constants/colors';
+import { SWATCH_COLOR_CODES } from '../../../constants/colors';
 import {
   ColorButton,
   ColorContainer,
@@ -12,12 +8,9 @@ import {
 } from '../ColorSwatch/ColorSwatch.styled';
 import { Switch } from '../Switch1/Switch';
 import {
-  ColorButtonsTitle,
   Container,
   SelectedColor,
   ColorsWrapper,
-  ImageButton,
-  InnerImageBlock,
   SelectedValue,
   SwitchWrapper,
 } from './DotPattern.styled';
@@ -26,10 +19,14 @@ const DotPattern = ({
   productData,
   attribute = { values: [] },
   disabledColors,
+  bodyColorValue,
 }) => {
   if (!attribute) return <></>;
 
-  // const attributes = useThreekitSelector((s) => s.attributes);
+  useEffect(() => {
+    // rule: assign any dot pattern if body color is STAINLESS STEEL
+    if (bodyColorValue === 'STAINLESS STEEL') switchDotPattern(true);
+  }, [bodyColorValue]);
 
   // separate Dot pattern name 'NO PATTERN' and set it as a switcher (On/Off)
   const attributeName = attribute.name;
