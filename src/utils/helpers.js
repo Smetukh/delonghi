@@ -1,4 +1,10 @@
+import i18next from 'i18next';
 import { eventName, eventCategory, eventLabel } from '../constants/analytics';
+import {
+  OBSCENE_DATA_API,
+  PRODUCTS_DATA_API,
+  TRANSLATIONS_DATA_API,
+} from '../constants/api';
 
 const eventTracker = (eventAction) => {
   console.log(
@@ -15,4 +21,58 @@ const eventTracker = (eventAction) => {
     });
 };
 
-export { eventTracker };
+const onFetchDataTables = async () => {
+  const dataTables = await Promise.all(
+    [PRODUCTS_DATA_API, OBSCENE_DATA_API, TRANSLATIONS_DATA_API].map(
+      async (url) => {
+        const resp = await fetch(url);
+        return resp.json();
+      }
+    )
+  );
+  const obscene = dataTables[1].rows.map(({ value: { phrase } }) => phrase);
+
+  let productsData = {};
+  dataTables[0].rows.forEach(
+    ({
+      value: {
+        Product,
+        'Section (Design name)': attributeName,
+        'Section (final)': attributeKey,
+        'Finish code (Design name)': designColorCode,
+        'Attribute (final)': finalColorCode,
+        'Attribute (name)': finalColorName,
+      },
+    }) => {
+      if (!(Product in productsData)) productsData[Product] = {};
+      if (!(attributeName in productsData[Product]))
+        productsData[Product][attributeName] = {};
+      let productAttribute = productsData[Product][attributeName];
+      productAttribute.key = attributeKey;
+      productAttribute[designColorCode] = {
+        finalColorCode,
+        finalColorName,
+      };
+    }
+  );
+
+  const rawTranslations = dataTables[2].rows;
+
+  const translations = rawTranslations.reduce(
+    (acc, { value: { key, en, it, de } }) => {
+      return {
+        en: { ...acc.en, [key]: en },
+        it: { ...acc.it, [key]: it },
+        de: { ...acc.de, [key]: de },
+      };
+    },
+    { en: {}, it: {}, de: {} }
+  );
+  Object.keys(translations).forEach((lang) => {
+    i18next.addResourceBundle(lang, 'translation', translations[lang]);
+  });
+
+  return { productsData, obscene };
+};
+
+export { eventTracker, onFetchDataTables };

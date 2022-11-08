@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Player, useThreekitInitStatus } from '@threekit-tools/treble';
 import { useThreekitSelector } from '@threekit-tools/treble/dist/store';
 import { useAttribute } from '@threekit-tools/treble/dist';
@@ -27,6 +28,14 @@ const AppWrapper = () => {
   const [hasArButton, setHasArButton] = useState(null);
   const product = useThreekitSelector((s) => s.product);
   const { width } = useWindowDimensions();
+
+  const { i18n, t } = useTranslation();
+
+  useEffect(() => {
+    i18n.changeLanguage(window.language);
+  }, [window.language]);
+
+  document.body.dir = i18n.dir();
 
   useEffect(() => {
     if (hasPlayerLoaded) {
@@ -79,7 +88,7 @@ const AppWrapper = () => {
       >
         <CloseIcon />
       </CloseIconBlock>
-      <FlatForm />
+      <FlatForm t={t} />
     </Container>
   );
 };

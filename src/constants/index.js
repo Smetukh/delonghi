@@ -55,5 +55,7 @@ export const assetId =
 export const titleDataTableId = '10cf41dd-6cee-41ea-a6a1-5f8c4ca59fdd';
 export const obsceneDataTableId = 'e25f1681-3b49-4595-95ef-a54f3474d9a6';
 export const PRODUCTS_DATA_TABLE_ID = '9aecd028-899b-428f-a89d-80709bb9f22c';
+export const TRANSLATIONS_DATA_TABLE_ID =
+  '02f61ce5-15a6-4947-a0c5-83de0402afe9';
 
 export const inputTextMaxLength = 30;

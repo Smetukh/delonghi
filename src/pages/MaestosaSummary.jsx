@@ -53,18 +53,26 @@ const MaestosaSummary = ({
         }
       />
       {dotPatternAttribute.value !== 'NO PATTERN' && (
-        <SummaryDotItem>
-          <SummaryLabel>{dotPatternAttribute.label}</SummaryLabel>
-          <InnerImageBlock
-            backgroundImage={SWATCH_COLOR_CODES[dotPatternAttribute.value]}
-          ></InnerImageBlock>
-          <Value>
-            {
-              productData[dotPatternAttribute.name]?.[dotPatternAttribute.value]
-                ?.finalColorName
-            }
-          </Value>
-        </SummaryDotItem>
+        <SummarySwatch
+          label={dotPatternAttribute.name}
+          value={dotPatternAttribute.value}
+          colorName={
+            productData[dotPatternAttribute.name][dotPatternAttribute.value]
+              .finalColorName
+          }
+        />
+        // <SummaryDotItem>
+        //   <SummaryLabel>{dotPatternAttribute.label}</SummaryLabel>
+        //   <InnerImageBlock
+        //     backgroundImage={SWATCH_COLOR_CODES[dotPatternAttribute.value]}
+        //   ></InnerImageBlock>
+        //   <Value>
+        //     {
+        //       productData[dotPatternAttribute.name]?.[dotPatternAttribute.value]
+        //         ?.finalColorName
+        //     }
+        //   </Value>
+        // </SummaryDotItem>
       )}
       {!!textAttribute.value && tagAttribute.value === 'On' && (
         <NonSwatchComponent

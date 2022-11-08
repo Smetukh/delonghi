@@ -9,10 +9,10 @@ import MaestosaPage from '../../../pages/MaestosaPage';
 import SpecialistaPage from '../../../pages/SpecialistaPage';
 import MaestosaSummary from '../../../pages/MaestosaSummary';
 import SpecialistaSummary from '../../../pages/SpecialistaSummary';
-import { OBSCENE_DATA_API, PRODUCTS_DATA_API } from '../../../constants/api';
 import { BEARER_TOKEN } from '../../../constants';
+import { onFetchDataTables } from '../../../utils/helpers';
 
-const Flatform = () => {
+const Flatform = ({ t }) => {
   const [attributes] = useConfigurator();
   if (!attributes) return null;
   const product = useThreekitSelector((s) => s.product);
@@ -23,47 +23,19 @@ const Flatform = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const dataTables = await Promise.all(
-        [PRODUCTS_DATA_API, OBSCENE_DATA_API].map(async (url) => {
-          const resp = await fetch(url);
-          return resp.json();
-        })
-      );
-      const obscene = dataTables[1].rows.map(({ value: { phrase } }) => phrase);
-      setObsceneList(obscene);
-
-      let productsData = {};
-      dataTables[0].rows.forEach(
-        ({
-          value: {
-            Product,
-            'Section (Design name)': attributeName,
-            'Section (final)': attributeKey,
-            'Finish code (Design name)': designColorCode,
-            'Attribute (final)': finalColorCode,
-            'Attribute (name)': finalColorName,
-          },
-        }) => {
-          if (!(Product in productsData)) productsData[Product] = {};
-          if (!(attributeName in productsData[Product]))
-            productsData[Product][attributeName] = {};
-          let productAttribute = productsData[Product][attributeName];
-          productAttribute.key = attributeKey;
-          productAttribute[designColorCode] = {
-            finalColorCode,
-            finalColorName,
-          };
-        }
-      );
-      setProductsData(productsData);
+      if (!!BEARER_TOKEN) {
+        const data = await onFetchDataTables();
+        const { productsData, obscene } = data;
+        setProductsData(productsData);
+        setObsceneList(obscene);
+      }
     };
-
-    if (!!BEARER_TOKEN) fetchData();
+    fetchData();
   }, [BEARER_TOKEN]);
 
   if (!Object.keys(attributes).length) return <></>;
 
-  const productData = productsData[productName] || {};
+  const productData = productsData?.[productName] || {};
   const commonSummaryProps = {
     productData,
     bodyAttribute: attributes['Body Metal Wrapping'],
@@ -95,7 +67,7 @@ const Flatform = () => {
   const tabs = [
     {
       id: 1,
-      tabTitle: 'Configurator',
+      tabTitle: t('configurator'),
       content: (
         <ProductPage
           ProductComponent={ProductComponent}
@@ -108,7 +80,7 @@ const Flatform = () => {
     },
     {
       id: 2,
-      tabTitle: 'Configuration Summary',
+      tabTitle: t('configurationSummary'),
       content: <ProductSummary {...products[productName].summaryProps} />,
     },
   ];
