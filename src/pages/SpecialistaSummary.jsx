@@ -18,6 +18,7 @@ const NonSwatchComponent = ({ label, value }) => {
 };
 
 const SpecialistaSummary = ({
+  t,
   productData,
   bodyAttribute,
   chromeDetailsAttribute,
@@ -28,31 +29,23 @@ const SpecialistaSummary = ({
   return (
     <SummaryPageWrapper>
       <SummarySwatch
-        label={bodyAttribute.name}
+        label={t(bodyAttribute.name)}
         value={bodyAttribute.value}
-        colorName={
-          productData[bodyAttribute.name][bodyAttribute.value].finalColorName
-        }
+        colorName={t(bodyAttribute.value)}
       />
       <SummarySwatch
-        label={chromeDetailsAttribute.name}
+        label={t(chromeDetailsAttribute.name)}
         value={chromeDetailsAttribute.value}
-        colorName={
-          productData[chromeDetailsAttribute.name][chromeDetailsAttribute.value]
-            .finalColorName
-        }
+        colorName={t(chromeDetailsAttribute.value)}
       />
       <SummarySwatch
-        label={woodKitAttribute.name}
+        label={t(woodKitAttribute.name)}
         value={woodKitAttribute.value}
-        colorName={
-          productData[woodKitAttribute.name][woodKitAttribute.value]
-            .finalColorName
-        }
+        colorName={t(woodKitAttribute.value)}
       />
       {!!textAttribute.value && tagAttribute.value === 'On' && (
         <NonSwatchComponent
-          label={'Write your text'}
+          label={t('writeYourText')}
           value={`"${textAttribute.value}"`}
         />
       )}

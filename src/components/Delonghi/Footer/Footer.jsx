@@ -16,7 +16,7 @@ import { eventTracker } from '../../../utils/helpers';
 const Footer = (props) => {
   const [isAgree, setIsAgree] = useState(false);
   const { openModal, closeModal } = useContext(ModalContext);
-  const { productData, ...attributes } = props;
+  const { t, productData, ...attributes } = props;
   const onCheckboxChange = () => {
     setIsAgree(!isAgree);
   };
@@ -126,24 +126,24 @@ const Footer = (props) => {
             key={Math.random()}
           />
           <label>
-            I have read and agree to the{' '}
+            {t('termsAndConditions0')}
             <TermsAndCond
               onClick={() =>
                 openModal('TERMS_AND_CONDITIONS', {
+                  t,
                   closeModal,
                   setIsAgree,
                 })
               }
             >
-              terms and conditions
+              {' '}
+              {t('termsAndConditions1')}
             </TermsAndCond>
-            . I understand that shipping timings are not guaranteed, the final
-            output could be different from the model and I won’t be able to
-            return the product.
+            {t('termsAndConditions2')}
           </label>
         </InputContainer>
         <FooterButton disabled={!isAgree} onClick={addToCart}>
-          Add to basket
+          {t('addToBasket')}
         </FooterButton>
       </CheckboxAndButtonContainer>
     </FooterWrapper>

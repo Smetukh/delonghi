@@ -10,7 +10,7 @@ import {
 } from '../TextInput/TextInput.styled';
 import { inputTextMaxLength } from '../../../constants';
 
-export const TextInput = (props) => {
+export const TextInput = ({ t, obsceneList }) => {
   const [attribute, setAttribute] = useAttribute('text');
   const [inputValue, setInputValue] = useState(attribute.value);
   const [, setInputFocus] = useAttribute('Camera Text');
@@ -21,7 +21,7 @@ export const TextInput = (props) => {
   const onSubmitClick = () => {
     let warningValue = false;
     inputValue.split(' ').forEach((word) => {
-      if (props.obsceneList.includes(word.toLowerCase())) warningValue = true;
+      if (obsceneList.includes(word.toLowerCase())) warningValue = true;
     });
     if (warningValue) {
       setWarning(warningValue);
@@ -44,7 +44,7 @@ export const TextInput = (props) => {
   };
   return (
     <InputWrapper>
-      <InputTitle>Add text:</InputTitle>
+      <InputTitle>{t('addText')}</InputTitle>
       <InputButtonWrapper>
         <Input
           autoFocus
@@ -61,18 +61,11 @@ export const TextInput = (props) => {
           // disabled={has30Characters}
           onClick={onSubmitClick}
         >
-          Submit
+          {t('submit')}
         </SubmitButton>
       </InputButtonWrapper>
-      {hasWarning && (
-        <SubTitle>
-          *Some of the words that you are submitting are concidered as a profane
-          language. please remove them and try again
-        </SubTitle>
-      )}
-      {has30Characters && (
-        <SubTitle>*Text cannot be longer than 30 characters</SubTitle>
-      )}
+      {hasWarning && <SubTitle>{t('profaneLanguage')}</SubTitle>}
+      {has30Characters && <SubTitle>{t('longer30Char')}</SubTitle>}
     </InputWrapper>
   );
 };

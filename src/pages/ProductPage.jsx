@@ -11,6 +11,7 @@ const ProductPage = ({
   attributes,
   obsceneList,
   ProductComponent,
+  t,
 }) => {
   const [textSwitchAttribute, setTextSwitchAttribute] = useAttribute(
     attributes['Write Text'].name
@@ -43,15 +44,22 @@ const ProductPage = ({
         disabledColors={disabledBodyColors}
         attribute={attributes['Body Metal Wrapping']}
         productData={productData}
+        t={t}
       />
-      <ProductComponent productData={productData} attributes={attributes} />
+      <ProductComponent
+        productData={productData}
+        attributes={attributes}
+        t={t}
+      />
       <Switch
         isSelected={textSwitchAttribute.value === 'On'}
         setValue={setTextSwitch}
-        title={'Write your text'}
+        title={t('writeYourText')}
+        t={t}
       />
       {textSwitchAttribute.value === 'On' && (
         <TextInput
+          t={t}
           attribute={attributes['text']}
           obsceneList={obsceneList}
           title="Add text"

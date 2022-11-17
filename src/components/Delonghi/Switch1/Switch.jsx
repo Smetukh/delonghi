@@ -10,7 +10,7 @@ import {
 } from './Switch.styled';
 import Check from '../../../assets/svg/Check';
 
-export const Switch = ({ isSelected, setValue, title, disabled }) => {
+export const Switch = ({ isSelected, setValue, title, disabled, t }) => {
   // const [attribute, setAttribute] = useAttribute(props.attribute.name);
   // if (!attribute) return <></>;
 
@@ -18,7 +18,7 @@ export const Switch = ({ isSelected, setValue, title, disabled }) => {
 
   return (
     <Container>
-      {!!title && <SwitchTitle>{title}</SwitchTitle>}
+      {!!title && <SwitchTitle>{t(title)}</SwitchTitle>}
       <SwitcherLabel>
         <HiddenInput
           disabled={disabled}

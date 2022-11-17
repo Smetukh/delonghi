@@ -20,6 +20,7 @@ const DotPattern = ({
   attribute = { values: [] },
   disabledColors,
   bodyColorValue,
+  t,
 }) => {
   if (!attribute) return <></>;
 
@@ -58,11 +59,15 @@ const DotPattern = ({
             setValue={switchDotPattern}
             isSelected={!dotPatternOffObj.selected}
             disabled={disabledColors.length === attributeValues.length}
+            t={t}
           />
         </SwitchWrapper>
         <SelectedValue>
-          {productData[attributeName]?.[attributeValue]?.finalColorName ||
-            attributeValue}
+          {t(
+            attributeValue
+            // productData[attributeName]?.[attributeValue]?.finalColorName ||
+            //   attributeValue
+          )}
         </SelectedValue>
       </SelectedColor>
       <ColorsWrapper hasDotPattern={hasDotPattern}>

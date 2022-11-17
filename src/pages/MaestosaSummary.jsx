@@ -1,5 +1,5 @@
 import React from 'react';
-import { SWATCH_COLOR_CODES, SWATCH_COLOR_NAMES } from '../constants/colors';
+import { SUMMARY_COLOR_NAMES } from '../constants/colors';
 import SummarySwatch from './SummarySwatch';
 import {
   SummaryLabel,
@@ -21,62 +21,42 @@ const NonSwatchComponent = ({ label, value }) => {
 };
 
 const MaestosaSummary = ({
+  t,
   bodyAttribute,
   topCoverAttribute,
   chromeDetailsAttribute,
   dotPatternAttribute,
   textAttribute,
   tagAttribute,
-  productData,
 }) => {
   return (
     <SummaryPageWrapper>
       <SummarySwatch
-        label={bodyAttribute.name}
+        label={t(bodyAttribute.name)}
         value={bodyAttribute.value}
-        colorName={
-          productData[bodyAttribute.name][bodyAttribute.value].finalColorName
-        }
+        colorName={t(bodyAttribute.value)}
       />
       {topCoverAttribute?.value === 'Metal' && (
         <NonSwatchComponent
-          label={topCoverAttribute.label}
-          value={SWATCH_COLOR_NAMES[topCoverAttribute.value]}
+          label={t(topCoverAttribute.label)}
+          value={t(SUMMARY_COLOR_NAMES[topCoverAttribute.value])}
         />
       )}
       <SummarySwatch
-        label={chromeDetailsAttribute.name}
+        label={t(chromeDetailsAttribute.name)}
         value={chromeDetailsAttribute.value}
-        colorName={
-          productData[chromeDetailsAttribute.name][chromeDetailsAttribute.value]
-            .finalColorName
-        }
+        colorName={t(chromeDetailsAttribute.value)}
       />
       {dotPatternAttribute.value !== 'NO PATTERN' && (
         <SummarySwatch
-          label={dotPatternAttribute.name}
+          label={t(dotPatternAttribute.name)}
           value={dotPatternAttribute.value}
-          colorName={
-            productData[dotPatternAttribute.name][dotPatternAttribute.value]
-              .finalColorName
-          }
+          colorName={t(dotPatternAttribute.value)}
         />
-        // <SummaryDotItem>
-        //   <SummaryLabel>{dotPatternAttribute.label}</SummaryLabel>
-        //   <InnerImageBlock
-        //     backgroundImage={SWATCH_COLOR_CODES[dotPatternAttribute.value]}
-        //   ></InnerImageBlock>
-        //   <Value>
-        //     {
-        //       productData[dotPatternAttribute.name]?.[dotPatternAttribute.value]
-        //         ?.finalColorName
-        //     }
-        //   </Value>
-        // </SummaryDotItem>
       )}
       {!!textAttribute.value && tagAttribute.value === 'On' && (
         <NonSwatchComponent
-          label={'Write your text'}
+          label={t('writeYourText')}
           value={`"${textAttribute.value}"`}
         />
       )}

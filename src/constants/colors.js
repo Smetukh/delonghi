@@ -75,59 +75,7 @@ export const SWATCH_COLOR_CODES = {
   'BLACK + GREY LC BW 62/M/PM': GREY_LC_BW,
 };
 
-export const SWATCH_COLOR_NAMES = {
-  // 'WHITE NS WH 86/PE': 'White',
-  // 'BLACK DL BK 49/M/PE': 'Black',
-  // 'BROWN DL BW 30/M/PE': 'Brown',
-  // 'GREEN DL GR 42/PG': 'Green',
-  // 'RED DL RD 45': 'Red',
-  // 'BEIGE DL BG 25/PG': 'Beige',
-  // 'Black chrome plating': 'Black chrome plating',
-  // 'Gold chrome plating': 'Gold chrome plating',
-  // 'Standard chrome plating': 'Standard chrome plating',
-  // Oak: 'Oak',
-  // Mahogany: 'Mahogany',
-  // Off: 'None',
-
-  // Maestosa Body
-  // 'BLACK TR BK 50/P': 'Black',
-  // 'BROWN NS BW 87/M/PM': 'Brown',
-  // 'GREEN DL GR 31': 'GREEN_DL_GR_31',
-  // 'GREEN DL GR 84/PE': 'GREEN_DL_GR_84_PE',
-  // 'RED DL RD 34/PE': 'Red',
-  // 'YELLOW DL YE 78/PE': 'Yellow',
-  // 'SILVER AT BG 50/M/PE': 'SILVER_AT_BG_50_M_PE',
-  // 'GREY LC BW 62/M/PM': 'Grey',
-  // 'SILVER LC RD 30/M/PE': 'SILVER_DL_RD_30_M_PE',
-  // 'SILVER DL YE 45/M/PEG': 'SILVER_DL_YE_45_M_PEG',
-  // 'WHITE NS WH 15/PE': 'White',
-
-  // Maestosa Dot Pattern
-  // 'WHITE NS WH 15/PE': 'White',
-  // 'YELLOW DL YE 78/PE': 'Yellow',
-  // 'RED DL RD 34/PE': 'Red',
-  // 'GREEN DL GR 84/PE': 'GREEN_DL_GR',
-  // 'GREEN DL GR 31': 'GREEN_DL',
-  // 'SILVER DL YE 45/M/PEG': 'SILVER_DL_YE',
-  // 'SILVER LC RD 30/M/PE': 'SILVER_LC_RD',
-  // 'BROWN NS BW': 'Brown',
-  // 'SILVER AT BG': 'SILVER_AT_BG',
-  // 'GREY LC BW': 'Grey',
-
-  // Top Glossy
-  Color: 'No',
-  Metal: 'Yes',
-};
-
-export const SWATCH_IMAGE_NAMES = {
-  // 'WHITE NS WH 15/PE': WHITE_NS_WH,
-  // 'YELLOW DL YE 78/PE': YELLOW_DL_YE,
-  // 'RED DL RD 34/PE': RED_DL_RD,
-  // 'GREEN DL GR 84/PE': GREEN_DL_GR,
-  // 'GREEN DL GR 31': GREEN_DL,
-  // 'SILVER DL YE 45/M/PEG': SILVER_DL_YE,
-  // 'SILVER LC RD 30/M/PE': SILVER_LC_RD,
-  // 'BROWN NS BW': BROWN_NS_BW,
-  // 'SILVER AT BG': SILVER_AT_BG,
-  // 'GREY LC BW': GREY_LC_BW,
+export const SUMMARY_COLOR_NAMES = {
+  Color: 'no',
+  Metal: 'yes',
 };

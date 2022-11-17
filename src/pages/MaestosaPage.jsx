@@ -6,7 +6,7 @@ import { useAttribute } from '@threekit-tools/treble';
 import DotPattern from '../components/Delonghi/DotPattern/DotPattern';
 import { colorRules } from '../constants/color-rules';
 
-const MaestosaPage = ({ productData, attributes }) => {
+const MaestosaPage = ({ productData, attributes, t }) => {
   const [topCoverAttribute, setTopCoverAttribute] = useAttribute(
     'Glossy Stainless Steel Top cover'
   );
@@ -44,18 +44,21 @@ const MaestosaPage = ({ productData, attributes }) => {
         }
         isSelected={topCoverAttributeValue === 'Metal'}
         setValue={setTopCover}
-        title={'Glossy Stainless Steel Top Cover:'}
+        title={t(topCoverAttribute.label)}
+        t={t}
       />
       <ColorSwatch
         disabledColors={disabledChromeColors}
         attribute={chromeDetailsAttribute}
         productData={productData}
+        t={t}
       />
       <DotPattern
         bodyColorValue={bodyColorValue}
         attribute={attributes['Dot Pattern']}
         productData={productData}
         disabledColors={disabledDotPatterns}
+        t={t}
       />
     </FormPageWrapper>
   );

@@ -12,7 +12,7 @@ import SpecialistaSummary from '../../../pages/SpecialistaSummary';
 import { BEARER_TOKEN } from '../../../constants';
 import { onFetchDataTables } from '../../../utils/helpers';
 
-const Flatform = ({ t }) => {
+const Flatform = ({ t = (phrase) => phrase }) => {
   const [attributes] = useConfigurator();
   if (!attributes) return null;
   const product = useThreekitSelector((s) => s.product);
@@ -37,6 +37,7 @@ const Flatform = ({ t }) => {
 
   const productData = productsData?.[productName] || {};
   const commonSummaryProps = {
+    t,
     productData,
     bodyAttribute: attributes['Body Metal Wrapping'],
     chromeDetailsAttribute: attributes['Chrome Details'],
@@ -75,6 +76,7 @@ const Flatform = ({ t }) => {
           attributes={attributes}
           obsceneList={obsceneList}
           productData={productData}
+          t={t}
         />
       ),
     },
@@ -93,6 +95,7 @@ const Flatform = ({ t }) => {
         {...{
           ...products[productName].summaryProps,
           productData,
+          t,
         }}
       />
     </FlatFormWrapper>

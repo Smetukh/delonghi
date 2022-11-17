@@ -16,6 +16,7 @@ export const ColorSwatch = ({
   title,
   attribute = { values: [] },
   productData,
+  t,
 }) => {
   if (!attribute) return <></>;
 
@@ -26,12 +27,17 @@ export const ColorSwatch = ({
   return (
     <Container>
       <ColorButtonsTitle>
-        {title || attributeName}:
+        {t(`${title || attributeName}`)}:
         <SelectedColor>
           {' '}
           <SelectedValue>
-            {productData[attributeName]?.[attributeValue]?.finalColorName ||
-              attributeValue}
+            {t(
+              attributeValue
+              // `${
+              //   productData[attributeName]?.[attributeValue]?.finalColorName ||
+              //   attributeValue
+              // }`
+            )}
           </SelectedValue>
         </SelectedColor>
       </ColorButtonsTitle>

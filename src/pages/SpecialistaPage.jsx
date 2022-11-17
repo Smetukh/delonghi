@@ -2,7 +2,7 @@ import React from 'react';
 import { ColorSwatch } from '../components/Delonghi/ColorSwatch/ColorSwatch';
 import { FormPageWrapper } from './Pages.styled';
 
-const SpecialistaPage = ({ titleList, attributes, productData }) => {
+const SpecialistaPage = ({ t, titleList, attributes, productData }) => {
   const swatches = Object.values(attributes).filter((item) => {
     return (
       item.type === 'String' &&
@@ -14,6 +14,7 @@ const SpecialistaPage = ({ titleList, attributes, productData }) => {
     <FormPageWrapper>
       {swatches.map((item) => (
         <ColorSwatch
+          t={t}
           attribute={item}
           key={item.name}
           titleList={titleList}

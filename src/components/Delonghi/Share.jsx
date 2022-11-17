@@ -30,7 +30,7 @@ export default function Share(props) {
       <button type="button" onClick={handleClick} className="trbl-wgt-btn">
         <ShareIcon style={{ width: '20px', height: '20px' }} />
       </button>
-      {messageVisible && <ShareMessage>Link Copied</ShareMessage>}
+      {messageVisible && <ShareMessage>{props.t('linkCopied')}</ShareMessage>}
     </>
   );
 }

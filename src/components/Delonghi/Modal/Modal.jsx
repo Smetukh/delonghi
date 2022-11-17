@@ -9,7 +9,6 @@ const Modal = () => {
     useContext(ModalContext);
   const isPlayerModal = modalName.includes('PLAYER');
   if (modal) {
-    console.log(modalName);
     return isPlayerModal
       ? ReactDOM.createPortal(
           <HelpModal closeModal={closeModal} />,

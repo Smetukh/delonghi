@@ -43,11 +43,25 @@ const AppWrapper = () => {
     }
   }, [hasPlayerLoaded]);
   useEffect(() => {
-    const arButton = document.querySelector('.arButton___2g-fQ');
+    const arButton = document.querySelector('[class^="arButton"]');
     if (!modal && !hasArButton && arButton) {
       // AR button is not visible while helper modal is on. Add eventTracker on modal close
       setHasArButton(true);
-      arButton.addEventListener('click', () => eventTracker('share'), false);
+      arButton.addEventListener(
+        'click',
+        () => {
+          eventTracker('share');
+          setTimeout(() => {
+            document
+              .querySelectorAll('[class^="header"]')
+              .forEach((el) => (el.innerHTML = t('viewModalTitle')));
+            document
+              .querySelectorAll('[class^="header"] + [class^="content"]')
+              .forEach((el) => (el.innerHTML = t('viewModalContent')));
+          });
+        },
+        false
+      );
     }
   }, [modal]);
 
@@ -77,7 +91,7 @@ const AppWrapper = () => {
           </Player.TopCenterWidgets>
           <HelperButtonWrapper>
             <IconsWrapper>
-              <Share />
+              <Share t={t} />
               <Help />
             </IconsWrapper>
           </HelperButtonWrapper>
