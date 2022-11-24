@@ -9,4 +9,5 @@ export default {
   locale: undefined,
   allowMobileVerticalOrbit: false,
   publishStage: 'draft',
+  allowMobileVerticalOrbit: true,
 };
