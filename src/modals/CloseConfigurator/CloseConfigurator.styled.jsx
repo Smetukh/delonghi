@@ -23,7 +23,8 @@ export const ModalContent = styled.div`
 `;
 
 export const ButtonWrapper = styled(Button)`
-  width: 207px;
+  width: 45%;
+  min-width: 50px;
 `;
 
 export const ButtonsContainer = styled.div`

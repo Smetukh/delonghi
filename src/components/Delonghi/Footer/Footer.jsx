@@ -102,7 +102,7 @@ const Footer = (props) => {
       });
       const content = await rawResponse.json();
 
-      console.log('Add to Cart content', content);
+      console.log('Add to Cart content', content); // TODO: set correct API url
     } catch (err) {
       console.log(
         `%cerr Add to Cart = `,

@@ -33,7 +33,7 @@ const ProductPage = ({
       (chromeDetailsColors[bodyColor] || []).includes(dotPatternValue) ||
       // case: gold chrome does not match yellow body colors
       (bodyColor === 'YELLOW DL YE 78/PE' &&
-        chromeDetailsValue === 'Gold chrome plating')
+        chromeDetailsValue === 'GOLD CHROME')
     )
       disabledBodyColors = [...disabledBodyColors, bodyColor];
   });

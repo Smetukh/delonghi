@@ -28,13 +28,16 @@ const MaestosaPage = ({ productData, attributes, t }) => {
 
   Object.keys(colorRules).forEach((chromeColor) => {
     // build an array of disabled Chrome Colors
-    if (colorRules[chromeColor][bodyColorValue].includes(dotPatternValue))
+    if (
+      colorRules[chromeColor][bodyColorValue].includes(dotPatternValue) ||
+      // case: gold chrome does not match yellow body colors
+      (bodyColorValue === 'YELLOW DL YE 78/PE' && chromeColor === 'GOLD CHROME')
+    )
       disabledChromeColors = [...disabledChromeColors, chromeColor];
   });
 
   const disabledDotPatterns =
     colorRules[chromeDetailsAttribute.value][bodyColorValue] || [];
-
   return (
     <FormPageWrapper>
       <Switch

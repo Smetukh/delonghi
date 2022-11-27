@@ -58,29 +58,19 @@ const DotPattern = ({
             title={attributeName}
             setValue={switchDotPattern}
             isSelected={!dotPatternOffObj.selected}
-            disabled={disabledColors.length === attributeValues.length}
+            disabled={
+              bodyColorValue === 'STAINLESS STEEL' ||
+              disabledColors.length === attributeValues.length
+            }
             t={t}
           />
         </SwitchWrapper>
-        <SelectedValue>
-          {t(
-            attributeValue
-            // productData[attributeName]?.[attributeValue]?.finalColorName ||
-            //   attributeValue
-          )}
-        </SelectedValue>
+        <SelectedValue>{t(attributeValue)}</SelectedValue>
       </SelectedColor>
       <ColorsWrapper hasDotPattern={hasDotPattern}>
         {attributeValues.map((item, i) => {
           const disabled = disabledColors.includes(item.value);
           return (
-            // <ImageButton key={i} selected={item.selected} disabled={disabled}>
-            //   <InnerImageBlock
-            //     disabled={disabled}
-            //     backgroundImage={SWATCH_COLOR_CODES[item.value]}
-            //     onClick={item.handleSelect}
-            //   ></InnerImageBlock>
-            // </ImageButton>
             <ColorContainer key={i} disabled={disabled}>
               <ColorButton selected={item.selected} disabled={disabled}>
                 <InnerColorBlock
