@@ -1,14 +1,14 @@
-import Beige from './Beige.png';
 import BlackChrome from './BlackChrome.png';
-import Black from './Black1.png';
-import Brown from './Brown.png';
 import GoldChrome from './GoldChrome.png';
-import Green from './Green.png';
+import StandardChrome from './StandardChrome.png';
+// import Beige from './Beige.png';
+// import Black from './Black1.png';
+// import Brown from './Brown.png';
+// import Green from './Green.png';
+// import Red from './Red.png';
+// import White from './White.png';
 import Mahogany from './Mahogany.png';
 import Oak from './Oak.png';
-import Red from './Red.png';
-import StandardChrome from './StandardChrome.png';
-import White from './White.png';
 import BROWN_NS_BW_87_M_PM from './BROWN_NS_BW_87_M_PM.png';
 import GREEN_DL_GR_31 from './GREEN_DL_GR_31.png';
 import GREEN_DL_GR_84_PE from './GREEN_DL_GR_84_PE.png';
@@ -35,17 +35,17 @@ import SILVER_LC_RD from './BLACK_SILVER_LC_RD.png';
 import YELLOW_DL_YE from './BLACK_YELLOW_DL_YE.png';
 
 export {
-  Beige,
   BlackChrome,
-  Black,
-  Brown,
   GoldChrome,
-  Green,
+  StandardChrome,
   Mahogany,
   Oak,
-  Red,
-  StandardChrome,
-  White,
+  // Beige,
+  // Black,
+  // Brown,
+  // Green,
+  // Red,
+  // White,
   BROWN_NS_BW,
   BLACK_TR_BK_50P,
   BROWN_NS_BW_87_M_PM,

@@ -8,11 +8,6 @@ import {
 } from './CloseConfigurator.styled';
 
 const CloseConfigurator = ({ closeModal }) => {
-  console.log(
-    `%cqqq closeModal = `,
-    'font-weight: bold;color: #90ee90',
-    closeModal
-  );
   return (
     <ModalWrapper>
       <ModalTitle>Close Product Configuration?</ModalTitle>
