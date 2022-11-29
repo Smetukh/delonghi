@@ -1,12 +1,12 @@
 import BlackChrome from './BlackChrome.png';
 import GoldChrome from './GoldChrome.png';
 import StandardChrome from './StandardChrome.png';
-// import Beige from './Beige.png';
-// import Black from './Black1.png';
-// import Brown from './Brown.png';
-// import Green from './Green.png';
-// import Red from './Red.png';
-// import White from './White.png';
+import Beige from './Beige.png';
+import Black from './Black1.png';
+import Brown from './Brown.png';
+import Green from './Green.png';
+import Red from './Red.png';
+import White from './White.png';
 import Mahogany from './Mahogany.png';
 import Oak from './Oak.png';
 import BROWN_NS_BW_87_M_PM from './BROWN_NS_BW_87_M_PM.png';
@@ -40,12 +40,12 @@ export {
   StandardChrome,
   Mahogany,
   Oak,
-  // Beige,
-  // Black,
-  // Brown,
-  // Green,
-  // Red,
-  // White,
+  Beige,
+  Black,
+  Brown,
+  Green,
+  Red,
+  White,
   BROWN_NS_BW,
   BLACK_TR_BK_50P,
   BROWN_NS_BW_87_M_PM,

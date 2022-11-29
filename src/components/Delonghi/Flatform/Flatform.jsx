@@ -23,7 +23,7 @@ const Flatform = ({ t = (phrase) => phrase }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!!BEARER_TOKEN) {
+      if (BEARER_TOKEN) {
         const data = await onFetchDataTables();
         const { productsData, obscene } = data;
         setProductsData(productsData);

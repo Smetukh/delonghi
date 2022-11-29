@@ -7,21 +7,17 @@ import {
   ButtonsContainer,
 } from './CloseConfigurator.styled';
 
-const CloseConfigurator = ({ closeModal }) => {
-  return (
-    <ModalWrapper>
-      <ModalTitle>Close Product Configuration?</ModalTitle>
-      <ModalContent>
-        If you close this page your product configuration will not be saved
-      </ModalContent>
-      <ButtonsContainer>
-        <ButtonWrapper>Close</ButtonWrapper>
-        <ButtonWrapper isDisabled={true} onClick={closeModal}>
-          Cancel
-        </ButtonWrapper>
-      </ButtonsContainer>
-    </ModalWrapper>
-  );
-};
+const CloseConfigurator = ({ t, closeModal }) => (
+  <ModalWrapper>
+    <ModalTitle>{t('closeConfiguration')}</ModalTitle>
+    <ModalContent>{t('closePage')}</ModalContent>
+    <ButtonsContainer>
+      <ButtonWrapper>{t('close')}</ButtonWrapper>
+      <ButtonWrapper isDisabled={true} onClick={closeModal}>
+        {t('cancel')}
+      </ButtonWrapper>
+    </ButtonsContainer>
+  </ModalWrapper>
+);
 
 export default CloseConfigurator;

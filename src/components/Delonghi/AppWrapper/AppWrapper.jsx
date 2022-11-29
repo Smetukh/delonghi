@@ -74,7 +74,6 @@ const AppWrapper = () => {
       return '384px'; // mobile
     }
   };
-
   return (
     <Container>
       <PlayerModalProvider
@@ -98,7 +97,7 @@ const AppWrapper = () => {
         </PlayerWrapper>
       </PlayerModalProvider>
       <CloseIconBlock
-        onClick={() => openModal('CLOSE_CONFIGURATOR', { closeModal })}
+        onClick={() => openModal('CLOSE_CONFIGURATOR', { t, closeModal })}
       >
         <CloseIcon />
       </CloseIconBlock>
