@@ -20,6 +20,9 @@ const ENV = {
 export const BEARER_TOKEN = ENV[TRBL_THREEKIT_ENV]?.token;
 export const ORG_ID = ENV[TRBL_THREEKIT_ENV]?.orgId;
 
+export const languageList = ['en', 'it', 'de'];
+export const fallbackLanguage = 'de';
+
 // TODO: REMOVE START - after testing mocked data sku to assetId mapping
 // TODO: handle missing/incorrect sku
 if (!window.DLG?.pdp?.sku) {
@@ -38,14 +41,15 @@ if (!window.DLG?.pdp?.sku) {
       CSRFToken:
         CSRFToken ||
         'invalid token invalid token invalid token invalid token invalid token ',
+      currentLanguageIsocode: fallbackLanguage,
     },
   };
 }
 // TODO: REMOVE END - after testing mocked data sku to assetId mapping
 
 const SKU_TO_ASSET_ID = {
-  '0132900001': '17192fd3-7f01-4473-a670-10d608b85f12',
-  '0132900002': '0b79a8d9-cfb4-4020-841a-ec649006a796',
+  '0132900001': 'b1d107fb-4efd-4f49-8961-398acd735386',
+  '0132900002': 'c7eb190e-0eb8-44f5-bcb3-49e4a37b84e2',
 };
 
 export const assetId =

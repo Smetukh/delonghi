@@ -4,15 +4,17 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import { ThemeProvider } from '@mui/material/styles';
+import { useTranslation } from 'react-i18next';
 
-const HelpModal = ({ closeModal }) => {
+const HelpModal = (props) => {
   const [currentTab, setCurrentTab] = React.useState('touch');
+  const { t } = useTranslation();
 
   const handleChange = (event, tab) => {
     setCurrentTab(tab);
   };
   return (
-    <Wrapper onClick={closeModal}>
+    <Wrapper onClick={props.closeModal}>
       <Image imageType={currentTab}>
         <TabsContainer
           onClick={(e) => {
@@ -22,8 +24,7 @@ const HelpModal = ({ closeModal }) => {
           <ThemeProvider theme={theme}>
             <TabContext value={currentTab}>
               <TabList onChange={handleChange}>
-                <Tab label="Touch" value="touch" />
-                <Tab label="Mouse" value="mouse" />
+                <Tab label={t('mouse')} value="mouse" />
               </TabList>
             </TabContext>
           </ThemeProvider>

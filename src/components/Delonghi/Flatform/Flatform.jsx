@@ -22,6 +22,7 @@ const Flatform = ({ t = (phrase) => phrase }) => {
   const [productsData, setProductsData] = useState([]);
 
   useEffect(() => {
+    // get initial table data
     const fetchData = async () => {
       if (BEARER_TOKEN) {
         const data = await onFetchDataTables();

@@ -31,16 +31,32 @@ const AppWrapper = () => {
 
   const { i18n, t } = useTranslation();
 
+  // TODO: remove on prod after testing
   useEffect(() => {
-    i18n.changeLanguage(window.language);
-  }, [window.language]);
+    i18n.changeLanguage(window.DLG?.config.currentLanguageIsocode);
+  }, [window.DLG?.config.currentLanguageIsocode]);
 
   document.body.dir = i18n.dir();
 
   useEffect(() => {
-    if (hasPlayerLoaded) {
-      openModal('PLAYER_HELP_MODAL', { closeModal }); // open helper modal on init
+    if (!hasPlayerLoaded) {
+      setTimeout(() => {
+        const loaderText = document.querySelector('[class^="loading"]');
+        loaderText.innerHTML = t('loading3D');
+      }, 4800);
     }
+    if (hasPlayerLoaded) {
+      const modalprops = {
+        closeModal,
+        t,
+      };
+      openModal('PLAYER_HELP_MODAL', modalprops); // open helper modal on init
+      setTimeout(() => {
+        const arButtonText = document.querySelector('[class^="arButtonText"]');
+        arButtonText.innerHTML = t('viewInYourSpace');
+      }, 930);
+    }
+    clearTimeout();
   }, [hasPlayerLoaded]);
   useEffect(() => {
     const arButton = document.querySelector('[class^="arButton"]');
