@@ -21,7 +21,7 @@ export const BEARER_TOKEN = ENV[TRBL_THREEKIT_ENV]?.token;
 export const ORG_ID = ENV[TRBL_THREEKIT_ENV]?.orgId;
 
 export const languageList = ['en', 'it', 'de'];
-export const fallbackLanguage = 'de';
+export const fallbackLanguage = 'en';
 
 // TODO: REMOVE START - after testing mocked data sku to assetId mapping
 // TODO: handle missing/incorrect sku
