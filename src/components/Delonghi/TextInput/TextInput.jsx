@@ -8,7 +8,7 @@ import {
   SubTitle,
   InputButtonWrapper,
 } from '../TextInput/TextInput.styled';
-import { inputTextMaxLength } from '../../../constants';
+import { INPUT_TEXT_MAX_LENGTH } from '../../../constants';
 
 export const TextInput = ({ t, obsceneList }) => {
   const [attribute, setAttribute] = useAttribute('text');
@@ -35,7 +35,7 @@ export const TextInput = ({ t, obsceneList }) => {
   const onHandleChange = (e) => {
     const targetValue = e.target.value;
     if (hasWarning) setWarning(false);
-    if (targetValue.length > inputTextMaxLength) set30Characters(true);
+    if (targetValue.length > INPUT_TEXT_MAX_LENGTH) set30Characters(true);
     else if (has30Characters === true) set30Characters(false);
     setInputValue(targetValue.slice(0, 30));
   };

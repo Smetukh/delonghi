@@ -7,7 +7,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
 
 const HelpModal = (props) => {
-  const [currentTab, setCurrentTab] = React.useState('touch');
+  const [currentTab, setCurrentTab] = React.useState('mouse');
   const { t } = useTranslation();
 
   const handleChange = (event, tab) => {
@@ -25,6 +25,7 @@ const HelpModal = (props) => {
             <TabContext value={currentTab}>
               <TabList onChange={handleChange}>
                 <Tab label={t('mouse')} value="mouse" />
+                <Tab label={t('touch')} value="touch" />
               </TabList>
             </TabContext>
           </ThemeProvider>

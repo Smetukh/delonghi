@@ -26,7 +26,7 @@ export const Wrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 4;
   display: flex;
   justify-content: center;
   align-items: center;

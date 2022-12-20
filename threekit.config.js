@@ -1,11 +1,11 @@
 const SKU_TO_ASSET_ID = {
-  '0132900001': 'b1d107fb-4efd-4f49-8961-398acd735386',
-  '0132900002': 'c7eb190e-0eb8-44f5-bcb3-49e4a37b84e2',
+  '0132268000': 'b1d107fb-4efd-4f49-8961-398acd735386',
+  '0132127000': 'c7eb190e-0eb8-44f5-bcb3-49e4a37b84e2',
 };
 
 const assetId =
   SKU_TO_ASSET_ID[window.DLG?.pdp?.sku?.toString()] ||
-  SKU_TO_ASSET_ID['0132900001'];
+  SKU_TO_ASSET_ID['0132268000'];
 
 export default {
   credentials: {

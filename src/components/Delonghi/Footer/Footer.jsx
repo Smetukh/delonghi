@@ -12,6 +12,7 @@ import {
 import { ModalContext } from '../../../context/modalContext';
 import { ADD_TO_CART_API, EXPORT_ASSET_API } from '../../../constants/api';
 import { eventTracker } from '../../../utils/helpers';
+import { DEFAULT_PRODUCT_QTY } from '../../../constants';
 
 const Footer = (props) => {
   const [isAgree, setIsAgree] = useState(false);
@@ -85,7 +86,7 @@ const Footer = (props) => {
         enableARUrl: enableARUrl.href,
         enableARQRcode,
         sku: window.DLG.pdp.sku,
-        qty: 555,
+        qty: DEFAULT_PRODUCT_QTY,
         snapshot,
         configurationId: savedConfiguration.shortId,
         customisation,

@@ -42,7 +42,19 @@ const AppWrapper = () => {
     if (!hasPlayerLoaded) {
       setTimeout(() => {
         const loaderText = document.querySelector('[class^="loading"]');
-        loaderText.innerHTML = t('loading3D');
+        console.log(
+          `%cqqq loaderText = `,
+          'font-weight: bold;color: #90ee90',
+          loaderText
+        );
+        console.log(
+          `%cqqq t('loading3D') = `,
+          'font-weight: bold;color: #90ee90',
+          t('loading3D')
+        );
+        if (loaderText) {
+          loaderText.innerHTML = t('loading3D');
+        }
       }, 4800);
     }
     if (hasPlayerLoaded) {
@@ -53,7 +65,7 @@ const AppWrapper = () => {
       openModal('PLAYER_HELP_MODAL', modalprops); // open helper modal on init
       setTimeout(() => {
         const arButtonText = document.querySelector('[class^="arButtonText"]');
-        arButtonText.innerHTML = t('viewInYourSpace');
+        if (arButtonText) arButtonText.innerHTML = t('viewInYourSpace');
       }, 930);
     }
     clearTimeout();
@@ -66,7 +78,7 @@ const AppWrapper = () => {
       arButton.addEventListener(
         'click',
         () => {
-          eventTracker('share');
+          eventTracker('view_in_your_space');
           setTimeout(() => {
             document
               .querySelectorAll('[class^="header"]')
