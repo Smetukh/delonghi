@@ -6,13 +6,7 @@ import { FormPageWrapper } from './Pages.styled';
 import { useAttribute } from '@threekit-tools/treble';
 import { colorRules } from '../constants/color-rules';
 
-const ProductPage = ({
-  productData,
-  attributes,
-  obsceneList,
-  ProductComponent,
-  t,
-}) => {
+const ProductPage = ({ productData, attributes, ProductComponent, t }) => {
   const [textSwitchAttribute, setTextSwitchAttribute] = useAttribute(
     attributes['Write Text'].name
   );
@@ -58,12 +52,7 @@ const ProductPage = ({
         t={t}
       />
       {textSwitchAttribute.value === 'On' && (
-        <TextInput
-          t={t}
-          attribute={attributes['text']}
-          obsceneList={obsceneList}
-          title="Add text"
-        />
+        <TextInput t={t} attribute={attributes['text']} title="Add text" />
       )}
     </FormPageWrapper>
   );

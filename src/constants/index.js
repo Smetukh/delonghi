@@ -34,7 +34,7 @@ if (!window.DLG?.pdp?.sku) {
 
   window.DLG = {
     pdp: {
-      sku: sku || '0132268000',
+      sku: sku || '0132127000',
       formattedPrice: formattedPrice || '$0.00',
     },
     config: {
@@ -44,6 +44,7 @@ if (!window.DLG?.pdp?.sku) {
       currentLanguageIsocode: FALLBACK_LANGUAGE,
       encodedContextPath: `/${FALLBACK_LANGUAGE}-${FALLBACK_LANGUAGE}`, // '/en-en',
     },
+    EVE: { emit: () => {} },
   };
 }
 // TODO: REMOVE END - after testing mocked data sku to assetId mapping
@@ -66,3 +67,15 @@ export const TRANSLATIONS_DATA_TABLE_ID =
 export const INPUT_TEXT_MAX_LENGTH = 30;
 
 export const DEFAULT_PRODUCT_QTY = 1;
+
+export const translation = {
+  x: -0.381,
+  y: 0.2932645216105926,
+  z: 0.9984292684877165,
+};
+
+export const rotation = {
+  xRotation: -4.198765329161526,
+  yRotation: -19.741034972047864,
+  zRotation: 0,
+};

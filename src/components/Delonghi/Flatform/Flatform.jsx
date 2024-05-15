@@ -18,7 +18,6 @@ const Flatform = ({ t = (phrase) => phrase }) => {
   const product = useThreekitSelector((s) => s.product);
   const productName = product.name;
 
-  const [obsceneList, setObsceneList] = useState([]);
   const [productsData, setProductsData] = useState([]);
 
   useEffect(() => {
@@ -26,9 +25,8 @@ const Flatform = ({ t = (phrase) => phrase }) => {
     const fetchData = async () => {
       if (BEARER_TOKEN) {
         const data = await onFetchDataTables();
-        const { productsData, obscene } = data;
+        const { productsData } = data;
         setProductsData(productsData);
-        setObsceneList(obscene);
       }
     };
     fetchData();
@@ -75,7 +73,6 @@ const Flatform = ({ t = (phrase) => phrase }) => {
           ProductComponent={ProductComponent}
           productName={productName}
           attributes={attributes}
-          obsceneList={obsceneList}
           productData={productData}
           t={t}
         />
@@ -90,7 +87,7 @@ const Flatform = ({ t = (phrase) => phrase }) => {
 
   return (
     <FlatFormWrapper>
-      <FlatFormTitle>{productName}</FlatFormTitle>
+      <FlatFormTitle>{t(productName)}</FlatFormTitle>
       <Tabs tabs={tabs} tabIndex={1} />
       <Footer
         {...{

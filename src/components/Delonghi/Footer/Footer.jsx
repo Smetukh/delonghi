@@ -10,9 +10,9 @@ import {
   TermsAndCond,
 } from './Footer.styled';
 import { ModalContext } from '../../../context/modalContext';
-import { ADD_TO_CART_API, EXPORT_ASSET_API } from '../../../constants/api';
+import { ADD_TO_CART_API } from '../../../constants/api';
 import { eventTracker } from '../../../utils/helpers';
-import { DEFAULT_PRODUCT_QTY } from '../../../constants';
+import { DEFAULT_PRODUCT_QTY, rotation, translation } from '../../../constants';
 
 const Footer = (props) => {
   const [isAgree, setIsAgree] = useState(false);
@@ -23,22 +23,54 @@ const Footer = (props) => {
   };
 
   const addToCart = async () => {
-    eventTracker('add_to_cart');
+    const { scene, snapshotAsync } = window.threekit.player;
+    const { x, y, z } = translation;
+    const { xRotation, yRotation, zRotation } = rotation;
     try {
-      const tokenDLG = window.DLG.config.CSRFToken;
-      const rawExportResponse = await fetch(EXPORT_ASSET_API, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      });
-      const exportContent = await rawExportResponse.json(); // TODO: handle export file
+      eventTracker('add_to_cart');
 
+      const cameraData = await scene.getAll({
+        hierarchical: true,
+        name: 'Camera',
+      });
+
+      const cameraId = Object.values(cameraData).find(
+        (camera) => camera.type === 'Camera'
+      ).id;
+
+      // set default camera rotation and translation
+      scene.set(
+        {
+          id: cameraId,
+          plug: 'Transform',
+          property: 'translation',
+        },
+        {
+          x,
+          y,
+          z,
+        }
+      );
+      scene.set(
+        {
+          id: cameraId,
+          plug: 'Transform',
+          property: 'rotation',
+        },
+        {
+          x: xRotation,
+          y: yRotation,
+          z: zRotation,
+        }
+      );
       const savedConfiguration =
         await window.threekit.treble.saveConfiguration();
-      const snapshot = await window.threekit.player.snapshotAsync();
 
+      const snapshot = await snapshotAsync({
+        size: { width: 180, height: 144 },
+        mimeType: 'image/png',
+        cameraId,
+      });
       const enableARUrl = new URL(window.location.href);
       enableARUrl.searchParams.append('tkcsid', savedConfiguration.shortId);
       enableARUrl.searchParams.append('enableAR', true);
@@ -92,18 +124,21 @@ const Footer = (props) => {
         customisation,
       };
 
-      const rawResponse = await fetch(ADD_TO_CART_API, {
+      const cartApiResponse = await fetch(ADD_TO_CART_API, {
         method: 'POST',
         headers: {
-          Accept: 'application/json',
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${tokenDLG}`,
+          CSRFToken: window.DLG.config.CSRFToken,
+          'X-Requested-With': 'XMLHttpRequest',
         },
         body: JSON.stringify(requestBody),
       });
-      const content = await rawResponse.json();
 
-      console.log('Add to Cart content', content); // TODO: set correct API url
+      const cartResponse = await cartApiResponse.json();
+      console.log('🚀 ~ addToCart ~ cartResponse:', cartResponse);
+
+      window.DLG.EVE.emit('CART.ADD.CONFIGURABLE.PRODUCT', cartResponse); // after a successful add-to-cart action, emit a global event telling to show the modal
+      window.DLG.EVE.emit('CART.GET'); // call is necessary for delonghi to update the minicart icon in the header.
     } catch (err) {
       console.log(
         `%cerr Add to Cart = `,

@@ -1,10 +1,6 @@
 import i18next from 'i18next';
 import { eventName, eventCategory, eventLabel } from '../constants/analytics';
-import {
-  OBSCENE_DATA_API,
-  PRODUCTS_DATA_API,
-  TRANSLATIONS_DATA_API,
-} from '../constants/api';
+import { PRODUCTS_DATA_API, TRANSLATIONS_DATA_API } from '../constants/api';
 
 const eventTracker = (eventAction) => {
   console.log(
@@ -23,12 +19,10 @@ const eventTracker = (eventAction) => {
 
 const onFetchDataTables = async () => {
   const dataTables = await Promise.all(
-    [PRODUCTS_DATA_API, OBSCENE_DATA_API, TRANSLATIONS_DATA_API].map(
-      async (url) => {
-        const resp = await fetch(url);
-        return resp.json();
-      }
-    )
+    [PRODUCTS_DATA_API, TRANSLATIONS_DATA_API].map(async (url) => {
+      const resp = await fetch(url);
+      return resp.json();
+    })
   );
   const obscene = dataTables[1].rows.map(({ value: { phrase } }) => phrase);
 
@@ -56,7 +50,7 @@ const onFetchDataTables = async () => {
     }
   );
 
-  const rawTranslations = dataTables[2].rows;
+  const rawTranslations = dataTables[1].rows;
 
   const translations = rawTranslations.reduce(
     (acc, { value: { key, en, it, de } }) => {

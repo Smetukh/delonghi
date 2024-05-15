@@ -60,7 +60,18 @@ const useModal = () => {
     setModal(false);
   };
 
-  return { modal, openModal, modalContent, closeModal, modalName };
+  const confirmCloseModal = () => {
+    window.DLG.EVE.emit('CONFIGURATOR.CLOSE.CTA');
+  };
+
+  return {
+    modal,
+    openModal,
+    modalContent,
+    closeModal,
+    modalName,
+    confirmCloseModal,
+  };
 };
 
 // const useAnalyticsEventTracker = (category="Blog category") => {

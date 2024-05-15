@@ -5,7 +5,7 @@ const SKU_TO_ASSET_ID = {
 
 const assetId =
   SKU_TO_ASSET_ID[window.DLG?.pdp?.sku?.toString()] ||
-  SKU_TO_ASSET_ID['0132268000'];
+  SKU_TO_ASSET_ID['0132127000'];
 
 export default {
   credentials: {

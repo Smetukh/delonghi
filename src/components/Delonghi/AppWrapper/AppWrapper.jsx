@@ -22,7 +22,8 @@ import {
 } from './AppWrapper.styled';
 
 const AppWrapper = () => {
-  const { modal, openModal, closeModal } = useContext(ModalContext);
+  const { modal, openModal, closeModal, confirmCloseModal } =
+    useContext(ModalContext);
   const hasPlayerLoaded = useThreekitInitStatus();
   const [inputAttribute, setInputFocus] = useAttribute('Camera Text');
   const [hasArButton, setHasArButton] = useState(null);
@@ -42,16 +43,6 @@ const AppWrapper = () => {
     if (!hasPlayerLoaded) {
       setTimeout(() => {
         const loaderText = document.querySelector('[class^="loading"]');
-        console.log(
-          `%cqqq loaderText = `,
-          'font-weight: bold;color: #90ee90',
-          loaderText
-        );
-        console.log(
-          `%cqqq t('loading3D') = `,
-          'font-weight: bold;color: #90ee90',
-          t('loading3D')
-        );
         if (loaderText) {
           loaderText.innerHTML = t('loading3D');
         }
@@ -125,7 +116,9 @@ const AppWrapper = () => {
         </PlayerWrapper>
       </PlayerModalProvider>
       <CloseIconBlock
-        onClick={() => openModal('CLOSE_CONFIGURATOR', { t, closeModal })}
+        onClick={() => {
+          openModal('CLOSE_CONFIGURATOR', { t, closeModal, confirmCloseModal });
+        }}
       >
         <CloseIcon />
       </CloseIconBlock>

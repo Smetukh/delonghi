@@ -6,9 +6,25 @@ const ModalContext = React.createContext();
 const { Provider } = ModalContext;
 
 const ModalProvider = ({ children }) => {
-  const { modal, openModal, modalContent, closeModal, modalName } = useModal();
+  const {
+    modal,
+    openModal,
+    modalContent,
+    closeModal,
+    modalName,
+    confirmCloseModal,
+  } = useModal();
   return (
-    <Provider value={{ modal, openModal, modalContent, closeModal, modalName }}>
+    <Provider
+      value={{
+        modal,
+        openModal,
+        modalContent,
+        closeModal,
+        modalName,
+        confirmCloseModal,
+      }}
+    >
       <Modal />
       {children}
     </Provider>

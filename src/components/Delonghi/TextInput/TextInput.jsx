@@ -10,7 +10,7 @@ import {
 } from '../TextInput/TextInput.styled';
 import { INPUT_TEXT_MAX_LENGTH } from '../../../constants';
 
-export const TextInput = ({ t, obsceneList }) => {
+export const TextInput = ({ t }) => {
   const [attribute, setAttribute] = useAttribute('text');
   const [inputValue, setInputValue] = useState(attribute.value);
   const [, setInputFocus] = useAttribute('Camera Text');
@@ -20,9 +20,6 @@ export const TextInput = ({ t, obsceneList }) => {
 
   const onSubmitClick = () => {
     let warningValue = false;
-    inputValue.split(' ').forEach((word) => {
-      if (obsceneList.includes(word.toLowerCase())) warningValue = true;
-    });
     if (warningValue) {
       setWarning(warningValue);
       setAttribute('');

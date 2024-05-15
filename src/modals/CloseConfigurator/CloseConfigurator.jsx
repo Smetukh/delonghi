@@ -7,12 +7,12 @@ import {
   ButtonsContainer,
 } from './CloseConfigurator.styled';
 
-const CloseConfigurator = ({ t, closeModal }) => (
+const CloseConfigurator = ({ t, closeModal, confirmCloseModal }) => (
   <ModalWrapper>
     <ModalTitle>{t('closeConfiguration')}</ModalTitle>
     <ModalContent>{t('closePage')}</ModalContent>
     <ButtonsContainer>
-      <ButtonWrapper>{t('close')}</ButtonWrapper>
+      <ButtonWrapper onClick={confirmCloseModal}>{t('close')}</ButtonWrapper>
       <ButtonWrapper isDisabled={true} onClick={closeModal}>
         {t('cancel')}
       </ButtonWrapper>
