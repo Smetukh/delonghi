@@ -26,7 +26,7 @@ export default {
       stageId: undefined,
     },
     'admin-fts': {
-      assetId: assetId,
+      assetId,
       configurationId: undefined,
       stageId: undefined,
     },

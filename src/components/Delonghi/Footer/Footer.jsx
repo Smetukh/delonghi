@@ -137,8 +137,8 @@ const Footer = (props) => {
       const cartResponse = await cartApiResponse.json();
       console.log('🚀 ~ addToCart ~ cartResponse:', cartResponse);
 
-      window.DLG.EVE.emit('CART.ADD.CONFIGURABLE.PRODUCT', cartResponse); // after a successful add-to-cart action, emit a global event telling to show the modal
       window.DLG.EVE.emit('CART.GET'); // call is necessary for delonghi to update the minicart icon in the header.
+      window.DLG.EVE.emit('CART.ADD.CONFIGURABLE.PRODUCT', cartResponse); // after a successful add-to-cart action, emit a global event telling to show the modal
     } catch (err) {
       console.log(
         `%cerr Add to Cart = `,

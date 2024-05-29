@@ -1,6 +1,10 @@
 import i18next from 'i18next';
 import { eventName, eventCategory, eventLabel } from '../constants/analytics';
-import { PRODUCTS_DATA_API, TRANSLATIONS_DATA_API } from '../constants/api';
+import {
+  PRODUCTS_DATA_API,
+  TRANSLATIONS_DATA_API,
+  SKU_DATA_API,
+} from '../constants/api';
 
 const eventTracker = (eventAction) => {
   console.log(
@@ -69,4 +73,11 @@ const onFetchDataTables = async () => {
   return { productsData, obscene };
 };
 
-export { eventTracker, onFetchDataTables };
+const resolveSku = async () => {
+  const res = await fetch(SKU_DATA_API);
+  const table = await res.json();
+
+  return table.rows;
+};
+
+export { eventTracker, onFetchDataTables, resolveSku };
