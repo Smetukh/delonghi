@@ -44,11 +44,13 @@ export const ColorSwatch = ({
       <ColorsWrapper>
         {attributeValues.map((item, i) => {
           const disabled = disabledColors.includes(item.value);
+          const bgImage = SWATCH_COLOR_CODES[item.value];
+
           return (
             <ColorContainer key={i} disabled={disabled}>
               <ColorButton selected={item.selected} disabled={disabled}>
                 <InnerColorBlock
-                  backgroundImage={SWATCH_COLOR_CODES[item.value]}
+                  backgroundImage={bgImage ? bgImage : ''}
                   selected={item.selected}
                   onClick={item.handleSelect}
                 >

@@ -55,7 +55,8 @@ export const InnerColorBlock = styled.div`
   cursor: pointer;
   /* border-radius: ${({ isSquare }) => (isSquare ? '5px' : '50%')}; */
   border-radius: 5px;
-  background-image: ${({ backgroundImage }) => `url(${backgroundImage})`};
+  ${({ backgroundImage }) =>
+    backgroundImage ? `background-image: url(${backgroundImage});` : ''}
   display: flex;
   justify-content: center;
   align-items: center;

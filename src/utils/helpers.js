@@ -75,9 +75,19 @@ const onFetchDataTables = async () => {
 
 const resolveSku = async () => {
   const res = await fetch(SKU_DATA_API);
-  const table = await res.json();
 
-  return table.rows;
+  const table = await res.json();
+  const passedSKU = window.DLG?.pdp?.sku?.toString();
+
+  const assetID = table.rows.find((el) => el.value.SKU === passedSKU);
+
+  if (!assetID) {
+    const fallBack = table.rows.find((sku) => sku.value.SKU === 'fallBack')
+      .value.assetID;
+    return fallBack;
+  }
+
+  return assetID.value.assetID;
 };
 
 export { eventTracker, onFetchDataTables, resolveSku };

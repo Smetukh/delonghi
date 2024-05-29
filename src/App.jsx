@@ -21,18 +21,9 @@ const App = () => {
     const fetchData = async () => {
       setIsLoading(true);
       if (BEARER_TOKEN) {
-        const data = await resolveSku();
-        const sku = SKU_TO_ASSET_ID[window.DLG?.pdp?.sku?.toString()];
+        const sku = await resolveSku();
 
-        const fallBack = data.find((sku) => sku.value.SKU === 'fallBack').value
-          .assetID;
-
-        if (sku) {
-          setAssetId(sku);
-          return setIsLoading(false);
-        }
-
-        setAssetId(fallBack);
+        setAssetId(sku);
         return setIsLoading(false);
       }
     };
@@ -51,8 +42,3 @@ const App = () => {
 };
 
 export default App;
-
-const SKU_TO_ASSET_ID = {
-  '0132268000': 'b1d107fb-4efd-4f49-8961-398acd735386',
-  '0132127000': 'c7eb190e-0eb8-44f5-bcb3-49e4a37b84e2',
-};

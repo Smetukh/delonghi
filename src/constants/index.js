@@ -34,7 +34,7 @@ if (!window.DLG?.pdp?.sku) {
 
   window.DLG = {
     pdp: {
-      sku: sku || '0132127000',
+      sku: sku || '0132900002',
       formattedPrice: formattedPrice || '$0.00',
     },
     config: {
