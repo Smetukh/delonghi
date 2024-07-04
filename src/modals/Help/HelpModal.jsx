@@ -13,9 +13,14 @@ const HelpModal = (props) => {
   const handleChange = (event, tab) => {
     setCurrentTab(tab);
   };
+
+  const lang = window.DLG?.config.currentLanguageIsocode;
+
+  const imageType = `${currentTab}_${lang.replace('-', '_')}`.toUpperCase();
+
   return (
     <Wrapper onClick={props.closeModal}>
-      <Image imageType={currentTab}>
+      <Image imageType={imageType}>
         <TabsContainer
           onClick={(e) => {
             e.stopPropagation();

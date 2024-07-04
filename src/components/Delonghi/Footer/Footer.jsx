@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import QRCode from 'qrcode';
 import {
   FooterWrapper,
@@ -9,14 +9,12 @@ import {
   CheckboxAndButtonContainer,
   TermsAndCond,
 } from './Footer.styled';
-import { ModalContext } from '../../../context/modalContext';
 import { ADD_TO_CART_API } from '../../../constants/api';
 import { eventTracker } from '../../../utils/helpers';
 import { DEFAULT_PRODUCT_QTY, rotation, translation } from '../../../constants';
 
 const Footer = (props) => {
   const [isAgree, setIsAgree] = useState(false);
-  const { openModal, closeModal } = useContext(ModalContext);
   const { t, productData, ...attributes } = props;
   const onCheckboxChange = () => {
     setIsAgree(!isAgree);
@@ -135,7 +133,6 @@ const Footer = (props) => {
       });
 
       const cartResponse = await cartApiResponse.json();
-      console.log('🚀 ~ addToCart ~ cartResponse:', cartResponse);
 
       window.DLG.EVE.emit('CART.GET'); // call is necessary for delonghi to update the minicart icon in the header.
       window.DLG.EVE.emit('CART.ADD.CONFIGURABLE.PRODUCT', cartResponse); // after a successful add-to-cart action, emit a global event telling to show the modal
@@ -147,6 +144,10 @@ const Footer = (props) => {
       );
     }
   };
+
+  const termsAndConditionsUrl = document
+    .getElementById('tk-treble-root')
+    .getAttribute('data-terms-and-conditions-url');
 
   return (
     <FooterWrapper>
@@ -162,19 +163,14 @@ const Footer = (props) => {
             key={Math.random()}
           />
           <label>
-            {t('termsAndConditions0')}
+            {t('termsAndConditions0')}{' '}
             <TermsAndCond
-              onClick={() =>
-                openModal('TERMS_AND_CONDITIONS', {
-                  t,
-                  closeModal,
-                  setIsAgree,
-                })
-              }
+              href={termsAndConditionsUrl}
+              target="_blank"
+              rel="noreferrer"
             >
-              {' '}
               {t('termsAndConditions1')}
-            </TermsAndCond>
+            </TermsAndCond>{' '}
             {t('termsAndConditions2')}
           </label>
         </InputContainer>

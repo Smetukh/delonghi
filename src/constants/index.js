@@ -20,12 +20,55 @@ const ENV = {
 export const BEARER_TOKEN = ENV[TRBL_THREEKIT_ENV]?.token;
 export const ORG_ID = ENV[TRBL_THREEKIT_ENV]?.orgId;
 
-export const LANGUAGE_LIST = ['en', 'it', 'de'];
+export const LANGUAGE_LIST = [
+  'en',
+  'de',
+  'it',
+  'fr',
+  'de_AT',
+  'es',
+  'pl',
+  'nl_BE',
+  'fr_BE',
+  'nl',
+  'pt',
+  'el',
+  'de_CH',
+  'fr_CH',
+  'cs',
+  'sk',
+  'sv',
+  'da',
+  'hu',
+  'ro',
+  'hr',
+  'sl',
+  'nb',
+  'fi',
+  'lt',
+  'et',
+  'lv',
+  'en_GB',
+  'en_AU',
+  'en_NZ',
+  'en_US',
+  'en_CA',
+  'fr_CA',
+  'ja',
+  'zh',
+  'ko',
+  'en_SG',
+  'en_MY',
+  'ms_MY',
+];
 export const FALLBACK_LANGUAGE = 'en';
 
 // TODO: REMOVE START - after testing mocked data sku to assetId mapping
 // TODO: handle missing/incorrect sku
 if (!window.DLG?.pdp?.sku) {
+  const inputLang = window.prompt(
+    'Fill input with Hybris language code to test Helper Screens (this prompt is only shown at Kitsune):'
+  );
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const sku = urlParams.get('sku'); // TODO: remove url param. sku should arrive from window
@@ -41,7 +84,10 @@ if (!window.DLG?.pdp?.sku) {
       CSRFToken:
         CSRFToken ||
         'invalid token invalid token invalid token invalid token invalid token ',
-      currentLanguageIsocode: FALLBACK_LANGUAGE,
+      currentLanguageIsocode:
+        inputLang !== '' && inputLang !== undefined && inputLang !== null
+          ? inputLang
+          : FALLBACK_LANGUAGE,
       encodedContextPath: `/${FALLBACK_LANGUAGE}-${FALLBACK_LANGUAGE}`, // '/en-en',
     },
     EVE: { emit: () => {} },

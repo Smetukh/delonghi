@@ -61,7 +61,6 @@ export const CheckboxAndButtonContainer = styled.div`
   align-items: end;
 `;
 
-export const TermsAndCond = styled.span`
+export const TermsAndCond = styled.a`
   color: #266bbf;
-  cursor: pointer;
 `;

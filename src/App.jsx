@@ -27,8 +27,6 @@ const App = () => {
     });
   }, []);
 
-  if (isLoading) return null;
-
   const projects = {
     credentials: {
       preview: {
